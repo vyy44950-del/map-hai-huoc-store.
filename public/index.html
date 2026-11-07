@@ -4,103 +4,150 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#090617">
-<title>Mập Hài Hước Store</title>
+<title>MAP HAI HUOC STORE</title>
+
 <style>
-:root{--bg:#080615;--panel:#100d25;--panel2:#17102e;--line:#7130a8;--purple:#bd36f2;--blue:#3678ff;--pink:#efa0ff;--muted:#c8bce5;--gold:#ffc34d}
+:root{--bg:#070512;--panel:#100a22;--purple:#a52cff;--pink:#e45cff;--blue:#397cff;--gold:#ffd45c}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:radial-gradient(ellipse at 72% -5%,#32105d 0,transparent 35%),radial-gradient(ellipse at 5% 32%,#170d3b 0,transparent 32%),var(--bg);color:#f8f3ff;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
-button{font:inherit;cursor:pointer}
-.topbar{height:102px;border-bottom:1px solid #8135b4;background:linear-gradient(100deg,#0b081b 0%,#120927 72%,#29104b 100%);display:flex;align-items:center;justify-content:space-between;padding:12px clamp(18px,3.2vw,50px);gap:18px;position:relative;z-index:2}
-.brand{display:flex;align-items:center;gap:18px;font-size:clamp(19px,3vw,39px);font-weight:1000;font-style:italic;letter-spacing:1px;background:linear-gradient(90deg,#ed9dff,#a24dff 52%,#56a8ff);color:transparent;background-clip:text;text-shadow:0 0 22px #a33cff55}
-.brand-mark{font-size:58px;line-height:1;color:#d68aff;text-shadow:0 0 16px #a52cff}
-.btn{border:1px solid transparent;border-radius:13px;padding:12px 20px;color:#fff;font-weight:800;background:linear-gradient(105deg,#c02ce9,#7229ec 55%,#347bff);box-shadow:0 5px 22px #8d24f655;transition:.18s}
+body{margin:0;background:radial-gradient(ellipse at 50% 0%,#27104b 0,transparent 34%),#070512;color:#fff;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+button,select,input{font:inherit}
+button{cursor:pointer}
+.topbar{height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(14px,3vw,42px);gap:12px;background:#080614ed;border-bottom:1px solid #9c35ff;box-shadow:0 4px 25px #a42aff30;position:sticky;top:0;z-index:10}
+.brand{display:flex;align-items:center;gap:10px;font-weight:1000;letter-spacing:.5px;font-size:clamp(15px,2vw,23px)}
+.brand-mark{font-size:40px;color:#ffd34e;text-shadow:0 0 14px #ffb900}
+.brand small{display:block;font-size:10px;letter-spacing:4px;color:#cdb9ef}
+.navlinks{display:flex;align-items:center;gap:clamp(10px,2.5vw,34px)}
+.navlinks a{color:#f4edff;text-decoration:none;font-weight:700;font-size:14px}
+.navlinks a:hover{color:#e9a5ff}
+.btn{border:0;border-radius:14px;padding:12px 19px;color:#fff;font-weight:900;background:linear-gradient(105deg,#d414ed,#7627ed 55%,#347cff);box-shadow:0 5px 22px #a52cff55;transition:.18s}
 .btn:hover{filter:brightness(1.15);transform:translateY(-1px)}
-.btn.alt{background:#120e27;border-color:#b99bdf;box-shadow:none}
-.nav-btn{border-radius:22px;padding:14px 25px}#navActions button{border-radius:22px;padding:12px 20px;border:1px solid #a96de9;background:linear-gradient(105deg,#a21ce0,#3336b9);color:white;font-weight:800}
-.hero{min-height:315px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;padding:32px 20px;background:radial-gradient(ellipse at 50% 48%,#442077 0,transparent 46%),linear-gradient(100deg,#09071a,#120b2c 50%,#080d24);border-bottom:1px solid #54228b}
-.hero:before,.hero:after{content:"";position:absolute;inset:-40%;pointer-events:none}
-.hero:before{background:repeating-linear-gradient(125deg,transparent 0 72px,#6535ba18 73px 75px,transparent 76px 145px);transform:perspective(500px) rotateX(48deg)}
-.hero:after{background:radial-gradient(circle at 12% 60%,#8b24ff55,transparent 20%),radial-gradient(circle at 88% 30%,#1e76ff55,transparent 20%)}
-.hero-inner{position:relative;z-index:1;max-width:900px}
-.eyebrow{display:inline-block;padding:7px 21px;border-radius:24px;background:linear-gradient(90deg,#8c27ed,#3b36d9);font-weight:900;font-style:italic;letter-spacing:1px;box-shadow:0 0 24px #7a27f977}
-.hero h1{font-size:clamp(38px,6.5vw,76px);line-height:1.04;margin:16px 0 10px;font-weight:1000;font-style:italic;letter-spacing:1px;text-shadow:0 4px 25px #a43cff55}
-.hero p{font-size:clamp(15px,2vw,21px);font-weight:700;margin:0;color:#f0e7ff}
-.hero-orb{position:absolute;font-size:clamp(90px,17vw,210px);opacity:.18;filter:drop-shadow(0 0 28px #9b36ff);z-index:0}
-.hero-orb.left{left:2%;bottom:-45px}.hero-orb.right{right:3%;top:-36px;color:#50a4ff}
-.shell{max-width:1500px;margin:0 auto;padding:18px clamp(16px,3vw,48px) 28px}
-.section-title{font-size:clamp(27px,3vw,38px);margin:0 0 10px;font-weight:900}
-.layout{display:grid;grid-template-columns:minmax(0,1fr) 332px;gap:26px;align-items:start}
-.products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.product{min-width:0;overflow:hidden;border:1px solid #7134a7;border-radius:18px;background:linear-gradient(160deg,#14102c,#0d0b20 75%);box-shadow:0 8px 30px #0005,inset 0 0 22px #5621a322}
-.art{height:166px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(circle at 50% 40%,#0878da99,transparent 40%),linear-gradient(135deg,#07152d,#10134b 50%,#090b20)}
-.art:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent 0 27px,#58baff18 28px 30px,transparent 31px 56px)}
-.art:after{content:"";position:absolute;width:175px;height:175px;border:2px solid #36aaff88;border-radius:50%;box-shadow:0 0 28px #258aff88,inset 0 0 25px #258aff55}
-.art .art-symbol{position:relative;z-index:1;font-size:65px;font-weight:1000;font-style:italic;color:#eaf8ff;text-shadow:0 0 14px #36aaff,0 4px 0 #152b77}
-.art.aimbody{background:radial-gradient(circle at 50% 45%,#5422b999,transparent 43%),linear-gradient(135deg,#090e2b,#101c55,#0b0921)}
-.art.aimbody:after{width:140px;height:140px;border-color:#a66cff88}
-.art.vip{background:radial-gradient(circle at 50% 45%,#98601b99,transparent 43%),linear-gradient(135deg,#170f1b,#39220d,#100b1b)}
-.art.vip:after{border-color:#ffc34d99;box-shadow:0 0 32px #ffb52c66}
-.art.vip .art-symbol{color:#ffdf76;text-shadow:0 0 18px #ffae20,0 4px 0 #75420d}
-.product-body{padding:14px 16px 17px}
-.pill{display:inline-block;border-radius:18px;padding:4px 11px;background:linear-gradient(90deg,#8d27bd,#185fb7);font-size:12px;font-weight:900}
-.product h3{font-size:21px;margin:9px 0 4px}
-.desc{color:#d0c4e9;margin:0;min-height:28px;line-height:1.45}
-.price{font-size:28px;font-weight:1000;color:#efa0ff;margin:10px 0}
+.btn.alt{background:#120d25;border:1px solid #a96de9;box-shadow:none}
+#navActions button{border-radius:24px;padding:11px 20px}
+.hero{min-height:355px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;padding:38px 20px;border-bottom:1px solid #9a36f6;background:radial-gradient(ellipse at 76% 40%,#5a1b9b88,transparent 37%),radial-gradient(ellipse at 8% 70%,#8b20ff88,transparent 34%),linear-gradient(105deg,#080617,#17082e 55%,#090719)}
+.hero:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(130deg,transparent 0 68px,#b34cff13 69px 71px,transparent 72px 130px);pointer-events:none}
+.hero:after{content:"";position:absolute;left:-5%;bottom:-65%;width:48%;height:130%;border-radius:50%;background:radial-gradient(ellipse,#bb37ff55,transparent 65%);filter:blur(12px)}
+.hero-inner{position:relative;z-index:2;max-width:850px}
+.eyebrow{display:inline-block;padding:7px 18px;border-radius:22px;background:linear-gradient(90deg,#9626ed,#4534c7);font-weight:900;letter-spacing:1px}
+.hero h1{font-size:clamp(38px,6vw,72px);line-height:1;margin:16px 0 10px;font-weight:1000;font-style:italic;text-shadow:0 0 24px #bd42ff}
+.hero h1 em{color:#e56cff}
+.hero p{font-size:clamp(16px,2vw,22px);margin:0;color:#f4e8ff;font-weight:700}
+.hero-tagline{font-size:clamp(17px,2.5vw,27px)!important;color:#ed8cff!important;font-style:italic;margin-top:8px!important}
+.hero-stats{display:flex;justify-content:center;gap:35px;margin-top:24px}
+.hero-stat{min-width:95px;padding:0 14px;border-right:1px solid #a34de8}
+.hero-stat:last-child{border:0}
+.hero-stat b{display:block;color:#e6a1ff;font-size:25px;text-shadow:0 0 15px #b42cff}
+.hero-stat span{font-size:13px;font-weight:800}
+.hero-figure{position:absolute;z-index:1;left:3%;bottom:-25px;width:235px;height:290px;opacity:.75;filter:drop-shadow(0 0 20px #b42cff)}
+.hero-figure:before{content:"";position:absolute;left:40px;top:10px;width:130px;height:135px;border-radius:48% 48% 42% 42%;background:radial-gradient(circle at 48% 35%,#e8c9ff 0 8%,#8d63bd 24%,#211235 60%);border:2px solid #c66bff;box-shadow:0 0 28px #9b2cff}
+.hero-figure:after{content:"";position:absolute;left:0;bottom:0;width:220px;height:180px;border-radius:55% 55% 0 0;background:linear-gradient(120deg,#080716,#28113e 45%,#090719);clip-path:polygon(35% 0,65% 0,100% 100%,0 100%);border-top:3px solid #b64cff}
+.shell{max-width:1440px;margin:auto;padding:18px clamp(14px,2.5vw,32px) 30px}
+.section-title{font-size:clamp(24px,3vw,34px);margin:0 0 13px;font-weight:1000;text-align:center;text-shadow:0 0 15px #ae35ff}
+.layout{display:block}
+.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.product{min-width:0;overflow:hidden;border:1px solid #b33cff;border-radius:20px;background:linear-gradient(145deg,#140b2c,#080716 80%);box-shadow:0 0 17px #a82aff33,inset 0 0 22px #6924a522;display:grid;grid-template-columns:1fr 1fr;position:relative}
+.product:before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:20px;box-shadow:inset 0 0 16px #d44cff22}
+.art{min-height:280px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 45%,#6924b8,transparent 38%),linear-gradient(145deg,#08091d,#151044 55%,#080716)}
+.art:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent 0 25px,#8e42e522 26px 28px,transparent 29px 55px)}
+.art:after{content:"";position:absolute;width:175px;height:175px;border:2px solid #ff4b79;border-radius:50%;box-shadow:0 0 25px #ff285f,inset 0 0 20px #ff285f55}
+.art-symbol{position:absolute;z-index:3;top:15px;left:14px;font-size:clamp(24px,3vw,38px);font-weight:1000;font-style:italic;color:white;text-shadow:0 0 14px #a72cff}
+.art-scene{position:absolute;inset:25% 7% 7%;border:1px solid #7e62b0;border-radius:12px;background:linear-gradient(180deg,#373052,#88705b 48%,#3e3a42);overflow:hidden;box-shadow:0 0 20px #8f37ff55}
+.art-scene:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 48%,#d9b98a44 49%,transparent 50%),linear-gradient(0deg,transparent 45%,#d9b98a44 46%,transparent 47%),repeating-linear-gradient(90deg,transparent 0 35px,#d9b98a33 36px 38px)}
+.art-scene:after{content:"";position:absolute;left:48%;bottom:10%;width:30px;height:90px;border-radius:15px 15px 5px 5px;background:linear-gradient(#17151b 0 28%,#35313b 29% 70%,#111 71%);box-shadow:0 -18px 0 -5px #17151b}
+.crosshair{position:absolute;z-index:4;width:105px;height:105px;border:2px solid #ff375f;border-radius:50%;box-shadow:0 0 20px #ff285f}
+.crosshair:before,.crosshair:after{content:"";position:absolute;background:#ff476c;box-shadow:0 0 10px #ff285f}
+.crosshair:before{width:140px;height:2px;left:-19px;top:50px}.crosshair:after{height:140px;width:2px;top:-19px;left:50px}
+.target-dot{position:absolute;z-index:5;width:15px;height:15px;border-radius:50%;background:#ff315f;box-shadow:0 0 18px #ff174f}
+.art.aimbody{background:radial-gradient(circle at 50% 40%,#5724b8,transparent 40%),linear-gradient(145deg,#090d25,#1a1451,#080716)}
+.art.aimbody:after{width:145px;height:145px;border-radius:12px;border-color:#ff405e}
+.art.aimbody .crosshair{border-radius:8px;width:78px;height:130px}
+.art.aimbody .crosshair:before{width:110px;left:-17px;top:63px}.art.aimbody .crosshair:after{height:160px;top:-17px;left:36px}
+.art.vip{background:radial-gradient(circle,#8c531c,transparent 45%),linear-gradient(145deg,#1d102b,#13091f)}
+.art.vip:after{border-color:#ffd45c;box-shadow:0 0 25px #ffc33b}
+.product-body{padding:18px 18px 17px;position:relative;z-index:2}
+.pill{display:inline-block;border-radius:20px;padding:5px 12px;background:linear-gradient(90deg,#a02be7,#235cc7);font-size:12px;font-weight:900}
+.product h3{font-size:clamp(23px,2.5vw,30px);margin:10px 0 5px}
+.desc{color:#dfd1f3;margin:0;line-height:1.45}
+.product-features{display:grid;gap:9px;margin:14px 0;color:#f2eaff;font-size:15px;line-height:1.35}
+.product-features span{display:flex;gap:9px;align-items:flex-start}
+.product-features b{color:#fff;background:linear-gradient(130deg,#d32aff,#7024df);border-radius:50%;width:21px;height:21px;flex:none;text-align:center;line-height:21px;box-shadow:0 0 12px #a82cff}
+.price{font-size:27px;font-weight:1000;color:#f0a0ff;margin:12px 0}
 .buy-btn{width:100%;padding:13px 10px}
-.account{border:1px solid #a044d3;border-radius:18px;background:linear-gradient(150deg,#211044,#100b24 80%);box-shadow:0 8px 28px #0006;overflow:hidden}
-.account-head{padding:16px 20px;border-bottom:1px solid #61318b;color:#d8a4ff;font-size:20px;font-weight:900}
-.account-content{padding:16px 20px}
-.greeting{font-size:18px;margin:0 0 16px}
-.balance-label{color:#e2d5f5;font-size:15px}
-.balance{font-size:29px;color:var(--gold);font-weight:1000;margin:2px 0 16px}
-.account-actions{display:flex;gap:10px}.account-actions button{flex:1;padding:10px 8px}
-.history-title{font-size:19px;margin:22px 0 8px}
-.history{border-top:1px solid #563178;padding-top:10px;white-space:pre-line;overflow-wrap:anywhere;color:#d4c5ed;font-size:14px;line-height:1.65;min-height:50px}
-.lower{display:grid;grid-template-columns:minmax(0,1fr) 332px;gap:26px;margin-top:22px}
-.info-card{border:1px solid #8634b8;border-radius:18px;background:linear-gradient(110deg,#1b1034,#100c25);padding:18px 22px;display:flex;align-items:center;gap:20px}
-.info-icon{font-size:44px;color:#d28aff;text-shadow:0 0 15px #ad37ff}
-.info-card h3{margin:0 0 5px;color:#e1c7ff;font-size:19px}
-.info-card p{margin:0;color:#d7c9ed;line-height:1.55}
-.support{justify-content:space-between}
-.modal{display:none;position:fixed;inset:0;background:#05030cdd;z-index:20;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(8px)}
+.account{margin-top:18px;border:1px solid #a044d3;border-radius:18px;background:linear-gradient(150deg,#211044,#100b24 80%);overflow:hidden}
+.account-head{padding:14px 18px;border-bottom:1px solid #61318b;color:#e0b0ff;font-size:19px;font-weight:900}
+.account-content{padding:15px 18px}.greeting{font-size:18px;margin:0 0 12px}.balance-label{color:#e2d5f5}.balance{font-size:28px;color:#ffd45c;font-weight:1000;margin:2px 0 14px}
+.account-actions{display:flex;gap:10px}.account-actions button{flex:1}.history-title{font-size:18px;margin:18px 0 8px}
+.history{border-top:1px solid #563178;padding-top:10px;white-space:pre-line;overflow-wrap:anywhere;color:#d4c5ed;font-size:14px;line-height:1.6}
+.feature-section{margin:24px 0 18px;padding:20px;border:1px solid #9d32ed;border-radius:20px;background:linear-gradient(140deg,#160d2d,#080716 75%);box-shadow:0 0 20px #8b20ff33}
+.feature-heading{text-align:center;font-size:clamp(22px,3vw,31px);font-weight:1000;color:#f0c6ff;text-shadow:0 0 14px #b22dff;margin:0 0 17px}
+.feature-layout{display:grid;grid-template-columns:1.2fr 1fr;gap:18px}
+.feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
+.feature-tile{min-height:105px;border:1px solid #922ce4;border-radius:15px;padding:12px 7px;text-align:center;background:linear-gradient(150deg,#211044,#0b0a20);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;box-shadow:inset 0 0 15px #a42cff22}
+.feature-tile .glyph{font-size:30px;color:#d58cff;text-shadow:0 0 16px #a32cff}
+.feature-tile strong{font-size:13px;line-height:1.3}
+.feature-about{border:1px solid #b14cff;border-radius:17px;padding:17px;background:#100a22;box-shadow:0 0 18px #9d2aff33;line-height:1.55}
+.feature-about h3{margin:0 0 10px;color:#ffd45c;font-size:20px}
+.feature-about p{margin:7px 0;color:#f0e7fb}
+.purchase{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:18px;align-items:center;margin:22px 0;padding:20px;border:1px solid #a42aff;border-radius:20px;background:radial-gradient(circle at 8% 50%,#7b28d455,transparent 25%),linear-gradient(110deg,#170b30,#090716);box-shadow:0 0 22px #9a2aff33}
+.gift{font-size:90px;text-align:center;filter:drop-shadow(0 0 18px #a72cff)}
+.purchase h2{text-align:center;margin:0 0 14px;color:#edc5ff;text-shadow:0 0 13px #a42aff}
+.purchase label{display:block;margin:0 0 7px;color:#e8d8fa;font-weight:700}
+.purchase select{width:100%;padding:13px;border:1px solid #aa8bd0;border-radius:12px;background:#f0edf7;color:#171124;font-weight:800}
+.purchase .btn{width:100%;margin-top:13px;padding:15px}
+.trust{border:1px solid #9b2de4;border-radius:15px;padding:14px;background:#100a22;line-height:2}
+.trust span{display:block}.trust b{color:#63ff91;margin-right:8px}
+.about-strip,.info-card{margin:18px 0;padding:18px 20px;border:1px solid #8538c6;border-radius:18px;background:linear-gradient(110deg,#1b1034,#100c25);color:#e6dcff;line-height:1.6}
+.about-strip h2{margin:0 0 7px;color:#f2d6ff}.about-strip p{margin:0}
+.lower{display:grid;grid-template-columns:1.5fr 1fr;gap:15px}
+.info-card{display:flex;align-items:center;gap:15px;margin:0}
+.info-icon{font-size:38px;color:#d28aff;text-shadow:0 0 15px #ad37ff}.info-card h3{margin:0 0 5px;color:#e1c7ff}.info-card p{margin:0}
+.modal{display:none;position:fixed;inset:0;background:#05030cdd;z-index:30;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(8px)}
 .modal-box{background:linear-gradient(145deg,#21113c,#100c24);border:1px solid #a04bd2;border-radius:18px;padding:22px;width:100%;max-width:420px;box-shadow:0 15px 55px #000b;max-height:92vh;overflow:auto}
-.modal-box h2{color:#e2b2ff;margin:0 0 16px}
-.modal-box input,.modal-box select{width:100%;padding:13px;margin:7px 0 13px;background:#090716;border:1px solid #69418b;border-radius:10px;color:white;font:inherit}.topup-tabs{display:flex;gap:8px;margin-bottom:12px}.topup-tabs button{flex:1}.topup-pane{display:none}.topup-pane.active{display:block}.field-label{display:block;color:#d8c7ef;font-size:13px;margin-top:8px}.small-note{font-size:12px;color:#b9a9d3;line-height:1.5}
-.modal-box button{margin-top:7px}
-.modal-box .wide{width:100%}
-.msg{color:#ffd477;line-height:1.6;overflow-wrap:anywhere}
-.hidden{display:none!important}
-footer{text-align:center;color:#82759c;padding:22px}
-@media(max-width:1050px){.layout,.lower{grid-template-columns:1fr}.account{max-width:none}.products{gap:13px}}
-@media(max-width:700px){.topbar{height:auto;min-height:76px;padding:12px 15px}.brand{gap:8px;font-size:17px}.brand-mark{font-size:38px}.nav-btn{padding:10px 12px;font-size:12px}.hero{min-height:250px}.products{grid-template-columns:1fr}.art{height:180px}.shell{padding:17px 14px}.lower{gap:12px}.info-card{padding:15px}.account-content{padding:15px}}
+.modal-box h2{color:#e2b2ff;margin:0 0 16px}.modal-box input,.modal-box select{width:100%;padding:13px;margin:7px 0 13px;background:#090716;border:1px solid #69418b;border-radius:10px;color:white;font:inherit}
+.topup-tabs{display:flex;gap:8px;margin-bottom:12px}.topup-tabs button{flex:1}.topup-pane{display:none}.topup-pane.active{display:block}.field-label{display:block;color:#d8c7ef;font-size:13px;margin-top:8px}.small-note{font-size:12px;color:#b9a9d3;line-height:1.5}
+.modal-box button{margin-top:7px}.modal-box .wide{width:100%}.msg{color:#ffd477;line-height:1.6;overflow-wrap:anywhere}.hidden{display:none!important}
+footer{padding:24px clamp(14px,3vw,38px);border-top:1px solid #58208c;background:#080614;color:#c6b6dc}
+.footer-inner{max-width:1440px;margin:auto;display:flex;justify-content:space-between;gap:12px;align-items:center}
+@media(max-width:900px){.hero-figure{left:-55px;opacity:.35}.products{grid-template-columns:1fr}.product{grid-template-columns:1fr 1fr}.feature-layout{grid-template-columns:1fr}.purchase{grid-template-columns:110px 1fr}.trust{grid-column:1/-1;display:flex;justify-content:space-around;flex-wrap:wrap}.navlinks{gap:12px}}
+@media(max-width:620px){.topbar{height:auto;min-height:64px;padding:9px 12px}.brand-mark{font-size:31px}.brand small{font-size:8px;letter-spacing:3px}.navlinks{display:none}.hero{min-height:300px;padding:30px 16px}.hero-figure{left:-85px;opacity:.22}.hero-stats{gap:5px;margin-top:20px}.hero-stat{min-width:0;padding:0 10px}.hero-stat span{font-size:11px}.shell{padding:14px 12px 24px}.product{grid-template-columns:1fr}.art{min-height:210px}.product-body{padding:15px}.feature-section{padding:14px}.feature-layout{gap:12px}.feature-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.feature-tile{min-height:90px;padding:8px 4px}.feature-tile .glyph{font-size:25px}.feature-tile strong{font-size:11px}.purchase{grid-template-columns:1fr;padding:15px}.gift{font-size:62px}.trust{display:block}.lower{grid-template-columns:1fr}.footer-inner{display:block;text-align:center}.footer-inner>div+div{margin-top:8px}}
 </style>
+
 </head>
 <body>
+
 <header class="topbar">
-  <div class="brand"><span class="brand-mark">✦</span><span>MẬP HÀI HƯỚC STORE</span></div>
-  <div id="navActions"><button class="btn nav-btn" onclick="openAuth()">♟ Đăng nhập / Đăng ký</button></div>
+  <div class="brand"><span class="brand-mark">♛</span><span>MAP HAI HUOC<small>STORE</small></span></div>
+  <nav class="navlinks" aria-label="Điều hướng">
+    <a href="#home">⌂ Trang Chủ</a><a href="#topup-info" onclick="openTopup();return false">Nạp Thẻ</a><a href="#account">Lịch Sử</a><a href="#contact">Liên Hệ</a>
+  </nav>
+  <div id="navActions"><button class="btn" onclick="openAuth()">♟ Đăng Nhập</button></div>
 </header>
-<section class="hero">
-  <div class="hero-orb left">♛</div><div class="hero-orb right">✦</div>
-  <div class="hero-inner"><span class="eyebrow">DIGITAL STORE</span><h1>NÂNG CẤP<br>TRẢI NGHIỆM</h1><p>Tạo tài khoản, nạp tiền vào ví và quản lý đơn hàng tại một nơi.</p></div>
+<section class="hero" id="home">
+  <div class="hero-figure" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <span class="eyebrow">✦ MAP HAI HUOC STORE ✦</span>
+    <h1>MAP HAI HUOC <em>STORE</em></h1>
+    <p>Trải nghiệm sản phẩm game và dịch vụ kỹ thuật số</p>
+    <p class="hero-tagline">Nổi bật · Tiện lợi · Hỗ trợ khách hàng</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><b>⚡</b><span>Trải nghiệm<br>mượt mà</span></div>
+      <div class="hero-stat"><b>♢</b><span>Thanh toán<br>tiện lợi</span></div>
+      <div class="hero-stat"><b>☏</b><span>Hỗ trợ<br>khách hàng</span></div>
+    </div>
+  </div>
 </section>
 <main class="shell">
   <div class="layout">
     <section>
-      <h2 class="section-title" id="products">Sản phẩm</h2>
+      <h2 class="section-title" id="products">✦ SẢN PHẨM NỔI BẬT ✦</h2>
       <div class="products">
         <article class="product">
-          <div class="art"><span class="art-symbol">AIMLOCK</span></div>
-          <div class="product-body"><span class="pill">ANDROID / IOS / PC</span><h3>AIMLOCK</h3><p class="desc">Gói sản phẩm kỹ thuật số.</p><div class="price">200.000đ</div><button class="btn buy-btn" onclick="buy('aimlock')">🛒 Mua bằng số dư ví</button></div>
+          <div class="art aimlock"><span class="art-symbol">♛ AIMLOCK</span><div class="art-scene"></div><span class="crosshair"></span><span class="target-dot"></span></div>
+          <div class="product-body"><span class="pill">ANDROID / IOS / PC</span><h3>AIMLOCK</h3><p class="desc">Gói sản phẩm kỹ thuật số.</p><div class="product-features"><span><b>✓</b> Ghim cổ, kéo nhẹ là đỏ</span><span><b>✓</b> Không kéo là máu vàng</span><span><b>✓</b> Vòng vẽ FOV và các tuỳ chọn aim</span></div><div class="price">200.000đ</div><button class="btn buy-btn" onclick="buy('aimlock')">🛒 Mua ngay ❯</button></div>
         </article>
         <article class="product">
-          <div class="art aimbody"><span class="art-symbol">AIMBODY</span></div>
-          <div class="product-body"><span class="pill">ANDROID / IOS / PC</span><h3>AIMBODY</h3><p class="desc">Gói sản phẩm kỹ thuật số.</p><div class="price">250.000đ</div><button class="btn buy-btn" onclick="buy('aimbody')">🛒 Mua bằng số dư ví</button></div>
-        </article>
-        <article class="product">
-          <div class="art vip"><span class="art-symbol">♛ VIP</span></div>
-          <div class="product-body"><span class="pill">VIP</span><h3>MENU VIP</h3><p class="desc">Gói thành viên cao cấp.</p><div class="price">450.000đ</div><button class="btn buy-btn" onclick="buy('vip')">🛒 Mua bằng số dư ví</button></div>
+          <div class="art aimbody"><span class="art-symbol">♛ AIMBODY</span><div class="art-scene"></div><span class="crosshair"></span><span class="target-dot"></span></div>
+          <div class="product-body"><span class="pill">ANDROID / IOS / PC</span><h3>AIMBODY</h3><p class="desc">Gói sản phẩm kỹ thuật số.</p><div class="product-features"><span><b>✓</b> Xoá hiệu ứng máu vàng</span><span><b>✓</b> Bắn vào người hiển thị đỏ</span><span><b>✓</b> ESP khung dây, đạn gió thổi</span></div><div class="price">250.000đ</div><button class="btn buy-btn" onclick="buy('aimbody')">🛒 Mua ngay ❯</button></div>
         </article>
       </div>
     </section>
@@ -114,12 +161,43 @@ footer{text-align:center;color:#82759c;padding:22px}
       </div>
     </aside>
   </div>
-  <div class="lower">
-    <section class="info-card"><div class="info-icon">▤</div><div><h3>Hướng dẫn nạp tiền</h3><p>Đăng nhập, chọn Nạp tiền bằng thẻ hoặc chuyển khoản. Với thẻ cào, nhập đúng nhà mạng, mệnh giá, serial và mã thẻ. Admin sẽ kiểm tra thẻ trước khi cộng tiền vào ví.</p></div></section>
-    <section class="info-card support"><div><div class="info-icon">☏</div><h3>Hỗ trợ khách hàng</h3><p>Liên hệ khi cần hỗ trợ trực tiếp nhé!</p></div></section>
+  <section class="feature-section" id="vip-features">
+    <h2 class="feature-heading">⭐ MENU VIP ĐẦY ĐỦ TÍNH NĂNG ⭐</h2>
+    <div class="feature-layout">
+      <div class="feature-grid">
+        <div class="feature-tile"><span class="glyph">◎</span><strong>Vòng vẽ FOV</strong></div>
+        <div class="feature-tile"><span class="glyph">⌖</span><strong>Aim đầu / Aim cổ</strong></div>
+        <div class="feature-tile"><span class="glyph">◖))</span><strong>Aim silen</strong></div>
+        <div class="feature-tile"><span class="glyph">➤</span><strong>Đạn gió thổi</strong></div>
+        <div class="feature-tile"><span class="glyph">◉</span><strong>ESP khung dây</strong></div>
+        <div class="feature-tile"><span class="glyph">⬡</span><strong>Nhiều tính năng khác</strong></div>
+      </div>
+      <div class="feature-about">
+        <h3>⭐ Giới thiệu chi tiết</h3>
+        <p>• <b>AimLock:</b> Ghim cổ, kéo nhẹ là đỏ; không kéo là máu vàng.</p>
+        <p>• <b>AimBody:</b> Xoá máu vàng, bắn vào người hiển thị đỏ.</p>
+        <p>• <b>Menu VIP:</b> Vòng vẽ FOV, aim đầu, aim cổ, aim silen, đạn gió thổi, ESP khung dây và nhiều mục khác.</p>
+        <p>Thông tin tính năng là mô tả tham khảo, hiệu quả thực tế tuỳ sản phẩm và phiên bản.</p>
+      </div>
+    </div>
+  </section>
+  <section class="purchase" id="purchase">
+    <div class="gift">🎁</div>
+    <div>
+      <h2>🛒 MUA NGAY ĐỂ TRẢI NGHIỆM</h2>
+      <label for="purchaseChoice">Chọn gói mua:</label>
+      <select id="purchaseChoice"><option value="aimlock">AIMLOCK — 200.000đ</option><option value="aimbody">AIMBODY — 250.000đ</option><option value="vip">MENU VIP — 450.000đ</option></select>
+      <button class="btn" onclick="buy(document.getElementById('purchaseChoice').value)">🛒 Thanh Toán Ngay</button>
+    </div>
+    <div class="trust"><span><b>✓</b> Thanh toán qua số dư ví</span><span><b>✓</b> Theo dõi lịch sử giao dịch</span><span><b>✓</b> Hỗ trợ khách hàng</span></div>
+  </section>
+  <section class="about-strip" id="topup-info"><h2>Về MAP HAI HUOC STORE</h2><p>Cửa hàng cung cấp các gói sản phẩm kỹ thuật số. Bạn có thể tạo tài khoản, nạp tiền vào ví, chọn gói phù hợp và theo dõi lịch sử giao dịch ngay trên website.</p></section>
+  <div class="lower" id="contact">
+    <section class="info-card"><div class="info-icon">▤</div><div><h3>Hướng dẫn nạp tiền</h3><p>Đăng nhập, chọn Nạp tiền bằng thẻ hoặc chuyển khoản. Với thẻ cào, nhập nhà mạng, mệnh giá, serial và mã thẻ. Admin kiểm tra thẻ trước khi cộng tiền vào ví.</p></div></section>
+    <section class="info-card"><div class="info-icon">☏</div><div><h3>Hỗ trợ khách hàng</h3><p>Liên hệ quản trị viên khi cần hỗ trợ về tài khoản hoặc giao dịch.</p></div></section>
   </div>
 </main>
-<footer>© 2026 MẬP HÀI HƯỚC STORE</footer>
+<footer><div class="footer-inner"><div><b style="font-size:20px">♛ MAP HAI HUOC STORE</b><br>Uy tín · Chất lượng · Đồng hành cùng bạn</div><div>© 2026 Map Hai Huoc Store. All rights reserved.</div></div></footer>
 <div class="modal" id="authModal"><div class="modal-box">
   <h2 id="authTitle">ĐĂNG NHẬP</h2>
   <input id="username" placeholder="Tên đăng nhập" autocomplete="username">
@@ -137,7 +215,7 @@ footer{text-align:center;color:#82759c;padding:22px}
     <label class="field-label" for="cardAmount">Mệnh giá thẻ</label><select id="cardAmount"><option value="10000">10.000đ</option><option value="20000">20.000đ</option><option value="50000" selected>50.000đ</option><option value="100000">100.000đ</option><option value="200000">200.000đ</option><option value="500000">500.000đ</option></select>
     <label class="field-label" for="cardSerial">Số serial</label><input id="cardSerial" maxlength="30" placeholder="Nhập số serial trên thẻ" autocomplete="off">
     <label class="field-label" for="cardCode">Mã thẻ / Mã PIN</label><input id="cardCode" maxlength="30" placeholder="Nhập mã thẻ" autocomplete="off">
-    <p class="small-note">Thông tin thẻ sẽ được gửi riêng đến trang quản trị để kiểm tra. Chỉ cộng tiền sau khi admin xác minh thẻ hợp lệ.</p>
+    <p class="small-note">Thông tin thẻ sẽ được gửi đến trang quản trị để kiểm tra. Chỉ cộng tiền sau khi admin xác minh thẻ hợp lệ.</p>
     <p class="msg" id="cardMsg"></p><button class="btn wide" id="cardSubmit" onclick="submitCardTopup()">GỬI THẺ ĐỂ DUYỆT</button>
     <div id="cardResult" class="msg"></div>
   </div>
@@ -277,6 +355,5 @@ async function logout(){
 
 loadMe();
 </script>
-
 </body>
 </html>
