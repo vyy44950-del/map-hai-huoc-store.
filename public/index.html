@@ -1,131 +1,142 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090617">
 <title>Mập Hài Hước Store</title>
 <style>
+:root{--bg:#080615;--panel:#100d25;--panel2:#17102e;--line:#7130a8;--purple:#bd36f2;--blue:#3678ff;--pink:#efa0ff;--muted:#c8bce5;--gold:#ffc34d}
 *{box-sizing:border-box}
-body{margin:0;background:#080914;color:#fff;font-family:Arial,sans-serif}
-header{padding:20px 6%;display:flex;justify-content:space-between;align-items:center;background:#101126;border-bottom:1px solid #292956;position:sticky;top:0;z-index:5}
-.logo{font-size:22px;font-weight:bold;color:#a78bfa}
-button{border:0;border-radius:9px;padding:11px 17px;background:#8254ed;color:white;font-weight:bold;cursor:pointer}
-button:hover{filter:brightness(1.2)}
-.secondary{background:#292943}
-.hero{text-align:center;padding:65px 20px 45px;background:radial-gradient(ellipse at top,#30205e,#080914 70%)}
-.hero h1{font-size:38px;margin:0 0 12px}
-.hero p{color:#c6c2dd}
-.container{max-width:1100px;margin:auto;padding:25px 18px}
-.section-title{text-align:center;font-size:25px;margin:15px 0 25px}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-.product{background:#15162b;border:1px solid #343052;border-radius:16px;overflow:hidden;box-shadow:0 8px 25px #0005}
-.product img{width:100%;height:175px;object-fit:cover;display:block}
-.product-content{padding:18px}
-.product h3{margin:0 0 10px;color:#c4a5ff;font-size:20px}
-.desc{color:#d0cee0;line-height:1.6;min-height:75px}
-.price{font-size:22px;font-weight:bold;color:#ffcf70;margin:15px 0}
-.product button{width:100%}
-.panel{background:#15162b;border:1px solid #343052;border-radius:14px;padding:20px;margin:20px 0}
-.panel h2{margin-top:0;color:#c4a5ff}
-input{width:100%;padding:12px;margin:7px 0 13px;background:#090a18;border:1px solid #44415f;border-radius:8px;color:white}
-.modal{display:none;position:fixed;inset:0;background:#000c;z-index:10;align-items:center;justify-content:center;padding:15px}
-.modal-box{background:#17182d;border:1px solid #55438b;border-radius:15px;padding:22px;width:100%;max-width:390px}
-.modal-box h2{color:#c4a5ff;margin-top:0}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 72% -5%,#32105d 0,transparent 35%),radial-gradient(ellipse at 5% 32%,#170d3b 0,transparent 32%),var(--bg);color:#f8f3ff;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+button{font:inherit;cursor:pointer}
+.topbar{height:102px;border-bottom:1px solid #8135b4;background:linear-gradient(100deg,#0b081b 0%,#120927 72%,#29104b 100%);display:flex;align-items:center;justify-content:space-between;padding:12px clamp(18px,3.2vw,50px);gap:18px;position:relative;z-index:2}
+.brand{display:flex;align-items:center;gap:18px;font-size:clamp(19px,3vw,39px);font-weight:1000;font-style:italic;letter-spacing:1px;background:linear-gradient(90deg,#ed9dff,#a24dff 52%,#56a8ff);color:transparent;background-clip:text;text-shadow:0 0 22px #a33cff55}
+.brand-mark{font-size:58px;line-height:1;color:#d68aff;text-shadow:0 0 16px #a52cff}
+.btn{border:1px solid transparent;border-radius:13px;padding:12px 20px;color:#fff;font-weight:800;background:linear-gradient(105deg,#c02ce9,#7229ec 55%,#347bff);box-shadow:0 5px 22px #8d24f655;transition:.18s}
+.btn:hover{filter:brightness(1.15);transform:translateY(-1px)}
+.btn.alt{background:#120e27;border-color:#b99bdf;box-shadow:none}
+.nav-btn{border-radius:22px;padding:14px 25px}#navActions button{border-radius:22px;padding:12px 20px;border:1px solid #a96de9;background:linear-gradient(105deg,#a21ce0,#3336b9);color:white;font-weight:800}
+.hero{min-height:315px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;padding:32px 20px;background:radial-gradient(ellipse at 50% 48%,#442077 0,transparent 46%),linear-gradient(100deg,#09071a,#120b2c 50%,#080d24);border-bottom:1px solid #54228b}
+.hero:before,.hero:after{content:"";position:absolute;inset:-40%;pointer-events:none}
+.hero:before{background:repeating-linear-gradient(125deg,transparent 0 72px,#6535ba18 73px 75px,transparent 76px 145px);transform:perspective(500px) rotateX(48deg)}
+.hero:after{background:radial-gradient(circle at 12% 60%,#8b24ff55,transparent 20%),radial-gradient(circle at 88% 30%,#1e76ff55,transparent 20%)}
+.hero-inner{position:relative;z-index:1;max-width:900px}
+.eyebrow{display:inline-block;padding:7px 21px;border-radius:24px;background:linear-gradient(90deg,#8c27ed,#3b36d9);font-weight:900;font-style:italic;letter-spacing:1px;box-shadow:0 0 24px #7a27f977}
+.hero h1{font-size:clamp(38px,6.5vw,76px);line-height:1.04;margin:16px 0 10px;font-weight:1000;font-style:italic;letter-spacing:1px;text-shadow:0 4px 25px #a43cff55}
+.hero p{font-size:clamp(15px,2vw,21px);font-weight:700;margin:0;color:#f0e7ff}
+.hero-orb{position:absolute;font-size:clamp(90px,17vw,210px);opacity:.18;filter:drop-shadow(0 0 28px #9b36ff);z-index:0}
+.hero-orb.left{left:2%;bottom:-45px}.hero-orb.right{right:3%;top:-36px;color:#50a4ff}
+.shell{max-width:1500px;margin:0 auto;padding:18px clamp(16px,3vw,48px) 28px}
+.section-title{font-size:clamp(27px,3vw,38px);margin:0 0 10px;font-weight:900}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 332px;gap:26px;align-items:start}
+.products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.product{min-width:0;overflow:hidden;border:1px solid #7134a7;border-radius:18px;background:linear-gradient(160deg,#14102c,#0d0b20 75%);box-shadow:0 8px 30px #0005,inset 0 0 22px #5621a322}
+.art{height:166px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(circle at 50% 40%,#0878da99,transparent 40%),linear-gradient(135deg,#07152d,#10134b 50%,#090b20)}
+.art:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent 0 27px,#58baff18 28px 30px,transparent 31px 56px)}
+.art:after{content:"";position:absolute;width:175px;height:175px;border:2px solid #36aaff88;border-radius:50%;box-shadow:0 0 28px #258aff88,inset 0 0 25px #258aff55}
+.art .art-symbol{position:relative;z-index:1;font-size:65px;font-weight:1000;font-style:italic;color:#eaf8ff;text-shadow:0 0 14px #36aaff,0 4px 0 #152b77}
+.art.aimbody{background:radial-gradient(circle at 50% 45%,#5422b999,transparent 43%),linear-gradient(135deg,#090e2b,#101c55,#0b0921)}
+.art.aimbody:after{width:140px;height:140px;border-color:#a66cff88}
+.art.vip{background:radial-gradient(circle at 50% 45%,#98601b99,transparent 43%),linear-gradient(135deg,#170f1b,#39220d,#100b1b)}
+.art.vip:after{border-color:#ffc34d99;box-shadow:0 0 32px #ffb52c66}
+.art.vip .art-symbol{color:#ffdf76;text-shadow:0 0 18px #ffae20,0 4px 0 #75420d}
+.product-body{padding:14px 16px 17px}
+.pill{display:inline-block;border-radius:18px;padding:4px 11px;background:linear-gradient(90deg,#8d27bd,#185fb7);font-size:12px;font-weight:900}
+.product h3{font-size:21px;margin:9px 0 4px}
+.desc{color:#d0c4e9;margin:0;min-height:28px;line-height:1.45}
+.price{font-size:28px;font-weight:1000;color:#efa0ff;margin:10px 0}
+.buy-btn{width:100%;padding:13px 10px}
+.account{border:1px solid #a044d3;border-radius:18px;background:linear-gradient(150deg,#211044,#100b24 80%);box-shadow:0 8px 28px #0006;overflow:hidden}
+.account-head{padding:16px 20px;border-bottom:1px solid #61318b;color:#d8a4ff;font-size:20px;font-weight:900}
+.account-content{padding:16px 20px}
+.greeting{font-size:18px;margin:0 0 16px}
+.balance-label{color:#e2d5f5;font-size:15px}
+.balance{font-size:29px;color:var(--gold);font-weight:1000;margin:2px 0 16px}
+.account-actions{display:flex;gap:10px}.account-actions button{flex:1;padding:10px 8px}
+.history-title{font-size:19px;margin:22px 0 8px}
+.history{border-top:1px solid #563178;padding-top:10px;white-space:pre-line;overflow-wrap:anywhere;color:#d4c5ed;font-size:14px;line-height:1.65;min-height:50px}
+.lower{display:grid;grid-template-columns:minmax(0,1fr) 332px;gap:26px;margin-top:22px}
+.info-card{border:1px solid #8634b8;border-radius:18px;background:linear-gradient(110deg,#1b1034,#100c25);padding:18px 22px;display:flex;align-items:center;gap:20px}
+.info-icon{font-size:44px;color:#d28aff;text-shadow:0 0 15px #ad37ff}
+.info-card h3{margin:0 0 5px;color:#e1c7ff;font-size:19px}
+.info-card p{margin:0;color:#d7c9ed;line-height:1.55}
+.support{justify-content:space-between}
+.modal{display:none;position:fixed;inset:0;background:#05030cdd;z-index:20;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(8px)}
+.modal-box{background:linear-gradient(145deg,#21113c,#100c24);border:1px solid #a04bd2;border-radius:18px;padding:22px;width:100%;max-width:420px;box-shadow:0 15px 55px #000b;max-height:92vh;overflow:auto}
+.modal-box h2{color:#e2b2ff;margin:0 0 16px}
+.modal-box input{width:100%;padding:13px;margin:7px 0 13px;background:#090716;border:1px solid #69418b;border-radius:10px;color:white;font:inherit}
 .modal-box button{margin-top:7px}
+.modal-box .wide{width:100%}
 .msg{color:#ffd477;line-height:1.6;overflow-wrap:anywhere}
-.hidden{display:none}
-footer{text-align:center;color:#777;padding:30px}
-@media(max-width:500px){.hero h1{font-size:29px}header{padding:15px}.logo{font-size:18px}}
+.hidden{display:none!important}
+footer{text-align:center;color:#82759c;padding:22px}
+@media(max-width:1050px){.layout,.lower{grid-template-columns:1fr}.account{max-width:none}.products{gap:13px}}
+@media(max-width:700px){.topbar{height:auto;min-height:76px;padding:12px 15px}.brand{gap:8px;font-size:17px}.brand-mark{font-size:38px}.nav-btn{padding:10px 12px;font-size:12px}.hero{min-height:250px}.products{grid-template-columns:1fr}.art{height:180px}.shell{padding:17px 14px}.lower{gap:12px}.info-card{padding:15px}.account-content{padding:15px}}
 </style>
 </head>
 <body>
-
-<header>
-  <div class="logo">MẬP HÀI HƯỚC STORE</div>
-  <div id="navActions">
-    <button onclick="openAuth()">Đăng nhập</button>
-  </div>
+<header class="topbar">
+  <div class="brand"><span class="brand-mark">✦</span><span>MẬP HÀI HƯỚC STORE</span></div>
+  <div id="navActions"><button class="btn nav-btn" onclick="openAuth()">♟ Đăng nhập / Đăng ký</button></div>
 </header>
-
 <section class="hero">
-  <h1>WELCOME TO STORE</h1>
-  <p>SHOP MENU GAME • NHANH CHÓNG • TIỆN LỢI</p>
-  <button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Xem sản phẩm</button>
+  <div class="hero-orb left">♛</div><div class="hero-orb right">✦</div>
+  <div class="hero-inner"><span class="eyebrow">DIGITAL STORE</span><h1>NÂNG CẤP<br>TRẢI NGHIỆM</h1><p>Tạo tài khoản, nạp tiền vào ví và quản lý đơn hàng tại một nơi.</p></div>
 </section>
-
-<main class="container">
-  <h2 class="section-title" id="products">SẢN PHẨM CỦA SHOP</h2>
-
-  <div class="products">
-    <article class="product">
-      <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&auto=format&fit=crop" alt="AIMLOCK VIP V1">
-      <div class="product-content">
-        <h3>💎 AIMLOCK VIP V1</h3>
-        <p class="desc">Phiên bản AIMLOCK VIP V1. Ghim cổ: kéo là máu đỏ, không kéo sẽ là máu vàng. Giao diện xanh kim cương nổi bật.</p>
-        <div class="price">200.000đ</div>
-        <button onclick="buy('aimlock')">MUA NGAY</button>
+<main class="shell">
+  <div class="layout">
+    <section>
+      <h2 class="section-title" id="products">Sản phẩm</h2>
+      <div class="products">
+        <article class="product">
+          <div class="art"><span class="art-symbol">AIMLOCK</span></div>
+          <div class="product-body"><span class="pill">ANDROID / IOS / PC</span><h3>AIMLOCK</h3><p class="desc">Gói sản phẩm kỹ thuật số.</p><div class="price">200.000đ</div><button class="btn buy-btn" onclick="buy('aimlock')">🛒 Mua bằng số dư ví</button></div>
+        </article>
+        <article class="product">
+          <div class="art aimbody"><span class="art-symbol">AIMBODY</span></div>
+          <div class="product-body"><span class="pill">ANDROID / IOS / PC</span><h3>AIMBODY</h3><p class="desc">Gói sản phẩm kỹ thuật số.</p><div class="price">250.000đ</div><button class="btn buy-btn" onclick="buy('aimbody')">🛒 Mua bằng số dư ví</button></div>
+        </article>
+        <article class="product">
+          <div class="art vip"><span class="art-symbol">♛ VIP</span></div>
+          <div class="product-body"><span class="pill">VIP</span><h3>MENU VIP</h3><p class="desc">Gói thành viên cao cấp.</p><div class="price">450.000đ</div><button class="btn buy-btn" onclick="buy('vip')">🛒 Mua bằng số dư ví</button></div>
+        </article>
       </div>
-    </article>
-
-    <article class="product">
-      <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&auto=format&fit=crop" alt="BODDY VIP">
-      <div class="product-content">
-        <h3>🔥 BODDY VIP</h3>
-        <p class="desc">Phiên bản BODDY VIP. Hỗ trợ hiển thị theo mô tả sản phẩm: xóa máu vàng, bắn là máu đỏ.</p>
-        <div class="price">250.000đ</div>
-        <button onclick="buy('aimbody')">MUA NGAY</button>
+    </section>
+    <aside id="account" class="account hidden">
+      <div class="account-head">◉ &nbsp;Tài khoản của bạn</div>
+      <div class="account-content">
+        <p class="greeting">Xin chào, <b id="hello"></b></p>
+        <div class="balance-label">Số dư ví</div><div class="balance" id="balance">0đ</div>
+        <div class="account-actions"><button class="btn" onclick="openTopup()">＋ Nạp tiền</button><button class="btn alt" onclick="logout()">Đăng xuất</button></div>
+        <h3 class="history-title">Lịch sử ví</h3><div id="history" class="history">Chưa có dữ liệu.</div>
       </div>
-    </article>
-
-    <article class="product">
-      <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=800&auto=format&fit=crop" alt="MENU VIP">
-      <div class="product-content">
-        <h3>👑 MENU VIP</h3>
-        <p class="desc">Vòng FOV tự ghim đầu, Aimsilen bắn đạn gió thổi, ESP khung dây. Các tính năng tùy thuộc phiên bản và khả năng tương thích.</p>
-        <div class="price">450.000đ</div>
-        <button onclick="buy('vip')">MUA NGAY</button>
-      </div>
-    </article>
+    </aside>
   </div>
-
-  <section id="account" class="panel hidden">
-    <h2>TÀI KHOẢN CỦA BẠN</h2>
-    <p>Xin chào, <b id="hello"></b></p>
-    <p>Số dư ví: <b id="balance">0đ</b></p>
-    <button onclick="openTopup()">NẠP TIỀN</button>
-    <button class="secondary" onclick="loadWallet()">Làm mới ví</button>
-    <button class="secondary" onclick="logout()">Đăng xuất</button>
-    <h3>Lịch sử giao dịch</h3>
-    <div id="history">Chưa có dữ liệu.</div>
-  </section>
+  <div class="lower">
+    <section class="info-card"><div class="info-icon">▤</div><div><h3>Hướng dẫn nạp tiền</h3><p>Đăng nhập, chọn Nạp tiền, nhập số tiền. Website tạo mã nội dung chuyển khoản riêng. Sau khi chuyển, gửi biên lai cho cửa hàng; quản trị viên kiểm tra tài khoản ngân hàng và duyệt thủ công.</p></div></section>
+    <section class="info-card support"><div><div class="info-icon">☏</div><h3>Hỗ trợ khách hàng</h3><p>Liên hệ khi cần hỗ trợ trực tiếp nhé!</p></div></section>
+  </div>
 </main>
-
 <footer>© 2026 MẬP HÀI HƯỚC STORE</footer>
-
-<div class="modal" id="authModal">
-  <div class="modal-box">
-    <h2 id="authTitle">ĐĂNG NHẬP</h2>
-    <input id="username" placeholder="Tên đăng nhập" autocomplete="username">
-    <input id="password" type="password" placeholder="Mật khẩu" autocomplete="current-password">
-    <p id="authMsg" class="msg"></p>
-    <button onclick="submitAuth()" id="authSubmit">ĐĂNG NHẬP</button>
-    <button class="secondary" onclick="switchAuth()">Đăng ký</button>
-    <button class="secondary" onclick="closeModal('authModal')">Đóng</button>
-  </div>
-</div>
-
-<div class="modal" id="topupModal">
-  <div class="modal-box">
-    <h2>NẠP TIỀN VÀO VÍ</h2>
-    <input id="topupAmount" type="number" min="10000" placeholder="Số tiền muốn nạp (VNĐ)">
-    <p class="msg" id="topupMsg"></p>
-    <button onclick="submitTopup()">TẠO YÊU CẦU NẠP</button>
-    <div id="topupResult" class="msg"></div>
-    <button class="secondary" onclick="closeModal('topupModal')">Đóng</button>
-  </div>
-</div>
-
+<div class="modal" id="authModal"><div class="modal-box">
+  <h2 id="authTitle">ĐĂNG NHẬP</h2>
+  <input id="username" placeholder="Tên đăng nhập" autocomplete="username">
+  <input id="password" type="password" placeholder="Mật khẩu" autocomplete="current-password">
+  <p id="authMsg" class="msg"></p>
+  <button class="btn wide" onclick="submitAuth()" id="authSubmit">ĐĂNG NHẬP</button>
+  <button class="btn alt wide" onclick="switchAuth()">Đăng ký</button>
+  <button class="btn alt wide" onclick="closeModal('authModal')">Đóng</button>
+</div></div>
+<div class="modal" id="topupModal"><div class="modal-box">
+  <h2>NẠP TIỀN VÀO VÍ</h2>
+  <input id="topupAmount" type="number" min="10000" step="1000" placeholder="Số tiền muốn nạp (VNĐ)">
+  <p class="msg" id="topupMsg"></p>
+  <button class="btn wide" onclick="submitTopup()">TẠO YÊU CẦU NẠP</button>
+  <div id="topupResult" class="msg"></div>
+  <button class="btn alt wide" onclick="closeModal('topupModal')">Đóng</button>
+</div></div>
 <script>
 let authMode = 'login';
 const $ = id => document.getElementById(id);
@@ -248,5 +259,6 @@ async function logout(){
 
 loadMe();
 </script>
+
 </body>
 </html>
