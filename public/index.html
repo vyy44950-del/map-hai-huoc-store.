@@ -101,6 +101,9 @@ footer{padding:24px clamp(14px,3vw,38px);border-top:1px solid #58208c;background
 .footer-inner{max-width:1440px;margin:auto;display:flex;justify-content:space-between;gap:12px;align-items:center}
 @media(max-width:900px){.hero-figure{left:-55px;opacity:.35}.products{grid-template-columns:1fr}.product{grid-template-columns:1.12fr .88fr;grid-template-areas:"body art"}.feature-layout{grid-template-columns:1fr}.purchase{grid-template-columns:110px 1fr}.trust{grid-column:1/-1;display:flex;justify-content:space-around;flex-wrap:wrap}.navlinks{gap:12px}}
 @media(max-width:620px){.topbar{height:auto;min-height:64px;padding:9px 12px}.brand-mark{font-size:31px}.brand small{font-size:8px;letter-spacing:3px}.navlinks{display:none}.hero{min-height:300px;padding:30px 16px}.hero-figure{left:-85px;opacity:.22}.hero-stats{gap:5px;margin-top:20px}.hero-stat{min-width:0;padding:0 10px}.hero-stat span{font-size:11px}.shell{padding:14px 12px 24px}.product{grid-template-columns:1.08fr .92fr;grid-template-areas:"body art";min-height:300px}.art{min-height:245px}.product-body{padding:16px 8px 10px 13px}.product h3{font-size:clamp(21px,6vw,27px)}.product-features{font-size:13px;gap:8px;margin:12px 0}.price{font-size:24px;margin:10px 0}.buy-btn{left:13px;right:13px;bottom:12px;width:calc(100% - 26px);font-size:14px;padding:13px 6px}.feature-section{padding:14px}.feature-layout{gap:12px}.feature-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.feature-tile{min-height:90px;padding:8px 4px}.feature-tile .glyph{font-size:25px}.feature-tile strong{font-size:11px}.purchase{grid-template-columns:1fr;padding:15px}.gift{font-size:62px}.trust{display:block}.lower{grid-template-columns:1fr}.footer-inner{display:block;text-align:center}.footer-inner>div+div{margin-top:8px}}
+
+.bank-payment{margin:12px 0 14px;padding:14px;border:1px solid #9d5ae0;border-radius:14px;background:linear-gradient(145deg,#1c1035,#0b091a);text-align:center}.bank-payment h3{margin:0 0 8px;color:#f0c6ff;font-size:18px}.bank-payment .bank-owner{font-weight:900;color:#fff;font-size:16px}.bank-payment .bank-number{font-size:22px;font-weight:1000;letter-spacing:1px;color:#ffd45c;margin:4px 0 10px}.bank-payment img{display:block;width:min(100%,330px);height:auto;margin:0 auto 10px;border-radius:12px;background:#fff}.bank-payment .bank-help{font-size:12px;color:#d8c7ef;line-height:1.5;margin:8px 0 0}
+
 </style>
 
 </head>
@@ -211,7 +214,15 @@ footer{padding:24px clamp(14px,3vw,38px);border-top:1px solid #58208c;background
     <div id="cardResult" class="msg"></div>
   </div>
   <div id="bankPane" class="topup-pane">
-    <input id="topupAmount" type="number" min="10000" step="1000" placeholder="Số tiền muốn nạp (VNĐ)">
+    <div class="bank-payment">
+      <h3>QUÉT MÃ QR ĐỂ THANH TOÁN</h3>
+      <div class="bank-owner">TRAN QUANG QUOC</div>
+      <div class="bank-number">0348934705</div>
+      <img src="/qr-ngan-hang.jpg" alt="Mã QR VietQR ngân hàng TRAN QUANG QUOC" loading="lazy">
+      <p class="bank-help">Nhập số tiền muốn nạp bên dưới, tạo yêu cầu để nhận nội dung chuyển khoản. Vui lòng chuyển đúng số tiền và nội dung mà website cung cấp.</p>
+    </div>
+    <label class="field-label" for="topupAmount">Số tiền muốn nạp (VNĐ)</label>
+    <input id="topupAmount" type="number" min="10000" step="1000" placeholder="Tối thiểu 10.000đ">
     <p class="msg" id="topupMsg"></p><button class="btn wide" onclick="submitTopup()">TẠO YÊU CẦU CHUYỂN KHOẢN</button><div id="topupResult" class="msg"></div>
   </div>
   <button class="btn alt wide" onclick="closeModal('topupModal')">Đóng</button>
