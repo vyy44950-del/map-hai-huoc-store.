@@ -1,8 +1,261 @@
-<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090711"><title>Mập Hải Hước Store</title><style>
-:root{--bg:#090711;--panel:#151126;--line:#392a55;--purple:#b66cff;--blue:#42b9ff;--muted:#aaa2ba;--green:#39d6a0}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#291342,transparent 40%),var(--bg);color:#f8f5ff;font-family:system-ui,-apple-system,sans-serif}.wrap{max-width:1050px;margin:auto;padding:18px}.top{border-bottom:1px solid #ffffff20;background:#0b0914eF;position:sticky;top:0}.nav{max-width:1050px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;gap:10px}.brand{font-weight:950;font-size:clamp(17px,4vw,25px);background:linear-gradient(90deg,#c17aff,#48baff);color:transparent;background-clip:text}.btn{border:0;border-radius:12px;padding:11px 16px;background:linear-gradient(110deg,#a855f7,#318fe8);color:white;font-weight:800;cursor:pointer}.btn.alt{background:#ffffff0d;border:1px solid var(--line)}.hero{text-align:center;padding:45px 0 25px}.hero h1{font-size:clamp(32px,7vw,58px);margin:10px 0;background:linear-gradient(90deg,#fff,#c58aff,#42baff);color:transparent;background-clip:text}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card,.panel{background:linear-gradient(150deg,#19132b,#100e1a);border:1px solid var(--line);border-radius:18px;padding:20px}.card h3{font-size:23px;margin:6px 0}.price{font-size:25px;color:#d5a5ff;font-weight:900;margin:18px 0}.pill{display:inline-block;padding:5px 9px;border:1px solid #ffffff25;border-radius:20px;color:#c8a4ff;font-size:12px}.panel{margin:22px 0}.row{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.field{width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:#090813;color:white;margin:6px 0 12px}.modal{display:none;position:fixed;inset:0;background:#000c;z-index:5;place-items:center;padding:16px}.modal.show{display:grid}.dialog{width:min(440px,100%);background:#17122a;border:1px solid #69449a;border-radius:18px;padding:22px;max-height:90vh;overflow:auto}.tabs{display:flex;gap:8px;margin:12px 0}.tabs button{flex:1}.hidden{display:none!important}.notice{padding:12px;border-radius:12px;background:#ffffff09;border:1px solid #ffffff18;line-height:1.6;word-break:break-word}.small{font-size:13px;color:var(--muted)}table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:9px;border-bottom:1px solid #ffffff18;font-size:13px}@media(max-width:700px){.grid{grid-template-columns:1fr}.wrap{padding:14px}}
-</style></head><body><header class="top"><div class="nav"><div class="brand">✦ MẬP HẢI HƯỚC STORE</div><div id="navActions"><button class="btn" onclick="showAuth()">Đăng nhập / Đăng ký</button></div></div></header><main class="wrap"><section class="hero"><span class="pill">DIGITAL STORE</span><h1>NÂNG CẤP TRẢI NGHIỆM</h1><p class="muted">Tạo tài khoản, nạp tiền vào ví và quản lý đơn hàng tại một nơi.</p></section><section id="account" class="panel hidden"><div class="row"><div><b id="hello">Xin chào</b><div class="small">Số dư ví</div><div class="price" id="balance">0đ</div></div><div><button class="btn" onclick="showTopup()">＋ Nạp tiền</button> <button class="btn alt" onclick="logout()">Đăng xuất</button></div></div><div id="walletInfo" class="small"></div><h3>Lịch sử ví</h3><div id="history" class="small">Chưa có giao dịch.</div></section><h2>Sản phẩm</h2><div class="grid"><article class="card"><span class="pill">ANDROID / iOS / PC</span><h3>AIMLOCK</h3><p class="muted">Gói sản phẩm kỹ thuật số.</p><div class="price">200.000đ</div><button class="btn" onclick="buy('aimlock')">Mua bằng số dư ví</button></article><article class="card"><span class="pill">ANDROID / iOS / PC</span><h3>AIMBODY</h3><p class="muted">Gói sản phẩm kỹ thuật số.</p><div class="price">250.000đ</div><button class="btn" onclick="buy('aimbody')">Mua bằng số dư ví</button></article><article class="card"><span class="pill">VIP</span><h3>MENU VIP</h3><p class="muted">Gói thành viên theo mô tả cửa hàng.</p><div class="price">450.000đ</div><button class="btn" onclick="buy('vip')">Mua bằng số dư ví</button></article></div><section class="panel"><h3>Hướng dẫn nạp tiền</h3><p class="muted">Đăng nhập, chọn Nạp tiền, nhập số tiền. Website tạo mã nội dung chuyển khoản riêng. Sau khi chuyển, gửi biên lai cho cửa hàng; quản trị viên kiểm tra tài khoản ngân hàng và duyệt thủ công. Ví chỉ được cộng sau khi duyệt.</p></section><p class="small">Lưu ý: Đây là bản khung cần triển khai trên máy chủ HTTPS, đặt mật khẩu quản trị mạnh và kiểm thử trước khi nhận tiền thật. Không có tính năng tự xác minh tiền vào ngân hàng.</p></main>
-<div class="modal" id="authModal"><div class="dialog"><div class="row"><h2 id="authTitle">Đăng nhập</h2><button class="btn alt" onclick="hideModals()">Đóng</button></div><div class="tabs"><button class="btn alt" onclick="authMode='login';renderAuth()">Đăng nhập</button><button class="btn alt" onclick="authMode='register';renderAuth()">Đăng ký</button></div><label>Tên đăng nhập</label><input id="username" class="field" autocomplete="username" placeholder="4–20 ký tự a-z, 0-9, _"><label>Mật khẩu</label><input id="password" class="field" type="password" autocomplete="current-password" placeholder="Ít nhất 8 ký tự"><button class="btn" style="width:100%" onclick="submitAuth()">Tiếp tục</button><p id="authMsg" class="small"></p></div></div>
-<div class="modal" id="topupModal"><div class="dialog"><div class="row"><h2>Nạp tiền vào ví</h2><button class="btn alt" onclick="hideModals()">Đóng</button></div><label>Số tiền (10.000đ – 5.000.000đ)</label><input class="field" id="topupAmount" type="number" min="10000" step="1000" value="50000"><button class="btn" onclick="createTopup()">Tạo yêu cầu nạp</button><div id="topupResult" class="notice hidden" style="margin-top:14px"></div></div></div>
+
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090711">
+<title>Mập Hải Hước Store</title>
+<style>
+:root{--bg:#090711;--panel:#151126;--line:#392a55;--purple:#b66cff;--blue:#42b9ff;--muted:#aaa2ba}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 80% 0%,#291342,transparent 40%),var(--bg);color:#f8f5ff;font-family:system-ui,sans-serif}
+.wrap{max-width:1050px;margin:auto;padding:18px}
+.top{border-bottom:1px solid #ffffff20;background:#0b0914ef;position:sticky;top:0;z-index:4}
+.nav{max-width:1050px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;gap:10px}
+.brand{font-weight:950;font-size:clamp(17px,4vw,25px);background:linear-gradient(90deg,#c17aff,#48baff);color:transparent;background-clip:text}
+.btn{border:0;border-radius:12px;padding:11px 16px;background:linear-gradient(110deg,#a855f7,#318fe8);color:white;font-weight:800;cursor:pointer}
+.btn.alt{background:#ffffff0d;border:1px solid var(--line)}
+.hero{text-align:center;padding:45px 0 25px}
+.hero h1{font-size:clamp(32px,7vw,58px);margin:10px 0;background:linear-gradient(90deg,#fff,#c58aff,#42baff);color:transparent;background-clip:text}
+.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card,.panel{background:linear-gradient(150deg,#19132b,#100e1a);border:1px solid var(--line);border-radius:18px;padding:16px}
+.card{overflow:hidden;transition:.25s}
+.card:hover{transform:translateY(-5px);border-color:#a855f7;box-shadow:0 10px 30px #8b36ff20}
+.product-img{width:100%;height:185px;object-fit:cover;border-radius:13px;margin-bottom:14px;display:block;background:#211532}
+.card h3{font-size:23px;margin:6px 0}
+.price{font-size:25px;color:#d5a5ff;font-weight:900;margin:18px 0}
+.pill{display:inline-block;padding:5px 9px;border:1px solid #ffffff25;border-radius:20px;color:#c8a4ff;font-size:12px}
+.panel{margin:22px 0;padding:20px}
+.row{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.field{width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:#090813;color:white;margin:6px 0 12px}
+.modal{display:none;position:fixed;inset:0;background:#000c;z-index:5;place-items:center;padding:16px}
+.modal.show{display:grid}
+.dialog{width:min(440px,100%);background:#17122a;border:1px solid #69449a;border-radius:18px;padding:22px;max-height:90vh;overflow:auto}
+.tabs{display:flex;gap:8px;margin:12px 0}
+.tabs button{flex:1}
+.hidden{display:none!important}
+.notice{padding:12px;border-radius:12px;background:#ffffff09;border:1px solid #ffffff18;line-height:1.6;word-break:break-word}
+.small{font-size:13px;color:var(--muted)}
+table{width:100%;border-collapse:collapse}
+td,th{text-align:left;padding:9px;border-bottom:1px solid #ffffff18;font-size:13px}
+@media(max-width:700px){
+.grid{grid-template-columns:1fr}
+.wrap{padding:14px}
+.product-img{height:210px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+<div class="nav">
+<div class="brand">✦ MẬP HẢI HƯỚC STORE</div>
+<div id="navActions">
+<button class="btn" onclick="showAuth()">Đăng nhập / Đăng ký</button>
+</div>
+</div>
+</header>
+
+<main class="wrap">
+<section class="hero">
+<span class="pill">DIGITAL STORE</span>
+<h1>NÂNG CẤP TRẢI NGHIỆM</h1>
+<p class="muted">Chào mừng bạn đến với Mập Hải Hước Store.</p>
+</section>
+
+<section id="account" class="panel hidden">
+<div class="row">
+<div>
+<b id="hello">Xin chào</b>
+<div class="small">Số dư ví</div>
+<div class="price" id="balance">0đ</div>
+</div>
+<div>
+<button class="btn" onclick="showTopup()">＋ Nạp tiền</button>
+<button class="btn alt" onclick="logout()">Đăng xuất</button>
+</div>
+</div>
+<div id="walletInfo" class="small"></div>
+<h3>Lịch sử ví</h3>
+<div id="history" class="small">Chưa có giao dịch.</div>
+</section>
+
+<h2>✦ SẢN PHẨM CỦA SHOP</h2>
+
+<div class="grid">
+
+<article class="card">
+<img class="product-img"
+src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&auto=format&fit=crop"
+alt="Ảnh AIMLOCK">
+<span class="pill">ANDROID / iOS / PC</span>
+<h3>AIMLOCK</h3>
+<p class="muted">Gói sản phẩm kỹ thuật số AIMLOCK.</p>
+<div class="price">200.000đ</div>
+<button class="btn" onclick="buy('aimlock')">Mua bằng số dư ví</button>
+</article>
+
+<article class="card">
+<img class="product-img"
+src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&auto=format&fit=crop"
+alt="Ảnh AIMBODY">
+<span class="pill">ANDROID / iOS / PC</span>
+<h3>AIMBODY</h3>
+<p class="muted">Gói sản phẩm kỹ thuật số AIMBODY.</p>
+<div class="price">250.000đ</div>
+<button class="btn" onclick="buy('aimbody')">Mua bằng số dư ví</button>
+</article>
+
+<article class="card">
+<img class="product-img"
+src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=800&auto=format&fit=crop"
+alt="Ảnh MENU VIP">
+<span class="pill">VIP</span>
+<h3>MENU VIP</h3>
+<p class="muted">Gói thành viên VIP theo mô tả cửa hàng.</p>
+<div class="price">450.000đ</div>
+<button class="btn" onclick="buy('vip')">Mua bằng số dư ví</button>
+</article>
+
+</div>
+
+<section class="panel">
+<h3>✦ Hướng dẫn nạp tiền</h3>
+<p class="muted">
+Đăng nhập, chọn Nạp tiền, nhập số tiền. Website tạo mã nội dung chuyển khoản riêng. Sau khi chuyển, gửi biên lai cho cửa hàng. Quản trị viên kiểm tra giao dịch và duyệt thủ công. Ví chỉ được cộng sau khi duyệt.
+</p>
+</section>
+</main>
+
+<div class="modal" id="authModal">
+<div class="dialog">
+<div class="row">
+<h2 id="authTitle">Đăng nhập</h2>
+<button class="btn alt" onclick="hideModals()">Đóng</button>
+</div>
+<div class="tabs">
+<button class="btn alt" onclick="authMode='login';renderAuth()">Đăng nhập</button>
+<button class="btn alt" onclick="authMode='register';renderAuth()">Đăng ký</button>
+</div>
+<label>Tên đăng nhập</label>
+<input id="username" class="field" autocomplete="username" placeholder="4–20 ký tự a-z, 0-9, _">
+<label>Mật khẩu</label>
+<input id="password" class="field" type="password" autocomplete="current-password" placeholder="Ít nhất 8 ký tự">
+<button class="btn" style="width:100%" onclick="submitAuth()">Tiếp tục</button>
+<p id="authMsg" class="small"></p>
+</div>
+</div>
+
+<div class="modal" id="topupModal">
+<div class="dialog">
+<div class="row">
+<h2>Nạp tiền vào ví</h2>
+<button class="btn alt" onclick="hideModals()">Đóng</button>
+</div>
+<label>Số tiền (10.000đ – 5.000.000đ)</label>
+<input class="field" id="topupAmount" type="number" min="10000" step="1000" value="50000">
+<button class="btn" onclick="createTopup()">Tạo yêu cầu nạp</button>
+<div id="topupResult" class="notice hidden" style="margin-top:14px"></div>
+</div>
+</div>
+
 <script>
-let authMode='login',me=null;const money=n=>Number(n||0).toLocaleString('vi-VN')+'đ';async function api(url,opts={}){const r=await fetch(url,{...opts,headers:{'Content-Type':'application/json',...(opts.headers||{})}});let d={};try{d=await r.json()}catch{}if(!r.ok)throw Error(d.error||'Có lỗi xảy ra');return d}function showAuth(){document.getElementById('authModal').classList.add('show');renderAuth()}function renderAuth(){document.getElementById('authTitle').textContent=authMode==='login'?'Đăng nhập':'Tạo tài khoản';document.getElementById('authMsg').textContent=''}function hideModals(){document.querySelectorAll('.modal').forEach(x=>x.classList.remove('show'))}async function submitAuth(){try{const d=await api('/api/'+authMode,{method:'POST',body:JSON.stringify({username:username.value,password:password.value})});hideModals();await refresh()}catch(e){authMsg.textContent=e.message}}async function refresh(){try{const d=await api('/api/me');me=d.user;if(me){navActions.innerHTML=`<button class="btn alt" onclick="document.getElementById('account').scrollIntoView()">Ví: ${money(me.balance)}</button>`;account.classList.remove('hidden');hello.textContent='Xin chào, '+me.username;balance.textContent=money(me.balance);const w=await api('/api/wallet');history.innerHTML=w.ledger.length?'<table><tr><th>Loại</th><th>Số tiền</th><th>Ghi chú</th></tr>'+w.ledger.map(x=>`<tr><td>${x.kind==='TOPUP'?'Nạp tiền':'Mua hàng'}</td><td>${money(x.amount)}</td><td>${x.note||x.ref}</td></tr>`).join('')+'</table>':'Chưa có giao dịch.'}else{navActions.innerHTML='<button class="btn" onclick="showAuth()">Đăng nhập / Đăng ký</button>';account.classList.add('hidden')}}catch(e){console.error(e)}}async function logout(){await api('/api/logout',{method:'POST'});await refresh()}function showTopup(){topupModal.classList.add('show');topupResult.classList.add('hidden')}async function createTopup(){try{const d=await api('/api/topups',{method:'POST',body:JSON.stringify({amount:Number(topupAmount.value)})});topupResult.classList.remove('hidden');topupResult.innerHTML=`<b>Yêu cầu nạp #${d.id} đã tạo – ${money(d.amount)}</b><br>Ngân hàng: ${d.bank.name}<br>Số tài khoản: <b>${d.bank.account}</b><br>Chủ tài khoản: ${d.bank.owner}<br>Nội dung chuyển khoản: <b>${d.memo}</b><br><br><span class="small">Chuyển đúng số tiền và nội dung. Sau đó liên hệ cửa hàng gửi biên lai. Tiền chỉ vào ví sau khi quản trị viên kiểm tra và duyệt.</span>`}catch(e){alert(e.message)}}async function buy(productId){if(!me){showAuth();return}try{const d=await api('/api/buy',{method:'POST',body:JSON.stringify({productId})});alert(d.message);await refresh()}catch(e){alert(e.message)}}refresh();
-</script></body></html>
+let authMode='login',me=null;
+const money=n=>Number(n||0).toLocaleString('vi-VN')+'đ';
+
+async function api(url,opts={}){
+const r=await fetch(url,{...opts,headers:{'Content-Type':'application/json',...(opts.headers||{})}});
+let d={};
+try{d=await r.json()}catch{}
+if(!r.ok)throw Error(d.error||'Có lỗi xảy ra');
+return d;
+}
+
+function showAuth(){
+document.getElementById('authModal').classList.add('show');
+renderAuth();
+}
+function renderAuth(){
+document.getElementById('authTitle').textContent=authMode==='login'?'Đăng nhập':'Tạo tài khoản';
+document.getElementById('authMsg').textContent='';
+}
+function hideModals(){
+document.querySelectorAll('.modal').forEach(x=>x.classList.remove('show'));
+}
+
+async function submitAuth(){
+try{
+const d=await api('/api/'+authMode,{
+method:'POST',
+body:JSON.stringify({username:username.value,password:password.value})
+});
+hideModals();
+await refresh();
+}catch(e){authMsg.textContent=e.message}
+}
+
+async function refresh(){
+try{
+const d=await api('/api/me');
+me=d.user;
+if(me){
+navActions.innerHTML=`<button class="btn alt" onclick="document.getElementById('account').scrollIntoView()">Ví: ${money(me.balance)}</button>`;
+account.classList.remove('hidden');
+hello.textContent='Xin chào, '+me.username;
+balance.textContent=money(me.balance);
+const w=await api('/api/wallet');
+history.innerHTML=w.ledger.length?
+'<table><tr><th>Loại</th><th>Số tiền</th><th>Ghi chú</th></tr>'+
+w.ledger.map(x=>`<tr><td>${x.kind==='TOPUP'?'Nạp tiền':'Mua hàng'}</td><td>${money(x.amount)}</td><td>${x.note||x.ref}</td></tr>`).join('')+
+'</table>':'Chưa có giao dịch.';
+}else{
+navActions.innerHTML='<button class="btn" onclick="showAuth()">Đăng nhập / Đăng ký</button>';
+account.classList.add('hidden');
+}
+}catch(e){console.error(e)}
+}
+
+async function logout(){
+await api('/api/logout',{method:'POST'});
+await refresh();
+}
+
+function showTopup(){
+topupModal.classList.add('show');
+topupResult.classList.add('hidden');
+}
+
+async function createTopup(){
+try{
+const d=await api('/api/topups',{
+method:'POST',
+body:JSON.stringify({amount:Number(topupAmount.value)})
+});
+topupResult.classList.remove('hidden');
+topupResult.innerHTML=`<b>Yêu cầu nạp #${d.id} đã tạo – ${money(d.amount)}</b><br>
+Ngân hàng: ${d.bank.name}<br>
+Số tài khoản: <b>${d.bank.account}</b><br>
+Chủ tài khoản: ${d.bank.owner}<br>
+Nội dung chuyển khoản: <b>${d.memo}</b><br><br>
+<span class="small">Chuyển đúng số tiền và nội dung. Sau đó liên hệ cửa hàng gửi biên lai. Tiền chỉ vào ví sau khi quản trị viên kiểm tra và duyệt.</span>`;
+}catch(e){alert(e.message)}
+}
+
+async function buy(productId){
+if(!me){showAuth();return}
+try{
+const d=await api('/api/buy',{
+method:'POST',
+body:JSON.stringify({productId})
+});
+alert(d.message);
+await refresh();
+}catch(e){alert(e.message)}
+}
+
+refresh();
+</script>
+</body>
+</html>
