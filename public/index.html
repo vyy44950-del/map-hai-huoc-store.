@@ -66,7 +66,7 @@ button{font:inherit;cursor:pointer}
 .modal{display:none;position:fixed;inset:0;background:#05030cdd;z-index:20;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(8px)}
 .modal-box{background:linear-gradient(145deg,#21113c,#100c24);border:1px solid #a04bd2;border-radius:18px;padding:22px;width:100%;max-width:420px;box-shadow:0 15px 55px #000b;max-height:92vh;overflow:auto}
 .modal-box h2{color:#e2b2ff;margin:0 0 16px}
-.modal-box input{width:100%;padding:13px;margin:7px 0 13px;background:#090716;border:1px solid #69418b;border-radius:10px;color:white;font:inherit}
+.modal-box input,.modal-box select{width:100%;padding:13px;margin:7px 0 13px;background:#090716;border:1px solid #69418b;border-radius:10px;color:white;font:inherit}.topup-tabs{display:flex;gap:8px;margin-bottom:12px}.topup-tabs button{flex:1}.topup-pane{display:none}.topup-pane.active{display:block}.field-label{display:block;color:#d8c7ef;font-size:13px;margin-top:8px}.small-note{font-size:12px;color:#b9a9d3;line-height:1.5}
 .modal-box button{margin-top:7px}
 .modal-box .wide{width:100%}
 .msg{color:#ffd477;line-height:1.6;overflow-wrap:anywhere}
@@ -115,7 +115,7 @@ footer{text-align:center;color:#82759c;padding:22px}
     </aside>
   </div>
   <div class="lower">
-    <section class="info-card"><div class="info-icon">▤</div><div><h3>Hướng dẫn nạp tiền</h3><p>Đăng nhập, chọn Nạp tiền, nhập số tiền. Website tạo mã nội dung chuyển khoản riêng. Sau khi chuyển, gửi biên lai cho cửa hàng; quản trị viên kiểm tra tài khoản ngân hàng và duyệt thủ công.</p></div></section>
+    <section class="info-card"><div class="info-icon">▤</div><div><h3>Hướng dẫn nạp tiền</h3><p>Đăng nhập, chọn Nạp tiền bằng thẻ hoặc chuyển khoản. Với thẻ cào, nhập đúng nhà mạng, mệnh giá, serial và mã thẻ. Admin sẽ kiểm tra thẻ trước khi cộng tiền vào ví.</p></div></section>
     <section class="info-card support"><div><div class="info-icon">☏</div><h3>Hỗ trợ khách hàng</h3><p>Liên hệ khi cần hỗ trợ trực tiếp nhé!</p></div></section>
   </div>
 </main>
@@ -131,10 +131,20 @@ footer{text-align:center;color:#82759c;padding:22px}
 </div></div>
 <div class="modal" id="topupModal"><div class="modal-box">
   <h2>NẠP TIỀN VÀO VÍ</h2>
-  <input id="topupAmount" type="number" min="10000" step="1000" placeholder="Số tiền muốn nạp (VNĐ)">
-  <p class="msg" id="topupMsg"></p>
-  <button class="btn wide" onclick="submitTopup()">TẠO YÊU CẦU NẠP</button>
-  <div id="topupResult" class="msg"></div>
+  <div class="topup-tabs"><button class="btn" onclick="showTopupTab('card')">Nạp thẻ cào</button><button class="btn alt" onclick="showTopupTab('bank')">Chuyển khoản</button></div>
+  <div id="cardPane" class="topup-pane active">
+    <label class="field-label" for="cardProvider">Nhà mạng / Loại thẻ</label><select id="cardProvider"><option value="VIETTEL">Viettel</option><option value="VINAPHONE">VinaPhone</option><option value="MOBIFONE">MobiFone</option><option value="VIETNAMOBILE">Vietnamobile</option><option value="ZING">Thẻ Zing</option></select>
+    <label class="field-label" for="cardAmount">Mệnh giá thẻ</label><select id="cardAmount"><option value="10000">10.000đ</option><option value="20000">20.000đ</option><option value="50000" selected>50.000đ</option><option value="100000">100.000đ</option><option value="200000">200.000đ</option><option value="500000">500.000đ</option></select>
+    <label class="field-label" for="cardSerial">Số serial</label><input id="cardSerial" maxlength="30" placeholder="Nhập số serial trên thẻ" autocomplete="off">
+    <label class="field-label" for="cardCode">Mã thẻ / Mã PIN</label><input id="cardCode" maxlength="30" placeholder="Nhập mã thẻ" autocomplete="off">
+    <p class="small-note">Thông tin thẻ sẽ được gửi riêng đến trang quản trị để kiểm tra. Chỉ cộng tiền sau khi admin xác minh thẻ hợp lệ.</p>
+    <p class="msg" id="cardMsg"></p><button class="btn wide" id="cardSubmit" onclick="submitCardTopup()">GỬI THẺ ĐỂ DUYỆT</button>
+    <div id="cardResult" class="msg"></div>
+  </div>
+  <div id="bankPane" class="topup-pane">
+    <input id="topupAmount" type="number" min="10000" step="1000" placeholder="Số tiền muốn nạp (VNĐ)">
+    <p class="msg" id="topupMsg"></p><button class="btn wide" onclick="submitTopup()">TẠO YÊU CẦU CHUYỂN KHOẢN</button><div id="topupResult" class="msg"></div>
+  </div>
   <button class="btn alt wide" onclick="closeModal('topupModal')">Đóng</button>
 </div></div>
 <script>
@@ -157,9 +167,16 @@ function openAuth(){
   $('authModal').style.display='flex';
 }
 function openTopup(){
-  $('topupMsg').textContent='';
-  $('topupResult').textContent='';
+  $('topupMsg').textContent='';$('topupResult').textContent='';$('cardMsg').textContent='';$('cardResult').textContent='';
   $('topupModal').style.display='flex';
+}
+function showTopupTab(tab){$('cardPane').classList.toggle('active',tab==='card');$('bankPane').classList.toggle('active',tab==='bank');document.querySelectorAll('.topup-tabs button').forEach((b,i)=>b.classList.toggle('alt',i!==(tab==='card'?0:1)));}
+async function submitCardTopup(){
+ const payload={provider:$('cardProvider').value,amount:Number($('cardAmount').value),serial:$('cardSerial').value.trim(),cardCode:$('cardCode').value.trim()};
+ if(!payload.serial||!payload.cardCode){$('cardMsg').textContent='Vui lòng nhập đủ serial và mã thẻ.';return;}
+ $('cardSubmit').disabled=true;$('cardMsg').textContent='Đang gửi yêu cầu...';
+ try{const data=await api('/api/card-topups',{method:'POST',body:JSON.stringify(payload)});$('cardMsg').textContent='';$('cardResult').textContent='Đã gửi thẻ thành công! Mã yêu cầu #'+data.id+'. Vui lòng chờ admin kiểm tra và duyệt.';$('cardSerial').value='';$('cardCode').value='';}
+ catch(e){$('cardMsg').textContent=e.message;}finally{$('cardSubmit').disabled=false;}
 }
 function closeModal(id){$(id).style.display='none'}
 
@@ -207,9 +224,10 @@ async function loadWallet(){
     const data=await api('/api/wallet');
     $('balance').textContent=Number(data.balance||0).toLocaleString('vi-VN')+'đ';
     const entries=data.ledger||data.history||[];
-    $('history').textContent=entries.length
-      ? entries.map(x=>(x.description||x.type||'Giao dịch')+' — '+Number(x.amount||0).toLocaleString('vi-VN')+'đ').join('\n')
-      : 'Chưa có giao dịch.';
+    const cards=data.cardTopups||[];
+    const lines=entries.map(x=>(x.note||x.description||x.kind||'Giao dịch')+' — '+Number(x.amount||0).toLocaleString('vi-VN')+'đ');
+    cards.forEach(x=>lines.unshift('Thẻ '+x.provider+' #'+x.id+' — '+Number(x.amount||0).toLocaleString('vi-VN')+'đ ('+(x.status==='PENDING'?'Chờ duyệt':x.status==='APPROVED'?'Đã duyệt':'Từ chối')+')'));
+    $('history').textContent=lines.length?lines.join('\n'):'Chưa có giao dịch.';
     $('history').style.whiteSpace='pre-line';
   }catch(e){$('history').textContent=e.message}
 }
