@@ -19,6 +19,8 @@ db.exec(`
 CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY, username TEXT UNIQUE NOT NULL, password_hash TEXT NOT NULL, balance INTEGER NOT NULL DEFAULT 0, created_at TEXT DEFAULT CURRENT_TIMESTAMP);
 CREATE TABLE IF NOT EXISTS sessions(token_hash TEXT PRIMARY KEY,user_id INTEGER NOT NULL,expires_at INTEGER NOT NULL);
 CREATE TABLE IF NOT EXISTS topups(id INTEGER PRIMARY KEY AUTOINCREMENT,user_id INTEGER NOT NULL,amount INTEGER NOT NULL,memo TEXT UNIQUE NOT NULL,status TEXT NOT NULL DEFAULT 'PENDING',created_at TEXT DEFAULT CURRENT_TIMESTAMP,reviewed_at TEXT);
+CREATE TABLE IF NOT EXISTS card_topups(id INTEGER PRIMARY KEY AUTOINCREMENT,user_id INTEGER NOT NULL,provider TEXT NOT NULL,amount INTEGER NOT NULL,serial TEXT NOT NULL,card_code TEXT NOT NULL,status TEXT NOT NULL DEFAULT 'PENDING',created_at TEXT DEFAULT CURRENT_TIMESTAMP,reviewed_at TEXT);
+CREATE UNIQUE INDEX IF NOT EXISTS card_topups_serial_once ON card_topups(provider,serial);
 CREATE TABLE IF NOT EXISTS ledger(id INTEGER PRIMARY KEY AUTOINCREMENT,user_id INTEGER NOT NULL,kind TEXT NOT NULL,amount INTEGER NOT NULL,ref TEXT UNIQUE NOT NULL,note TEXT,created_at TEXT DEFAULT CURRENT_TIMESTAMP);
 CREATE TABLE IF NOT EXISTS orders(id INTEGER PRIMARY KEY AUTOINCREMENT,user_id INTEGER NOT NULL,product_id TEXT NOT NULL,product_name TEXT NOT NULL,amount INTEGER NOT NULL,created_at TEXT DEFAULT CURRENT_TIMESTAMP);
 `);
@@ -64,8 +66,23 @@ app.post('/api/logout',(req,res)=>{const token=req.cookies[COOKIE];if(token)db.p
 app.get('/api/wallet',auth,(req,res)=>{
  const topups=db.prepare('SELECT id,amount,memo,status,created_at FROM topups WHERE user_id=? ORDER BY id DESC LIMIT 30').all(req.user.id);
  const ledger=db.prepare('SELECT kind,amount,ref,note,created_at FROM ledger WHERE user_id=? ORDER BY id DESC LIMIT 30').all(req.user.id);
- res.json({balance:req.user.balance,topups,ledger});
+ const cardTopups=db.prepare('SELECT id,provider,amount,status,created_at FROM card_topups WHERE user_id=? ORDER BY id DESC LIMIT 20').all(req.user.id);
+ res.json({balance:req.user.balance,topups,ledger,cardTopups});
 });
+app.post('/api/card-topups',auth,(req,res)=>{
+ const providers=['VIETTEL','VINAPHONE','MOBIFONE','VIETNAMOBILE','ZING'];
+ const amounts=[10000,20000,50000,100000,200000,500000];
+ const provider=String(req.body?.provider||'').trim().toUpperCase();
+ const amount=Number(req.body?.amount);
+ const serial=String(req.body?.serial||'').trim().toUpperCase();
+ const cardCode=String(req.body?.cardCode||'').trim().toUpperCase();
+ if(!providers.includes(provider))return res.status(400).json({error:'Nhà mạng/thẻ không hợp lệ.'});
+ if(!amounts.includes(amount))return res.status(400).json({error:'Mệnh giá thẻ không hợp lệ.'});
+ if(!/^[A-Z0-9]{6,30}$/.test(serial)||!/^[A-Z0-9]{6,30}$/.test(cardCode))return res.status(400).json({error:'Serial và mã thẻ phải gồm 6–30 ký tự chữ hoặc số.'});
+ try{const info=db.prepare('INSERT INTO card_topups(user_id,provider,amount,serial,card_code) VALUES(?,?,?,?,?)').run(req.user.id,provider,amount,serial,cardCode);res.json({ok:true,id:info.lastInsertRowid,message:'Đã gửi thẻ. Vui lòng chờ quản trị viên kiểm tra và duyệt.'});}
+ catch(e){if(String(e.message).includes('UNIQUE'))return res.status(409).json({error:'Serial thẻ này đã được gửi trước đó.'});throw e;}
+});
+app.get('/api/card-topups',auth,(req,res)=>{const rows=db.prepare('SELECT id,provider,amount,status,created_at,reviewed_at FROM card_topups WHERE user_id=? ORDER BY id DESC LIMIT 30').all(req.user.id);res.json(rows);});
 app.post('/api/topups',auth,(req,res)=>{
  const amount=Number(req.body?.amount);
  if(!Number.isSafeInteger(amount)||amount<10000||amount>5000000||amount%1000!==0)return res.status(400).json({error:'Số tiền nạp từ 10.000đ đến 5.000.000đ, bội số 1.000đ.'});
@@ -83,6 +100,10 @@ const approve=db.transaction((id)=>{
 app.get('/api/admin/topups',admin,(req,res)=>res.json(db.prepare(`SELECT t.*,u.username FROM topups t JOIN users u ON u.id=t.user_id ORDER BY t.id DESC LIMIT 200`).all()));
 app.post('/api/admin/topups/:id/approve',admin,(req,res)=>{try{approve(Number(req.params.id));res.json({ok:true});}catch(e){res.status(409).json({error:e.message});}});
 app.post('/api/admin/topups/:id/reject',admin,(req,res)=>{const r=db.prepare("UPDATE topups SET status='REJECTED',reviewed_at=CURRENT_TIMESTAMP WHERE id=? AND status='PENDING'").run(Number(req.params.id));if(!r.changes)return res.status(409).json({error:'Yêu cầu không còn chờ duyệt.'});res.json({ok:true});});
+app.get('/api/admin/card-topups',admin,(req,res)=>res.json(db.prepare(`SELECT c.*,u.username FROM card_topups c JOIN users u ON u.id=c.user_id ORDER BY c.id DESC LIMIT 300`).all()));
+const approveCard=db.transaction((id)=>{const c=db.prepare("SELECT * FROM card_topups WHERE id=? AND status='PENDING'").get(id);if(!c)throw new Error('Yêu cầu không tồn tại hoặc đã được xử lý.');db.prepare("UPDATE card_topups SET status='APPROVED',reviewed_at=CURRENT_TIMESTAMP WHERE id=?").run(id);db.prepare('UPDATE users SET balance=balance+? WHERE id=?').run(c.amount,c.user_id);db.prepare('INSERT INTO ledger(user_id,kind,amount,ref,note) VALUES(?,?,?,?,?)').run(c.user_id,'CARD_TOPUP',c.amount,'CARD-'+c.id,'Nạp thẻ '+c.provider+' được quản trị viên duyệt');});
+app.post('/api/admin/card-topups/:id/approve',admin,(req,res)=>{try{approveCard(Number(req.params.id));res.json({ok:true});}catch(e){res.status(409).json({error:e.message});}});
+app.post('/api/admin/card-topups/:id/reject',admin,(req,res)=>{const r=db.prepare("UPDATE card_topups SET status='REJECTED',reviewed_at=CURRENT_TIMESTAMP WHERE id=? AND status='PENDING'").run(Number(req.params.id));if(!r.changes)return res.status(409).json({error:'Yêu cầu không còn chờ duyệt.'});res.json({ok:true});});
 app.post('/api/buy',auth,(req,res)=>{
  const p=products[req.body?.productId];if(!p)return res.status(400).json({error:'Sản phẩm không hợp lệ.'});
  const run=db.transaction(()=>{const u=db.prepare('SELECT balance FROM users WHERE id=?').get(req.user.id);if(u.balance<p.price)throw new Error('Số dư không đủ. Vui lòng nạp tiền.');const info=db.prepare('INSERT INTO orders(user_id,product_id,product_name,amount) VALUES(?,?,?,?)').run(req.user.id,req.body.productId,p.name,p.price);db.prepare('UPDATE users SET balance=balance-? WHERE id=?').run(p.price,req.user.id);db.prepare("INSERT INTO ledger(user_id,kind,amount,ref,note) VALUES(?,?,?,?,?)").run(req.user.id,'PURCHASE',-p.price,'ORDER-'+info.lastInsertRowid,'Mua '+p.name);return info.lastInsertRowid;});
