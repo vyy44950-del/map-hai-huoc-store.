@@ -1,0 +1,1 @@
+{"name":"map-hai-huoc-store-manual-wallet","version":"1.0.0","private":true,"type":"module","scripts":{"start":"node server.js"},"engines":{"node":">=20"},"dependencies":{"better-sqlite3":"^11.8.1","express":"^4.21.2","helmet":"^8.0.0"}}
