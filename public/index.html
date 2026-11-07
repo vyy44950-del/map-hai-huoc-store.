@@ -104,6 +104,12 @@ footer{padding:24px clamp(14px,3vw,38px);border-top:1px solid #58208c;background
 
 .bank-payment{margin:12px 0 14px;padding:14px;border:1px solid #9d5ae0;border-radius:14px;background:linear-gradient(145deg,#1c1035,#0b091a);text-align:center}.bank-payment h3{margin:0 0 8px;color:#f0c6ff;font-size:18px}.bank-payment .bank-owner{font-weight:900;color:#fff;font-size:16px}.bank-payment .bank-number{font-size:22px;font-weight:1000;letter-spacing:1px;color:#ffd45c;margin:4px 0 10px}.bank-payment img{display:block;width:min(100%,330px);height:auto;margin:0 auto 10px;border-radius:12px;background:#fff}.bank-payment .bank-help{font-size:12px;color:#d8c7ef;line-height:1.5;margin:8px 0 0}
 
+
+.ff-section{margin:24px 0;padding:clamp(18px,3vw,30px);border:1px solid #7c3fc0;border-radius:20px;background:radial-gradient(circle at 50% 0%,#35145c 0,#120b25 52%,#090714 100%);box-shadow:0 15px 45px #0007}
+.ff-head{text-align:center;margin-bottom:20px}.ff-tag{display:inline-block;padding:6px 12px;border-radius:30px;background:#54228a;color:#ffe28a;font-size:11px;font-weight:900;letter-spacing:1.5px}.ff-head h2{margin:12px 0 7px;color:#ffe28a;font-size:clamp(22px,4vw,32px)}.ff-head p,.ff-disclaimer{color:#d7c7ed;font-size:13px;line-height:1.6}
+.ff-packages{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.ff-package{position:relative;text-align:center;padding:18px 10px;border:1px solid #7642a8;border-radius:16px;background:linear-gradient(160deg,#25123d,#100b20)}.ff-package.featured{border:2px solid #ffd45c;box-shadow:0 0 22px #ffcc5540}.ff-diamond{font-size:34px}.ff-package h3{margin:8px 0;color:#fff;font-size:24px}.ff-package p{color:#ffd45c;font-weight:800}.ff-package .btn{width:100%;padding:10px 5px}.ff-hot{position:absolute;right:8px;top:8px;background:#ff4f85;color:#fff;border-radius:20px;padding:3px 7px;font-size:10px;font-weight:900}.ff-disclaimer{text-align:center;margin:16px auto 0;max-width:850px}.ff-selected{padding:12px;border-radius:10px;background:#26143d;color:#ffe28a;text-align:center;font-weight:900}
+@media(max-width:700px){.ff-packages{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
 </style>
 
 </head>
@@ -175,6 +181,16 @@ footer{padding:24px clamp(14px,3vw,38px);border-top:1px solid #58208c;background
       </div>
     </div>
   </section>
+  <section class="ff-section" id="nap-kc-ff">
+    <div class="ff-head"><span class="ff-tag">FREE FIRE · ƯU ĐÃI X2</span><h2>💎 NẠP KIM CƯƠNG FREE FIRE</h2><p>Chọn gói kim cương phù hợp và nhập UID nhân vật để tạo yêu cầu nạp.</p></div>
+    <div class="ff-packages">
+      <article class="ff-package"><span class="ff-diamond">💎</span><h3>583 KC</h3><p>Gói 50.000đ</p><button class="btn" onclick="openFFTopup(50000,583)">Chọn gói</button></article>
+      <article class="ff-package"><span class="ff-diamond">💎</span><h3>1.186 KC</h3><p>Gói 100.000đ</p><button class="btn" onclick="openFFTopup(100000,1186)">Chọn gói</button></article>
+      <article class="ff-package"><span class="ff-diamond">💎</span><h3>2.578 KC</h3><p>Gói 200.000đ</p><button class="btn" onclick="openFFTopup(200000,2578)">Chọn gói</button></article>
+      <article class="ff-package featured"><span class="ff-hot">HOT</span><span class="ff-diamond">💎</span><h3>7.210 KC</h3><p>Gói 500.000đ</p><button class="btn" onclick="openFFTopup(500000,7210)">Chọn gói</button></article>
+    </div>
+    <p class="ff-disclaimer">Lưu ý: Kiểm tra kỹ UID trước khi gửi. Đây là gói do cửa hàng công bố; việc cộng kim cương thực tế cần được xử lý bởi nhà cung cấp/đại lý Garena được ủy quyền.</p>
+  </section>
   <section class="purchase" id="purchase">
     <div class="gift">🎁</div>
     <div>
@@ -227,7 +243,31 @@ footer{padding:24px clamp(14px,3vw,38px);border-top:1px solid #58208c;background
   </div>
   <button class="btn alt wide" onclick="closeModal('topupModal')">Đóng</button>
 </div></div>
+<div class="modal" id="ffModal"><div class="modal-box">
+  <h2>💎 ĐẶT NẠP KIM CƯƠNG FF</h2>
+  <p class="ff-selected" id="ffSelected">Gói nạp</p>
+  <label class="field-label" for="ffUid">UID Free Fire</label><input id="ffUid" inputmode="numeric" maxlength="24" placeholder="Nhập UID nhân vật Free Fire">
+  <p class="small-note">Chỉ nhập UID, không cung cấp mật khẩu hoặc mã OTP tài khoản.</p>
+  <p class="msg" id="ffMsg"></p>
+  <button class="btn wide" onclick="submitFFTopup()">TẠO YÊU CẦU NẠP</button>
+  <button class="btn alt wide" onclick="closeModal('ffModal')">Đóng</button>
+</div></div>
 <script>
+let ffOrder={amount:0,diamonds:0};
+function openFFTopup(amount,diamonds){
+  ffOrder={amount,diamonds};
+  $('ffSelected').textContent=diamonds.toLocaleString('vi-VN')+' KC — '+amount.toLocaleString('vi-VN')+'đ';
+  $('ffUid').value='';$('ffMsg').textContent='';$('ffModal').style.display='flex';
+}
+async function submitFFTopup(){
+  const uid=$('ffUid').value.trim();
+  if(!/^\d{5,24}$/.test(uid)){$('ffMsg').textContent='UID không hợp lệ. Vui lòng kiểm tra lại.';return;}
+  $('ffMsg').textContent='Đang gửi yêu cầu...';
+  try{
+    const data=await api('/api/ff-topups',{method:'POST',body:JSON.stringify({uid,amount:ffOrder.amount,diamonds:ffOrder.diamonds})});
+    $('ffMsg').textContent='Đã tạo yêu cầu #'+data.id+'. Vui lòng làm theo hướng dẫn thanh toán và chờ admin xác nhận.';
+  }catch(e){$('ffMsg').textContent=e.message==='Có lỗi xảy ra'?'Chức năng nhận đơn FF chưa được kết nối ở máy chủ. Cần bổ sung API và trang quản trị trước khi sử dụng.':e.message;}
+}
 let authMode = 'login';
 const $ = id => document.getElementById(id);
 
