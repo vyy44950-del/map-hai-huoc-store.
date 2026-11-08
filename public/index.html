@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="vi">
 <head>
@@ -7,240 +8,419 @@
 <title>MAP HAI HUOC STORE</title>
 
 <style>
-:root{--bg:#070512;--panel:#100a22;--purple:#a52cff;--pink:#e45cff;--blue:#397cff;--gold:#ffd45c}
+:root{--bg:#080512;--panel:#140b27;--purple:#a52cff;--pink:#e45cff;--gold:#ffd45c}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:radial-gradient(ellipse at 50% 0%,#27104b 0,transparent 34%),#070512;color:#fff;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
-button,select,input{font:inherit}
+body{margin:0;background:radial-gradient(ellipse at 50% 0%,#35115c,transparent 45%),#080512;color:white;font-family:Inter,system-ui,sans-serif}
+button,input,select{font:inherit}
 button{cursor:pointer}
-.topbar{height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(14px,3vw,42px);gap:12px;background:#080614ed;border-bottom:1px solid #9c35ff;box-shadow:0 4px 25px #a42aff30;position:sticky;top:0;z-index:10}
-.brand{display:flex;align-items:center;gap:10px;font-weight:1000;letter-spacing:.5px;font-size:clamp(15px,2vw,23px)}
-.brand-mark{font-size:40px;color:#ffd34e;text-shadow:0 0 14px #ffb900}
-.brand small{display:block;font-size:10px;letter-spacing:4px;color:#cdb9ef}
-.navlinks{display:flex;align-items:center;gap:clamp(10px,2.5vw,34px)}
-.navlinks a{color:#f4edff;text-decoration:none;font-weight:700;font-size:14px}
-.navlinks a:hover{color:#e9a5ff}
-.btn{border:0;border-radius:14px;padding:12px 19px;color:#fff;font-weight:900;background:linear-gradient(105deg,#d414ed,#7627ed 55%,#347cff);box-shadow:0 5px 22px #a52cff55;transition:.18s}
-.btn:hover{filter:brightness(1.15);transform:translateY(-1px)}
+.topbar{height:82px;display:flex;align-items:center;justify-content:space-between;padding:0 4%;gap:15px;background:#090615f5;border-bottom:1px solid #a52cff;box-shadow:0 4px 30px #a52cff30;position:sticky;top:0;z-index:10;backdrop-filter:blur(15px)}
+.brand{display:flex;align-items:center;gap:12px;font-weight:1000;font-size:23px;letter-spacing:1px}
+.brand-mark{font-size:46px;color:#ffd34e;text-shadow:0 0 18px #ffb900}
+.brand small{display:block;font-size:10px;letter-spacing:5px;color:#d4b2f5}
+.navlinks{display:flex;align-items:center;gap:28px}
+.navlinks a{color:white;text-decoration:none;font-weight:800;font-size:14px}
+.navlinks a:hover{color:#e45cff}
+.btn{border:0;border-radius:14px;padding:13px 20px;color:white;font-weight:900;background:linear-gradient(105deg,#d414ed,#7627ed 55%,#347cff);box-shadow:0 5px 22px #a52cff55;transition:.2s}
+.btn:hover{filter:brightness(1.2);transform:translateY(-2px);box-shadow:0 0 25px #a52cff88}
 .btn.alt{background:#120d25;border:1px solid #a96de9;box-shadow:none}
-#navActions button{border-radius:24px;padding:11px 20px}
-.hero{min-height:355px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;padding:38px 20px;border-bottom:1px solid #9a36f6;background:radial-gradient(ellipse at 76% 40%,#5a1b9b88,transparent 37%),radial-gradient(ellipse at 8% 70%,#8b20ff88,transparent 34%),linear-gradient(105deg,#080617,#17082e 55%,#090719)}
-.hero:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(130deg,transparent 0 68px,#b34cff13 69px 71px,transparent 72px 130px);pointer-events:none}
+#navActions button{border-radius:25px}
+.hero{min-height:440px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;padding:45px 20px;border-bottom:1px solid #a52cff;background:radial-gradient(ellipse at 76% 40%,#7024b588,transparent 40%),radial-gradient(ellipse at 8% 70%,#8b20ff88,transparent 34%),linear-gradient(105deg,#080617,#210b3c 55%,#090719)}
+.hero:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(130deg,transparent 0 68px,#b34cff13 69px 71px,transparent 72px 130px)}
 .hero:after{content:"";position:absolute;left:-5%;bottom:-65%;width:48%;height:130%;border-radius:50%;background:radial-gradient(ellipse,#bb37ff55,transparent 65%);filter:blur(12px)}
-.hero-inner{position:relative;z-index:2;max-width:850px}
-.eyebrow{display:inline-block;padding:7px 18px;border-radius:22px;background:linear-gradient(90deg,#9626ed,#4534c7);font-weight:900;letter-spacing:1px}
-.hero h1{font-size:clamp(38px,6vw,72px);line-height:1;margin:16px 0 10px;font-weight:1000;font-style:italic;text-shadow:0 0 24px #bd42ff}
+.hero-inner{position:relative;z-index:2;max-width:1050px}
+.eyebrow{display:inline-block;padding:9px 22px;border-radius:22px;background:linear-gradient(90deg,#9626ed,#4534c7);font-weight:900;letter-spacing:1px}
+.hero h1{font-size:clamp(40px,7vw,85px);line-height:1;margin:20px 0 14px;font-weight:1000;font-style:italic;text-shadow:0 0 30px #bd42ff}
 .hero h1 em{color:#e56cff}
 .hero p{font-size:clamp(16px,2vw,22px);margin:0;color:#f4e8ff;font-weight:700}
-.hero-tagline{font-size:clamp(17px,2.5vw,27px)!important;color:#ed8cff!important;font-style:italic;margin-top:8px!important}
-.hero-stats{display:flex;justify-content:center;gap:35px;margin-top:24px}
+.hero-tagline{font-size:clamp(17px,2.5vw,27px)!important;color:#ed8cff!important;font-style:italic;margin-top:10px!important}
+.hero-stats{display:flex;justify-content:center;gap:35px;margin-top:28px}
 .hero-stat{min-width:95px;padding:0 14px;border-right:1px solid #a34de8}
 .hero-stat:last-child{border:0}
-.hero-stat b{display:block;color:#e6a1ff;font-size:25px;text-shadow:0 0 15px #b42cff}
+.hero-stat b{display:block;color:#e6a1ff;font-size:27px;text-shadow:0 0 15px #b42cff}
 .hero-stat span{font-size:13px;font-weight:800}
 .hero-figure{position:absolute;z-index:1;left:3%;bottom:-25px;width:235px;height:290px;opacity:.75;filter:drop-shadow(0 0 20px #b42cff)}
-.hero-figure:before{content:"";position:absolute;left:40px;top:10px;width:130px;height:135px;border-radius:48% 48% 42% 42%;background:radial-gradient(circle at 48% 35%,#e8c9ff 0 8%,#8d63bd 24%,#211235 60%);border:2px solid #c66bff;box-shadow:0 0 28px #9b2cff}
+.hero-figure:before{content:"";position:absolute;left:40px;top:10px;width:130px;height:135px;border-radius:48%;background:radial-gradient(circle at 48% 35%,#e8c9ff 0 8%,#8d63bd 24%,#211235 60%);border:2px solid #c66bff;box-shadow:0 0 28px #9b2cff}
 .hero-figure:after{content:"";position:absolute;left:0;bottom:0;width:220px;height:180px;border-radius:55% 55% 0 0;background:linear-gradient(120deg,#080716,#28113e 45%,#090719);clip-path:polygon(35% 0,65% 0,100% 100%,0 100%);border-top:3px solid #b64cff}
-.shell{max-width:1440px;margin:auto;padding:18px clamp(14px,2.5vw,32px) 30px}
-.section-title{font-size:clamp(24px,3vw,34px);margin:0 0 13px;font-weight:1000;text-align:center;text-shadow:0 0 15px #ae35ff}
+.shell{max-width:1650px;margin:auto;padding:35px clamp(14px,3vw,55px) 45px}
+.section-title{font-size:clamp(27px,3vw,39px);margin:0 0 28px;font-weight:1000;text-align:center;text-shadow:0 0 15px #ae35ff}
 .layout{display:block}
-.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
-.product{min-width:0;overflow:hidden;border:1px solid #b33cff;border-radius:20px;background:linear-gradient(145deg,#140b2c,#080716 80%);box-shadow:0 0 17px #a82aff33,inset 0 0 22px #6924a522;display:grid;grid-template-columns:1fr 1fr;position:relative}
-.product:before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:20px;box-shadow:inset 0 0 16px #d44cff22}
-.art{min-height:280px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 45%,#6924b8,transparent 38%),linear-gradient(145deg,#08091d,#151044 55%,#080716)}
+.products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.product{min-width:0;overflow:hidden;border:1px solid #a83cff;border-radius:23px;background:linear-gradient(150deg,#1b1032,#0b0719);box-shadow:0 8px 35px #0008,0 0 18px #9e32ff25;display:flex;flex-direction:column;transition:.25s}
+.product:hover{transform:translateY(-7px);border-color:#e45cff;box-shadow:0 15px 40px #a52cff40}
+.art{min-height:270px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 45%,#6924b8,transparent 38%),linear-gradient(145deg,#08091d,#151044 55%,#080716);border-bottom:1px solid #9139d7}
 .art:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent 0 25px,#8e42e522 26px 28px,transparent 29px 55px)}
-.art:after{content:"";position:absolute;width:175px;height:175px;border:2px solid #ff4b79;border-radius:50%;box-shadow:0 0 25px #ff285f,inset 0 0 20px #ff285f55}
+.art:after{content:"";position:absolute;width:190px;height:190px;border:2px solid #ff4b79;border-radius:50%;box-shadow:0 0 25px #ff285f,inset 0 0 20px #ff285f55}
 .art-symbol{position:absolute;z-index:3;top:15px;left:14px;font-size:clamp(24px,3vw,38px);font-weight:1000;font-style:italic;color:white;text-shadow:0 0 14px #a72cff}
 .art-scene{position:absolute;inset:25% 7% 7%;border:1px solid #7e62b0;border-radius:12px;background:linear-gradient(180deg,#373052,#88705b 48%,#3e3a42);overflow:hidden;box-shadow:0 0 20px #8f37ff55}
 .art-scene:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 48%,#d9b98a44 49%,transparent 50%),linear-gradient(0deg,transparent 45%,#d9b98a44 46%,transparent 47%),repeating-linear-gradient(90deg,transparent 0 35px,#d9b98a33 36px 38px)}
 .art-scene:after{content:"";position:absolute;left:48%;bottom:10%;width:30px;height:90px;border-radius:15px 15px 5px 5px;background:linear-gradient(#17151b 0 28%,#35313b 29% 70%,#111 71%);box-shadow:0 -18px 0 -5px #17151b}
 .crosshair{position:absolute;z-index:4;width:105px;height:105px;border:2px solid #ff375f;border-radius:50%;box-shadow:0 0 20px #ff285f}
 .crosshair:before,.crosshair:after{content:"";position:absolute;background:#ff476c;box-shadow:0 0 10px #ff285f}
-.crosshair:before{width:140px;height:2px;left:-19px;top:50px}.crosshair:after{height:140px;width:2px;top:-19px;left:50px}
+.crosshair:before{width:140px;height:2px;left:-19px;top:50px}
+.crosshair:after{height:140px;width:2px;top:-19px;left:50px}
 .target-dot{position:absolute;z-index:5;width:15px;height:15px;border-radius:50%;background:#ff315f;box-shadow:0 0 18px #ff174f}
 .art.aimbody{background:radial-gradient(circle at 50% 40%,#5724b8,transparent 40%),linear-gradient(145deg,#090d25,#1a1451,#080716)}
 .art.aimbody:after{width:145px;height:145px;border-radius:12px;border-color:#ff405e}
 .art.aimbody .crosshair{border-radius:8px;width:78px;height:130px}
-.art.aimbody .crosshair:before{width:110px;left:-17px;top:63px}.art.aimbody .crosshair:after{height:160px;top:-17px;left:36px}
+.art.aimbody .crosshair:before{width:110px;left:-17px;top:63px}
+.art.aimbody .crosshair:after{height:160px;top:-17px;left:36px}
 .art.vip{background:radial-gradient(circle,#8c531c,transparent 45%),linear-gradient(145deg,#1d102b,#13091f)}
 .art.vip:after{border-color:#ffd45c;box-shadow:0 0 25px #ffc33b}
-.product-body{padding:18px 18px 17px;position:relative;z-index:2}
-.pill{display:inline-block;border-radius:20px;padding:5px 12px;background:linear-gradient(90deg,#a02be7,#235cc7);font-size:12px;font-weight:900}
-.product h3{font-size:clamp(23px,2.5vw,30px);margin:10px 0 5px}
-.desc{color:#dfd1f3;margin:0;line-height:1.45}
-.product-features{display:grid;gap:9px;margin:14px 0;color:#f2eaff;font-size:15px;line-height:1.35}
+.product-body{padding:23px;position:relative;z-index:2;display:flex;flex-direction:column;flex:1}
+.pill{display:inline-block;align-self:flex-start;border-radius:20px;padding:6px 13px;background:linear-gradient(90deg,#a02be7,#235cc7);font-size:12px;font-weight:900}
+.product h3{font-size:28px;margin:15px 0 8px;color:#f1c4ff}
+.desc{color:#dfd1f3;margin:0;line-height:1.5}
+.product-features{display:grid;gap:9px;margin:16px 0;color:#f2eaff;font-size:14px;line-height:1.4;min-height:85px}
 .product-features span{display:flex;gap:9px;align-items:flex-start}
-.product-features b{color:#fff;background:linear-gradient(130deg,#d32aff,#7024df);border-radius:50%;width:21px;height:21px;flex:none;text-align:center;line-height:21px;box-shadow:0 0 12px #a82cff}
-.price{font-size:27px;font-weight:1000;color:#f0a0ff;margin:12px 0}
-.buy-btn{width:100%;padding:13px 10px}
-.account{margin-top:18px;border:1px solid #a044d3;border-radius:18px;background:linear-gradient(150deg,#211044,#100b24 80%);overflow:hidden}
-.account-head{padding:14px 18px;border-bottom:1px solid #61318b;color:#e0b0ff;font-size:19px;font-weight:900}
-.account-content{padding:15px 18px}.greeting{font-size:18px;margin:0 0 12px}.balance-label{color:#e2d5f5}.balance{font-size:28px;color:#ffd45c;font-weight:1000;margin:2px 0 14px}
-.account-actions{display:flex;gap:10px}.account-actions button{flex:1}.history-title{font-size:18px;margin:18px 0 8px}
-.history{border-top:1px solid #563178;padding-top:10px;white-space:pre-line;overflow-wrap:anywhere;color:#d4c5ed;font-size:14px;line-height:1.6}
-.feature-section{margin:24px 0 18px;padding:20px;border:1px solid #9d32ed;border-radius:20px;background:linear-gradient(140deg,#160d2d,#080716 75%);box-shadow:0 0 20px #8b20ff33}
-.feature-heading{text-align:center;font-size:clamp(22px,3vw,31px);font-weight:1000;color:#f0c6ff;text-shadow:0 0 14px #b22dff;margin:0 0 17px}
-.feature-layout{display:grid;grid-template-columns:1.2fr 1fr;gap:18px}
-.feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
-.feature-tile{min-height:105px;border:1px solid #922ce4;border-radius:15px;padding:12px 7px;text-align:center;background:linear-gradient(150deg,#211044,#0b0a20);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;box-shadow:inset 0 0 15px #a42cff22}
-.feature-tile .glyph{font-size:30px;color:#d58cff;text-shadow:0 0 16px #a32cff}
+.product-features b{color:white;background:linear-gradient(130deg,#d32aff,#7024df);border-radius:50%;width:21px;height:21px;flex:none;text-align:center;line-height:21px}
+.price{font-size:32px;font-weight:1000;color:#ffd45c;margin:auto 0 15px;padding-top:15px;text-shadow:0 0 15px #ffb70055}
+.buy-btn{width:100%;padding:16px;font-size:16px}
+.account{margin-top:25px;border:1px solid #a044d3;border-radius:22px;background:linear-gradient(150deg,#211044,#100b24 80%);overflow:hidden}
+.account-head{padding:17px 20px;border-bottom:1px solid #61318b;color:#e0b0ff;font-size:20px;font-weight:900}
+.account-content{padding:18px 20px}
+.greeting{font-size:18px;margin:0 0 12px}
+.balance-label{color:#e2d5f5}
+.balance{font-size:30px;color:#ffd45c;font-weight:1000;margin:5px 0 16px}
+.account-actions{display:flex;gap:10px}
+.account-actions button{flex:1}
+.history-title{font-size:19px;margin:20px 0 8px}
+.history{border-top:1px solid #563178;padding-top:12px;white-space:pre-line;overflow-wrap:anywhere;color:#d4c5ed;font-size:14px;line-height:1.7}
+.feature-section{margin:40px 0 20px;padding:30px;border:1px solid #9d32ed;border-radius:25px;background:linear-gradient(140deg,#21103b,#080716 75%);box-shadow:0 0 25px #8b20ff33}
+.feature-heading{text-align:center;font-size:clamp(23px,3vw,34px);font-weight:1000;color:#f0c6ff;text-shadow:0 0 14px #b22dff;margin:0 0 22px}
+.feature-layout{display:grid;grid-template-columns:1.2fr 1fr;gap:20px}
+.feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.feature-tile{min-height:130px;border:1px solid #922ce4;border-radius:18px;padding:12px 7px;text-align:center;background:linear-gradient(150deg,#211044,#0b0a20);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;transition:.2s}
+.feature-tile:hover{transform:translateY(-4px);border-color:#e45cff;box-shadow:0 0 20px #a52cff55}
+.feature-tile .glyph{font-size:38px;color:#d58cff;text-shadow:0 0 16px #a32cff}
 .feature-tile strong{font-size:13px;line-height:1.3}
-.feature-about{border:1px solid #b14cff;border-radius:17px;padding:17px;background:#100a22;box-shadow:0 0 18px #9d2aff33;line-height:1.55}
-.feature-about h3{margin:0 0 10px;color:#ffd45c;font-size:20px}
-.feature-about p{margin:7px 0;color:#f0e7fb}
-.purchase{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:18px;align-items:center;margin:22px 0;padding:20px;border:1px solid #a42aff;border-radius:20px;background:radial-gradient(circle at 8% 50%,#7b28d455,transparent 25%),linear-gradient(110deg,#170b30,#090716);box-shadow:0 0 22px #9a2aff33}
+.feature-about{border:1px solid #b14cff;border-radius:20px;padding:25px;background:#100a22;box-shadow:0 0 18px #9d2aff33;line-height:1.6}
+.feature-about h3{margin:0 0 10px;color:#ffd45c;font-size:21px}
+.feature-about p{margin:9px 0;color:#f0e7fb}
+.purchase{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:20px;align-items:center;margin:35px 0;padding:30px;border:1px solid #a42aff;border-radius:25px;background:radial-gradient(circle at 8% 50%,#7b28d455,transparent 25%),linear-gradient(110deg,#170b30,#090716);box-shadow:0 0 22px #9a2aff33}
 .gift{font-size:90px;text-align:center;filter:drop-shadow(0 0 18px #a72cff)}
-.purchase h2{text-align:center;margin:0 0 14px;color:#edc5ff;text-shadow:0 0 13px #a42aff}
-.purchase label{display:block;margin:0 0 7px;color:#e8d8fa;font-weight:700}
-.purchase select{width:100%;padding:13px;border:1px solid #aa8bd0;border-radius:12px;background:#f0edf7;color:#171124;font-weight:800}
-.purchase .btn{width:100%;margin-top:13px;padding:15px}
-.trust{border:1px solid #9b2de4;border-radius:15px;padding:14px;background:#100a22;line-height:2}
-.trust span{display:block}.trust b{color:#63ff91;margin-right:8px}
-.about-strip,.info-card{margin:18px 0;padding:18px 20px;border:1px solid #8538c6;border-radius:18px;background:linear-gradient(110deg,#1b1034,#100c25);color:#e6dcff;line-height:1.6}
-.about-strip h2{margin:0 0 7px;color:#f2d6ff}.about-strip p{margin:0}
-.lower{display:grid;grid-template-columns:1.5fr 1fr;gap:15px}
+.purchase h2{text-align:center;margin:0 0 17px;color:#edc5ff;text-shadow:0 0 13px #a42aff}
+.purchase label{display:block;margin:0 0 8px;color:#e8d8fa;font-weight:700}
+.purchase select{width:100%;padding:15px;border:1px solid #aa8bd0;border-radius:12px;background:#f0edf7;color:#171124;font-weight:800;min-height:52px}
+.purchase .btn{width:100%;margin-top:13px;padding:16px;min-height:55px}
+.trust{border:1px solid #9b2de4;border-radius:17px;padding:16px;background:#100a22;line-height:2}
+.trust span{display:block}
+.trust b{color:#63ff91;margin-right:8px}
+.about-strip,.info-card{margin:20px 0;padding:22px 24px;border:1px solid #8538c6;border-radius:20px;background:linear-gradient(110deg,#1b1034,#100c25);color:#e6dcff;line-height:1.6}
+.about-strip h2{margin:0 0 7px;color:#f2d6ff}
+.about-strip p{margin:0}
+.lower{display:grid;grid-template-columns:1.5fr 1fr;gap:18px}
 .info-card{display:flex;align-items:center;gap:15px;margin:0}
-.info-icon{font-size:38px;color:#d28aff;text-shadow:0 0 15px #ad37ff}.info-card h3{margin:0 0 5px;color:#e1c7ff}.info-card p{margin:0}
+.info-icon{font-size:40px;color:#d28aff;text-shadow:0 0 15px #ad37ff}
+.info-card h3{margin:0 0 5px;color:#e1c7ff}
+.info-card p{margin:0}
 .modal{display:none;position:fixed;inset:0;background:#05030cdd;z-index:30;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(8px)}
-.modal-box{background:linear-gradient(145deg,#21113c,#100c24);border:1px solid #a04bd2;border-radius:18px;padding:22px;width:100%;max-width:420px;box-shadow:0 15px 55px #000b;max-height:92vh;overflow:auto}
-.modal-box h2{color:#e2b2ff;margin:0 0 16px}.modal-box input,.modal-box select{width:100%;padding:13px;margin:7px 0 13px;background:#090716;border:1px solid #69418b;border-radius:10px;color:white;font:inherit}
-.topup-tabs{display:flex;gap:8px;margin-bottom:12px}.topup-tabs button{flex:1}.topup-pane{display:none}.topup-pane.active{display:block}.field-label{display:block;color:#d8c7ef;font-size:13px;margin-top:8px}.small-note{font-size:12px;color:#b9a9d3;line-height:1.5}
-.modal-box button{margin-top:7px}.modal-box .wide{width:100%}.msg{color:#ffd477;line-height:1.6;overflow-wrap:anywhere}.hidden{display:none!important}
-footer{padding:24px clamp(14px,3vw,38px);border-top:1px solid #58208c;background:#080614;color:#c6b6dc}
-.footer-inner{max-width:1440px;margin:auto;display:flex;justify-content:space-between;gap:12px;align-items:center}
-@media(max-width:900px){.hero-figure{left:-55px;opacity:.35}.products{grid-template-columns:1fr}.product{grid-template-columns:1fr 1fr}.feature-layout{grid-template-columns:1fr}.purchase{grid-template-columns:110px 1fr}.trust{grid-column:1/-1;display:flex;justify-content:space-around;flex-wrap:wrap}.navlinks{gap:12px}}
-@media(max-width:620px){.topbar{height:auto;min-height:64px;padding:9px 12px}.brand-mark{font-size:31px}.brand small{font-size:8px;letter-spacing:3px}.navlinks{display:none}.hero{min-height:300px;padding:30px 16px}.hero-figure{left:-85px;opacity:.22}.hero-stats{gap:5px;margin-top:20px}.hero-stat{min-width:0;padding:0 10px}.hero-stat span{font-size:11px}.shell{padding:14px 12px 24px}.product{grid-template-columns:1fr}.art{min-height:210px}.product-body{padding:15px}.feature-section{padding:14px}.feature-layout{gap:12px}.feature-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.feature-tile{min-height:90px;padding:8px 4px}.feature-tile .glyph{font-size:25px}.feature-tile strong{font-size:11px}.purchase{grid-template-columns:1fr;padding:15px}.gift{font-size:62px}.trust{display:block}.lower{grid-template-columns:1fr}.footer-inner{display:block;text-align:center}.footer-inner>div+div{margin-top:8px}}
+.modal-box{background:linear-gradient(145deg,#21113c,#100c24);border:1px solid #a04bd2;border-radius:20px;padding:23px;width:100%;max-width:440px;box-shadow:0 15px 55px #000b;max-height:92vh;overflow:auto}
+.modal-box h2{color:#e2b2ff;margin:0 0 16px}
+.modal-box input,.modal-box select{width:100%;padding:14px;margin:7px 0 13px;background:#090716;border:1px solid #69418b;border-radius:10px;color:white;font:inherit}
+.topup-tabs{display:flex;gap:8px;margin-bottom:12px}
+.topup-tabs button{flex:1}
+.topup-pane{display:none}
+.topup-pane.active{display:block}
+.field-label{display:block;color:#d8c7ef;font-size:13px;margin-top:8px}
+.small-note{font-size:12px;color:#b9a9d3;line-height:1.5}
+.modal-box button{margin-top:7px}
+.modal-box .wide{width:100%}
+.msg{color:#ffd477;line-height:1.6;overflow-wrap:anywhere}
+.hidden{display:none!important}
+footer{padding:30px 4%;border-top:1px solid #58208c;background:#080614;color:#c6b6dc}
+.footer-inner{max-width:1550px;margin:auto;display:flex;justify-content:space-between;gap:12px;align-items:center}
+@media(max-width:1100px){
+.products{grid-template-columns:repeat(2,minmax(0,1fr))}
+.hero-figure{left:-55px;opacity:.35}
+.feature-layout{grid-template-columns:1fr}
+.purchase{grid-template-columns:110px 1fr}
+.trust{grid-column:1/-1;display:flex;justify-content:space-around;flex-wrap:wrap}
+.navlinks{gap:12px}
+}
+@media(max-width:700px){
+.topbar{height:auto;min-height:68px;padding:9px 12px}
+.brand{font-size:16px}
+.brand-mark{font-size:34px}
+.brand small{font-size:8px;letter-spacing:3px}
+.navlinks{display:none}
+.hero{min-height:330px;padding:30px 16px}
+.hero h1{font-size:40px}
+.hero-figure{left:-85px;opacity:.22}
+.hero-stats{gap:5px;margin-top:20px}
+.hero-stat{min-width:0;padding:0 10px}
+.hero-stat span{font-size:11px}
+.shell{padding:22px 12px 30px}
+.products{grid-template-columns:1fr;gap:20px}
+.art{min-height:240px}
+.product-body{padding:20px}
+.product h3{font-size:26px}
+.feature-section{padding:17px}
+.feature-layout{gap:12px}
+.feature-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.feature-tile{min-height:95px;padding:8px 4px}
+.feature-tile .glyph{font-size:27px}
+.feature-tile strong{font-size:11px}
+.purchase{grid-template-columns:1fr;padding:18px}
+.gift{font-size:62px}
+.trust{display:block}
+.lower{grid-template-columns:1fr}
+.footer-inner{display:block;text-align:center}
+.footer-inner>div+div{margin-top:8px}
+}
 </style>
-
 </head>
+
 <body>
 
 <header class="topbar">
-  <div class="brand"><span class="brand-mark">♛</span><span>MAP HAI HUOC<small>STORE</small></span></div>
-  <nav class="navlinks" aria-label="Điều hướng">
-    <a href="#home">⌂ Trang Chủ</a><a href="#topup-info" onclick="openTopup();return false">Nạp Thẻ</a><a href="#account">Lịch Sử</a><a href="#contact">Liên Hệ</a>
-  </nav>
-  <div id="navActions"><button class="btn" onclick="openAuth()">♟ Đăng Nhập</button></div>
+<div class="brand"><span class="brand-mark">♛</span><span>MAP HAI HUOC<small>STORE</small></span></div>
+<nav class="navlinks" aria-label="Điều hướng">
+<a href="#home">⌂ Trang Chủ</a>
+<a href="#topup-info" onclick="openTopup();return false">Nạp Thẻ</a>
+<a href="#account">Lịch Sử</a>
+<a href="#contact">Liên Hệ</a>
+</nav>
+<div id="navActions"><button class="btn" onclick="openAuth()">♟ Đăng Nhập</button></div>
 </header>
+
 <section class="hero" id="home">
-  <div class="hero-figure" aria-hidden="true"></div>
-  <div class="hero-inner">
-    <span class="eyebrow">✦ MAP HAI HUOC STORE ✦</span>
-    <h1>MAP HAI HUOC <em>STORE</em></h1>
-    <p>Trải nghiệm sản phẩm game và dịch vụ kỹ thuật số</p>
-    <p class="hero-tagline">Nổi bật · Tiện lợi · Hỗ trợ khách hàng</p>
-    <div class="hero-stats">
-      <div class="hero-stat"><b>⚡</b><span>Trải nghiệm<br>mượt mà</span></div>
-      <div class="hero-stat"><b>♢</b><span>Thanh toán<br>tiện lợi</span></div>
-      <div class="hero-stat"><b>☏</b><span>Hỗ trợ<br>khách hàng</span></div>
-    </div>
-  </div>
+<div class="hero-figure" aria-hidden="true"></div>
+<div class="hero-inner">
+<span class="eyebrow">✦ MAP HAI HUOC STORE ✦</span>
+<h1>MAP HAI HUOC <em>STORE</em></h1>
+<p>Trải nghiệm sản phẩm game và dịch vụ kỹ thuật số</p>
+<p class="hero-tagline">Nổi bật · Tiện lợi · Hỗ trợ khách hàng</p>
+<div class="hero-stats">
+<div class="hero-stat"><b>⚡</b><span>Trải nghiệm<br>mượt mà</span></div>
+<div class="hero-stat"><b>♢</b><span>Thanh toán<br>tiện lợi</span></div>
+<div class="hero-stat"><b>☏</b><span>Hỗ trợ<br>khách hàng</span></div>
+</div>
+</div>
 </section>
+
 <main class="shell">
-  <div class="layout">
-    <section>
-      <h2 class="section-title" id="products">✦ SẢN PHẨM NỔI BẬT ✦</h2>
-      <div class="products">
-        <article class="product">
-          <div class="art aimlock"><span class="art-symbol">♛ AIMLOCK</span><div class="art-scene"></div><span class="crosshair"></span><span class="target-dot"></span></div>
-          <div class="product-body"><span class="pill">ANDROID / IOS / PC</span><h3>AIMLOCK</h3><p class="desc">Gói sản phẩm kỹ thuật số.</p><div class="product-features"><span><b>✓</b> Ghim cổ, kéo nhẹ là đỏ</span><span><b>✓</b> Không kéo là máu vàng</span></div><div class="price">200.000đ</div><button class="btn buy-btn" onclick="buy('aimlock')">🛒 Mua ngay ❯</button></div>
-        </article>
-        <article class="product">
-          <div class="art aimbody"><span class="art-symbol">♛ AIMBODY</span><div class="art-scene"></div><span class="crosshair"></span><span class="target-dot"></span></div>
-          <div class="product-body"><span class="pill">ANDROID / IOS / PC</span><h3>AIMBODY</h3><p class="desc">Gói sản phẩm kỹ thuật số.</p><div class="product-features"><span><b>✓</b> Xoá hiệu ứng máu vàng</span><span><b>✓</b> Bắn vào người hiển thị đỏ</span></div><div class="price">250.000đ</div><button class="btn buy-btn" onclick="buy('aimbody')">🛒 Mua ngay ❯</button></div>
-        </article>
-        <article class="product">
-          <div class="art aimlock"><span class="art-symbol">♛ AIMLOCK</span><div class="art-scene"></div><span class="crosshair"></span><span class="target-dot"></span></div>
-          <div class="product-body"><span class="pill">ANDROID / IOS / PC</span><h3>AIMLOCK 1 TUẦN</h3><p class="desc">Gói AIMLOCK thời hạn 1 tuần.</p><div class="product-features"><span><b>✓</b> Ghim cổ, kéo nhẹ là đỏ</span><span><b>✓</b> Thời hạn sử dụng 1 tuần</span></div><div class="price">50.000đ</div><button class="btn buy-btn" onclick="buy('aimlock_week')">🛒 Mua ngay ❯</button></div>
-        </article>
-        <article class="product">
-          <div class="art aimlock"><span class="art-symbol">♛ AIMLOCK</span><div class="art-scene"></div><span class="crosshair"></span><span class="target-dot"></span></div>
-          <div class="product-body"><span class="pill">ANDROID / IOS / PC</span><h3>AIMLOCK 1 THÁNG</h3><p class="desc">Gói AIMLOCK thời hạn 1 tháng.</p><div class="product-features"><span><b>✓</b> Ghim cổ, kéo nhẹ là đỏ</span><span><b>✓</b> Thời hạn sử dụng 1 tháng</span></div><div class="price">100.000đ</div><button class="btn buy-btn" onclick="buy('aimlock_month')">🛒 Mua ngay ❯</button></div>
-        </article>
-        <article class="product">
-          <div class="art aimbody"><span class="art-symbol">♛ AIMBODY</span><div class="art-scene"></div><span class="crosshair"></span><span class="target-dot"></span></div>
-          <div class="product-body"><span class="pill">ANDROID / IOS / PC</span><h3>AIMBODY 1 OB</h3><p class="desc">Gói AIMBODY phiên bản 1 OB.</p><div class="product-features"><span><b>✓</b> Xoá hiệu ứng máu vàng</span><span><b>✓</b> Bắn vào người hiển thị đỏ</span></div><div class="price">150.000đ</div><button class="btn buy-btn" onclick="buy('aimbody_ob')">🛒 Mua ngay ❯</button></div>
-        </article>
-        <article class="product">
-          <div class="art vip"><span class="art-symbol">♛ MENU VIP</span><div class="art-scene"></div><span class="crosshair"></span><span class="target-dot"></span></div>
-          <div class="product-body"><span class="pill">ANDROID / IOS / PC</span><h3>MENU VIP</h3><p class="desc">Gói menu VIP với nhiều tuỳ chọn.</p><div class="product-features"><span><b>✓</b> Vòng vẽ FOV</span><span><b>✓</b> Aim đầu / Aim cổ / Aim silen</span><span><b>✓</b> Đạn gió thổi, ESP khung dây và nhiều tính năng khác</span></div><div class="price">450.000đ</div><button class="btn buy-btn" onclick="buy('vip')">🛒 Mua ngay ❯</button></div>
-        </article>
-      </div>
-    </section>
-    <aside id="account" class="account hidden">
-      <div class="account-head">◉ &nbsp;Tài khoản của bạn</div>
-      <div class="account-content">
-        <p class="greeting">Xin chào, <b id="hello"></b></p>
-        <div class="balance-label">Số dư ví</div><div class="balance" id="balance">0đ</div>
-        <div class="account-actions"><button class="btn" onclick="openTopup()">＋ Nạp tiền</button><button class="btn alt" onclick="logout()">Đăng xuất</button></div>
-        <h3 class="history-title">Lịch sử ví</h3><div id="history" class="history">Chưa có dữ liệu.</div>
-      </div>
-    </aside>
-  </div>
-  <section class="feature-section" id="vip-features">
-    <h2 class="feature-heading">⭐ MENU VIP ĐẦY ĐỦ TÍNH NĂNG ⭐</h2>
-    <div class="feature-layout">
-      <div class="feature-grid">
-        <div class="feature-tile"><span class="glyph">◎</span><strong>Vòng vẽ FOV</strong></div>
-        <div class="feature-tile"><span class="glyph">⌖</span><strong>Aim đầu / Aim cổ</strong></div>
-        <div class="feature-tile"><span class="glyph">◖))</span><strong>Aim silen</strong></div>
-        <div class="feature-tile"><span class="glyph">➤</span><strong>Đạn gió thổi</strong></div>
-        <div class="feature-tile"><span class="glyph">◉</span><strong>ESP khung dây</strong></div>
-        <div class="feature-tile"><span class="glyph">⬡</span><strong>Nhiều tính năng khác</strong></div>
-      </div>
-      <div class="feature-about">
-        <h3>⭐ Giới thiệu chi tiết</h3>
-        <p>• <b>AimLock:</b> Ghim cổ, kéo nhẹ là đỏ; không kéo là máu vàng.</p>
-        <p>• <b>AimBody:</b> Xoá máu vàng, bắn vào người hiển thị đỏ.</p>
-        <p>• <b>Menu VIP:</b> Vòng vẽ FOV, aim đầu, aim cổ, aim silen, đạn gió thổi, ESP khung dây và nhiều mục khác.</p>
-        <p>Thông tin tính năng là mô tả tham khảo, hiệu quả thực tế tuỳ sản phẩm và phiên bản.</p>
-      </div>
-    </div>
-  </section>
-  <section class="purchase" id="purchase">
-    <div class="gift">🎁</div>
-    <div>
-      <h2>🛒 MUA NGAY ĐỂ TRẢI NGHIỆM</h2>
-      <label for="purchaseChoice">Chọn gói mua:</label>
-      <select id="purchaseChoice"><option value="aimlock">AIMLOCK — 200.000đ</option><option value="aimlock_week">AIMLOCK 1 TUẦN — 50.000đ</option><option value="aimlock_month">AIMLOCK 1 THÁNG — 100.000đ</option><option value="aimbody">AIMBODY — 250.000đ</option><option value="aimbody_ob">AIMBODY 1 OB — 150.000đ</option><option value="vip">MENU VIP — 450.000đ</option></select>
-      <button class="btn" onclick="buy(document.getElementById('purchaseChoice').value)">🛒 Thanh Toán Ngay</button>
-    </div>
-    <div class="trust"><span><b>✓</b> Thanh toán qua số dư ví</span><span><b>✓</b> Theo dõi lịch sử giao dịch</span><span><b>✓</b> Hỗ trợ khách hàng</span></div>
-  </section>
-  <section class="about-strip" id="topup-info"><h2>Về MAP HAI HUOC STORE</h2><p>Cửa hàng cung cấp các gói sản phẩm kỹ thuật số. Bạn có thể tạo tài khoản, nạp tiền vào ví, chọn gói phù hợp và theo dõi lịch sử giao dịch ngay trên website.</p></section>
-  <div class="lower" id="contact">
-    <section class="info-card"><div class="info-icon">▤</div><div><h3>Hướng dẫn nạp tiền</h3><p>Đăng nhập, chọn Nạp tiền bằng thẻ hoặc chuyển khoản. Với thẻ cào, nhập nhà mạng, mệnh giá, serial và mã thẻ. Admin kiểm tra thẻ trước khi cộng tiền vào ví.</p></div></section>
-    <section class="info-card"><div class="info-icon">☏</div><div><h3>Hỗ trợ khách hàng</h3><p>Liên hệ quản trị viên khi cần hỗ trợ về tài khoản hoặc giao dịch.</p></div></section>
-  </div>
+<div class="layout">
+<section>
+<h2 class="section-title" id="products">✦ SẢN PHẨM NỔI BẬT ✦</h2>
+<div class="products">
+
+<article class="product">
+<div class="art aimlock"><span class="art-symbol">♛ AIMLOCK</span><div class="art-scene"></div><span class="crosshair"></span><span class="target-dot"></span></div>
+<div class="product-body">
+<span class="pill">ANDROID / IOS / PC</span>
+<h3>AIMLOCK</h3>
+<p class="desc">Gói sản phẩm kỹ thuật số.</p>
+<div class="product-features"><span><b>✓</b> Ghim cổ, kéo nhẹ là đỏ</span><span><b>✓</b> Không kéo là máu vàng</span></div>
+<div class="price">200.000đ</div>
+<button class="btn buy-btn" onclick="buy('aimlock')">🛒 Mua ngay ❯</button>
+</div>
+</article>
+
+<article class="product">
+<div class="art aimbody"><span class="art-symbol">♛ AIMBODY</span><div class="art-scene"></div><span class="crosshair"></span><span class="target-dot"></span></div>
+<div class="product-body">
+<span class="pill">ANDROID / IOS / PC</span>
+<h3>AIMBODY</h3>
+<p class="desc">Gói sản phẩm kỹ thuật số.</p>
+<div class="product-features"><span><b>✓</b> Xoá hiệu ứng máu vàng</span><span><b>✓</b> Bắn vào người hiển thị đỏ</span></div>
+<div class="price">250.000đ</div>
+<button class="btn buy-btn" onclick="buy('aimbody')">🛒 Mua ngay ❯</button>
+</div>
+</article>
+
+<article class="product">
+<div class="art aimlock"><span class="art-symbol">♛ AIMLOCK</span><div class="art-scene"></div><span class="crosshair"></span><span class="target-dot"></span></div>
+<div class="product-body">
+<span class="pill">ANDROID / IOS / PC</span>
+<h3>AIMLOCK 1 TUẦN</h3>
+<p class="desc">Gói AIMLOCK thời hạn 1 tuần.</p>
+<div class="product-features"><span><b>✓</b> Ghim cổ, kéo nhẹ là đỏ</span><span><b>✓</b> Thời hạn sử dụng 1 tuần</span></div>
+<div class="price">50.000đ</div>
+<button class="btn buy-btn" onclick="buy('aimlock_week')">🛒 Mua ngay ❯</button>
+</div>
+</article>
+
+<article class="product">
+<div class="art aimlock"><span class="art-symbol">♛ AIMLOCK</span><div class="art-scene"></div><span class="crosshair"></span><span class="target-dot"></span></div>
+<div class="product-body">
+<span class="pill">ANDROID / IOS / PC</span>
+<h3>AIMLOCK 1 THÁNG</h3>
+<p class="desc">Gói AIMLOCK thời hạn 1 tháng.</p>
+<div class="product-features"><span><b>✓</b> Ghim cổ, kéo nhẹ là đỏ</span><span><b>✓</b> Thời hạn sử dụng 1 tháng</span></div>
+<div class="price">100.000đ</div>
+<button class="btn buy-btn" onclick="buy('aimlock_month')">🛒 Mua ngay ❯</button>
+</div>
+</article>
+
+<article class="product">
+<div class="art aimbody"><span class="art-symbol">♛ AIMBODY</span><div class="art-scene"></div><span class="crosshair"></span><span class="target-dot"></span></div>
+<div class="product-body">
+<span class="pill">ANDROID / IOS / PC</span>
+<h3>AIMBODY 1 OB</h3>
+<p class="desc">Gói AIMBODY phiên bản 1 OB.</p>
+<div class="product-features"><span><b>✓</b> Xoá hiệu ứng máu vàng</span><span><b>✓</b> Bắn vào người hiển thị đỏ</span></div>
+<div class="price">150.000đ</div>
+<button class="btn buy-btn" onclick="buy('aimbody_ob')">🛒 Mua ngay ❯</button>
+</div>
+</article>
+
+<article class="product">
+<div class="art vip"><span class="art-symbol">♛ MENU VIP</span><div class="art-scene"></div><span class="crosshair"></span><span class="target-dot"></span></div>
+<div class="product-body">
+<span class="pill">ANDROID / IOS / PC</span>
+<h3>MENU VIP</h3>
+<p class="desc">Gói menu VIP với nhiều tuỳ chọn.</p>
+<div class="product-features"><span><b>✓</b> Vòng vẽ FOV</span><span><b>✓</b> Aim đầu / Aim cổ / Aim silen</span><span><b>✓</b> Đạn gió thổi, ESP khung dây và nhiều tính năng khác</span></div>
+<div class="price">450.000đ</div>
+<button class="btn buy-btn" onclick="buy('vip')">🛒 Mua ngay ❯</button>
+</div>
+</article>
+
+</div>
+</section>
+
+<aside id="account" class="account hidden">
+<div class="account-head">◉ &nbsp;Tài khoản của bạn</div>
+<div class="account-content">
+<p class="greeting">Xin chào, <b id="hello"></b></p>
+<div class="balance-label">Số dư ví</div>
+<div class="balance" id="balance">0đ</div>
+<div class="account-actions">
+<button class="btn" onclick="openTopup()">＋ Nạp tiền</button>
+<button class="btn alt" onclick="logout()">Đăng xuất</button>
+</div>
+<h3 class="history-title">Lịch sử ví</h3>
+<div id="history" class="history">Chưa có dữ liệu.</div>
+</div>
+</aside>
+</div>
+
+<section class="feature-section" id="vip-features">
+<h2 class="feature-heading">⭐ MENU VIP ĐẦY ĐỦ TÍNH NĂNG ⭐</h2>
+<div class="feature-layout">
+<div class="feature-grid">
+<div class="feature-tile"><span class="glyph">◎</span><strong>Vòng vẽ FOV</strong></div>
+<div class="feature-tile"><span class="glyph">⌖</span><strong>Aim đầu / Aim cổ</strong></div>
+<div class="feature-tile"><span class="glyph">◖))</span><strong>Aim silen</strong></div>
+<div class="feature-tile"><span class="glyph">➤</span><strong>Đạn gió thổi</strong></div>
+<div class="feature-tile"><span class="glyph">◉</span><strong>ESP khung dây</strong></div>
+<div class="feature-tile"><span class="glyph">⬡</span><strong>Nhiều tính năng khác</strong></div>
+</div>
+<div class="feature-about">
+<h3>⭐ Giới thiệu chi tiết</h3>
+<p>• <b>AimLock:</b> Ghim cổ, kéo nhẹ là đỏ; không kéo là máu vàng.</p>
+<p>• <b>AimBody:</b> Xoá máu vàng, bắn vào người hiển thị đỏ.</p>
+<p>• <b>Menu VIP:</b> Vòng vẽ FOV, aim đầu, aim cổ, aim silen, đạn gió thổi, ESP khung dây và nhiều mục khác.</p>
+<p>Thông tin tính năng là mô tả tham khảo, hiệu quả thực tế tuỳ sản phẩm và phiên bản.</p>
+</div>
+</div>
+</section>
+
+<section class="purchase" id="purchase">
+<div class="gift">🎁</div>
+<div>
+<h2>🛒 MUA NGAY ĐỂ TRẢI NGHIỆM</h2>
+<label for="purchaseChoice">Chọn gói mua:</label>
+<select id="purchaseChoice">
+<option value="aimlock">AIMLOCK — 200.000đ</option>
+<option value="aimlock_week">AIMLOCK 1 TUẦN — 50.000đ</option>
+<option value="aimlock_month">AIMLOCK 1 THÁNG — 100.000đ</option>
+<option value="aimbody">AIMBODY — 250.000đ</option>
+<option value="aimbody_ob">AIMBODY 1 OB — 150.000đ</option>
+<option value="vip">MENU VIP — 450.000đ</option>
+</select>
+<button class="btn" onclick="buy($('purchaseChoice').value)">🛒 Thanh Toán Ngay</button>
+</div>
+<div class="trust">
+<span><b>✓</b> Thanh toán qua số dư ví</span>
+<span><b>✓</b> Theo dõi lịch sử giao dịch</span>
+<span><b>✓</b> Hỗ trợ khách hàng</span>
+</div>
+</section>
+
+<section class="about-strip" id="topup-info">
+<h2>Về MAP HAI HUOC STORE</h2>
+<p>Cửa hàng cung cấp các gói sản phẩm kỹ thuật số. Bạn có thể tạo tài khoản, nạp tiền vào ví, chọn gói phù hợp và theo dõi lịch sử giao dịch ngay trên website.</p>
+</section>
+
+<div class="lower" id="contact">
+<section class="info-card">
+<div class="info-icon">▤</div>
+<div><h3>Hướng dẫn nạp tiền</h3><p>Đăng nhập, chọn Nạp tiền bằng thẻ hoặc chuyển khoản. Với thẻ cào, nhập nhà mạng, mệnh giá, serial và mã thẻ. Admin kiểm tra thẻ trước khi cộng tiền vào ví.</p></div>
+</section>
+<section class="info-card">
+<div class="info-icon">☏</div>
+<div><h3>Hỗ trợ khách hàng</h3><p>Liên hệ quản trị viên khi cần hỗ trợ về tài khoản hoặc giao dịch.</p></div>
+</section>
+</div>
 </main>
-<footer><div class="footer-inner"><div><b style="font-size:20px">♛ MAP HAI HUOC STORE</b><br>Uy tín · Chất lượng · Đồng hành cùng bạn</div><div>© 2026 Map Hai Huoc Store. All rights reserved.</div></div></footer>
-<div class="modal" id="authModal"><div class="modal-box">
-  <h2 id="authTitle">ĐĂNG NHẬP</h2>
-  <input id="username" placeholder="Tên đăng nhập" autocomplete="username">
-  <input id="password" type="password" placeholder="Mật khẩu" autocomplete="current-password">
-  <p id="authMsg" class="msg"></p>
-  <button class="btn wide" onclick="submitAuth()" id="authSubmit">ĐĂNG NHẬP</button>
-  <button class="btn alt wide" onclick="switchAuth()">Đăng ký</button>
-  <button class="btn alt wide" onclick="closeModal('authModal')">Đóng</button>
-</div></div>
-<div class="modal" id="topupModal"><div class="modal-box">
-  <h2>NẠP TIỀN VÀO VÍ</h2>
-  <div class="topup-tabs"><button class="btn" onclick="showTopupTab('card')">Nạp thẻ cào</button><button class="btn alt" onclick="showTopupTab('bank')">Chuyển khoản</button></div>
-  <div id="cardPane" class="topup-pane active">
-    <label class="field-label" for="cardProvider">Nhà mạng / Loại thẻ</label><select id="cardProvider"><option value="VIETTEL">Viettel</option><option value="VINAPHONE">VinaPhone</option><option value="MOBIFONE">MobiFone</option><option value="VIETNAMOBILE">Vietnamobile</option><option value="ZING">Thẻ Zing</option></select>
-    <label class="field-label" for="cardAmount">Mệnh giá thẻ</label><select id="cardAmount"><option value="10000">10.000đ</option><option value="20000">20.000đ</option><option value="50000" selected>50.000đ</option><option value="100000">100.000đ</option><option value="200000">200.000đ</option><option value="500000">500.000đ</option></select>
-    <label class="field-label" for="cardSerial">Số serial</label><input id="cardSerial" maxlength="30" placeholder="Nhập số serial trên thẻ" autocomplete="off">
-    <label class="field-label" for="cardCode">Mã thẻ / Mã PIN</label><input id="cardCode" maxlength="30" placeholder="Nhập mã thẻ" autocomplete="off">
-    <p class="small-note">Thông tin thẻ sẽ được gửi đến trang quản trị để kiểm tra. Chỉ cộng tiền sau khi admin xác minh thẻ hợp lệ.</p>
-    <p class="msg" id="cardMsg"></p><button class="btn wide" id="cardSubmit" onclick="submitCardTopup()">GỬI THẺ ĐỂ DUYỆT</button>
-    <div id="cardResult" class="msg"></div>
-  </div>
-  <div id="bankPane" class="topup-pane">
-    <input id="topupAmount" type="number" min="10000" step="1000" placeholder="Số tiền muốn nạp (VNĐ)">
-    <p class="msg" id="topupMsg"></p><button class="btn wide" onclick="submitTopup()">TẠO YÊU CẦU CHUYỂN KHOẢN</button><div id="topupResult" class="msg"></div>
-  </div>
-  <button class="btn alt wide" onclick="closeModal('topupModal')">Đóng</button>
-</div></div>
+
+<footer>
+<div class="footer-inner">
+<div><b style="font-size:20px">♛ MAP HAI HUOC STORE</b><br>Uy tín · Chất lượng · Đồng hành cùng bạn</div>
+<div>© 2026 Map Hai Huoc Store. All rights reserved.</div>
+</div>
+</footer>
+
+<div class="modal" id="authModal">
+<div class="modal-box">
+<h2 id="authTitle">ĐĂNG NHẬP</h2>
+<input id="username" placeholder="Tên đăng nhập" autocomplete="username">
+<input id="password" type="password" placeholder="Mật khẩu" autocomplete="current-password">
+<p id="authMsg" class="msg"></p>
+<button class="btn wide" onclick="submitAuth()" id="authSubmit">ĐĂNG NHẬP</button>
+<button class="btn alt wide" onclick="switchAuth()">Đăng ký</button>
+<button class="btn alt wide" onclick="closeModal('authModal')">Đóng</button>
+</div>
+</div>
+
+<div class="modal" id="topupModal">
+<div class="modal-box">
+<h2>NẠP TIỀN VÀO VÍ</h2>
+<div class="topup-tabs">
+<button class="btn" onclick="showTopupTab('card')">Nạp thẻ cào</button>
+<button class="btn alt" onclick="showTopupTab('bank')">Chuyển khoản</button>
+</div>
+
+<div id="cardPane" class="topup-pane active">
+<label class="field-label" for="cardProvider">Nhà mạng / Loại thẻ</label>
+<select id="cardProvider">
+<option value="VIETTEL">Viettel</option>
+<option value="VINAPHONE">VinaPhone</option>
+<option value="MOBIFONE">MobiFone</option>
+<option value="VIETNAMOBILE">Vietnamobile</option>
+<option value="ZING">Thẻ Zing</option>
+</select>
+<label class="field-label" for="cardAmount">Mệnh giá thẻ</label>
+<select id="cardAmount">
+<option value="10000">10.000đ</option>
+<option value="20000">20.000đ</option>
+<option value="50000" selected>50.000đ</option>
+<option value="100000">100.000đ</option>
+<option value="200000">200.000đ</option>
+<option value="500000">500.000đ</option>
+</select>
+<label class="field-label" for="cardSerial">Số serial</label>
+<input id="cardSerial" maxlength="30" placeholder="Nhập số serial trên thẻ" autocomplete="off">
+<label class="field-label" for="cardCode">Mã thẻ / Mã PIN</label>
+<input id="cardCode" maxlength="30" placeholder="Nhập mã thẻ" autocomplete="off">
+<p class="small-note">Thông tin thẻ sẽ được gửi đến trang quản trị để kiểm tra. Chỉ cộng tiền sau khi admin xác minh thẻ hợp lệ.</p>
+<p class="msg" id="cardMsg"></p>
+<button class="btn wide" id="cardSubmit" onclick="submitCardTopup()">GỬI THẺ ĐỂ DUYỆT</button>
+<div id="cardResult" class="msg"></div>
+</div>
+
+<div id="bankPane" class="topup-pane">
+<input id="topupAmount" type="number" min="10000" step="1000" placeholder="Số tiền muốn nạp (VNĐ)">
+<p class="msg" id="topupMsg"></p>
+<button class="btn wide" onclick="submitTopup()">TẠO YÊU CẦU CHUYỂN KHOẢN</button>
+<div id="topupResult" class="msg"></div>
+</div>
+<button class="btn alt wide" onclick="closeModal('topupModal')">Đóng</button>
+</div>
+</div>
+
 <script>
 let authMode = 'login';
 const $ = id => document.getElementById(id);
@@ -261,16 +441,44 @@ function openAuth(){
   $('authModal').style.display='flex';
 }
 function openTopup(){
-  $('topupMsg').textContent='';$('topupResult').textContent='';$('cardMsg').textContent='';$('cardResult').textContent='';
+  $('topupMsg').textContent='';
+  $('topupResult').textContent='';
+  $('cardMsg').textContent='';
+  $('cardResult').textContent='';
   $('topupModal').style.display='flex';
 }
-function showTopupTab(tab){$('cardPane').classList.toggle('active',tab==='card');$('bankPane').classList.toggle('active',tab==='bank');document.querySelectorAll('.topup-tabs button').forEach((b,i)=>b.classList.toggle('alt',i!==(tab==='card'?0:1)));}
+function showTopupTab(tab){
+  $('cardPane').classList.toggle('active',tab==='card');
+  $('bankPane').classList.toggle('active',tab==='bank');
+  document.querySelectorAll('.topup-tabs button').forEach((b,i)=>b.classList.toggle('alt',i!==(tab==='card'?0:1)));
+}
 async function submitCardTopup(){
- const payload={provider:$('cardProvider').value,amount:Number($('cardAmount').value),serial:$('cardSerial').value.trim(),cardCode:$('cardCode').value.trim()};
- if(!payload.serial||!payload.cardCode){$('cardMsg').textContent='Vui lòng nhập đủ serial và mã thẻ.';return;}
- $('cardSubmit').disabled=true;$('cardMsg').textContent='Đang gửi yêu cầu...';
- try{const data=await api('/api/card-topups',{method:'POST',body:JSON.stringify(payload)});$('cardMsg').textContent='';$('cardResult').textContent='Đã gửi thẻ thành công! Mã yêu cầu #'+data.id+'. Vui lòng chờ admin kiểm tra và duyệt.';$('cardSerial').value='';$('cardCode').value='';}
- catch(e){$('cardMsg').textContent=e.message;}finally{$('cardSubmit').disabled=false;}
+ const payload={
+   provider:$('cardProvider').value,
+   amount:Number($('cardAmount').value),
+   serial:$('cardSerial').value.trim(),
+   cardCode:$('cardCode').value.trim()
+ };
+ if(!payload.serial||!payload.cardCode){
+   $('cardMsg').textContent='Vui lòng nhập đủ serial và mã thẻ.';
+   return;
+ }
+ $('cardSubmit').disabled=true;
+ $('cardMsg').textContent='Đang gửi yêu cầu...';
+ try{
+   const data=await api('/api/card-topups',{
+     method:'POST',
+     body:JSON.stringify(payload)
+   });
+   $('cardMsg').textContent='';
+   $('cardResult').textContent='Đã gửi thẻ thành công! Mã yêu cầu #'+data.id+'. Vui lòng chờ admin kiểm tra và duyệt.';
+   $('cardSerial').value='';
+   $('cardCode').value='';
+ }catch(e){
+   $('cardMsg').textContent=e.message;
+ }finally{
+   $('cardSubmit').disabled=false;
+ }
 }
 function closeModal(id){$(id).style.display='none'}
 
@@ -284,14 +492,20 @@ function switchAuth(){
 async function submitAuth(){
   const username=$('username').value.trim();
   const password=$('password').value;
-  if(!username || !password){$('authMsg').textContent='Vui lòng nhập đủ thông tin.';return}
+  if(!username || !password){
+    $('authMsg').textContent='Vui lòng nhập đủ thông tin.';
+    return;
+  }
   try{
     await api(authMode==='login'?'/api/login':'/api/register',{
-      method:'POST',body:JSON.stringify({username,password})
+      method:'POST',
+      body:JSON.stringify({username,password})
     });
     closeModal('authModal');
     await loadMe();
-  }catch(e){$('authMsg').textContent=e.message}
+  }catch(e){
+    $('authMsg').textContent=e.message;
+  }
 }
 
 async function loadMe(){
@@ -299,16 +513,16 @@ async function loadMe(){
     const data=await api('/api/me');
     const user=data.user || data;
     if(user && user.username){
-      $('navActions').innerHTML='<button onclick="openTopup()">Nạp tiền</button>';
+      $('navActions').innerHTML='<button class="btn" onclick="openTopup()">Nạp tiền</button>';
       $('account').classList.remove('hidden');
       $('hello').textContent=user.username;
       await loadWallet();
     }else{
-      $('navActions').innerHTML='<button onclick="openAuth()">Đăng nhập</button>';
+      $('navActions').innerHTML='<button class="btn" onclick="openAuth()">Đăng nhập</button>';
       $('account').classList.add('hidden');
     }
   }catch(e){
-    $('navActions').innerHTML='<button onclick="openAuth()">Đăng nhập</button>';
+    $('navActions').innerHTML='<button class="btn" onclick="openAuth()">Đăng nhập</button>';
     $('account').classList.add('hidden');
   }
 }
@@ -323,7 +537,9 @@ async function loadWallet(){
     cards.forEach(x=>lines.unshift('Thẻ '+x.provider+' #'+x.id+' — '+Number(x.amount||0).toLocaleString('vi-VN')+'đ ('+(x.status==='PENDING'?'Chờ duyệt':x.status==='APPROVED'?'Đã duyệt':'Từ chối')+')'));
     $('history').textContent=lines.length?lines.join('\n'):'Chưa có giao dịch.';
     $('history').style.whiteSpace='pre-line';
-  }catch(e){$('history').textContent=e.message}
+  }catch(e){
+    $('history').textContent=e.message;
+  }
 }
 
 async function submitTopup(){
@@ -334,7 +550,8 @@ async function submitTopup(){
   }
   try{
     const data=await api('/api/topups',{
-      method:'POST',body:JSON.stringify({amount})
+      method:'POST',
+      body:JSON.stringify({amount})
     });
     const bank=data.bank||data;
     $('topupResult').textContent=[
@@ -347,14 +564,17 @@ async function submitTopup(){
       'Vui lòng chuyển khoản đúng nội dung để quản trị viên xác nhận.'
     ].join('\n');
     $('topupResult').style.whiteSpace='pre-line';
-  }catch(e){$('topupMsg').textContent=e.message}
+  }catch(e){
+    $('topupMsg').textContent=e.message;
+  }
 }
 
 async function buy(productId){
   if(!confirm('Bạn có chắc muốn mua sản phẩm này?'))return;
   try{
     const data=await api('/api/buy',{
-      method:'POST',body:JSON.stringify({productId})
+      method:'POST',
+      body:JSON.stringify({productId})
     });
     alert(data.message||'Mua hàng thành công!');
     await loadWallet();
@@ -365,7 +585,9 @@ async function buy(productId){
 }
 
 async function logout(){
-  try{await api('/api/logout',{method:'POST'})}catch(e){}
+  try{
+    await api('/api/logout',{method:'POST'});
+  }catch(e){}
   await loadMe();
 }
 
