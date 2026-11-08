@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="vi">
 <head>
@@ -52,9 +53,10 @@ button{cursor:pointer}
 .art-symbol{position:absolute;z-index:3;top:15px;left:14px;font-size:clamp(24px,3vw,38px);font-weight:1000;font-style:italic;color:white;text-shadow:0 0 14px #a72cff}
 .art-illustration{position:absolute;inset:0;width:100%;height:100%;z-index:2}
 .art.aimbody{background:radial-gradient(ellipse at 52% 65%,#b02cff66,transparent 48%),linear-gradient(145deg,#080d25,#17104b 58%,#080716)}
-@media(max-width:620px){.art{min-height:245px;border-left:0;background:radial-gradient(ellipse at 50% 55%,#a52cff55,transparent 62%),linear-gradient(145deg,#090719,#171044)}.art-illustration{inset:8px 0;width:100%;height:calc(100% - 16px)}.art-symbol{display:none}}
 .art.vip{background:radial-gradient(circle,#8c531c,transparent 45%),linear-gradient(145deg,#1d102b,#13091f)}
 .art.vip:after{border-color:#ffd45c;box-shadow:0 0 25px #ffc33b}
+.art.new-package{background:radial-gradient(ellipse at 50% 60%,#a52cff88,transparent 55%),linear-gradient(145deg,#090719,#171044)}
+.art.new-package .art-symbol{display:block;position:relative;top:auto;left:auto;font-size:42px;color:#f0c6ff;text-align:center}
 .product-body{grid-area:body;padding:20px 14px 12px 18px;position:relative;z-index:2}
 .pill{display:inline-block;border-radius:20px;padding:5px 12px;background:linear-gradient(90deg,#a02be7,#235cc7);font-size:12px;font-weight:900}
 .product h3{font-size:clamp(23px,2.5vw,30px);margin:10px 0 5px}
@@ -101,17 +103,12 @@ footer{padding:24px clamp(14px,3vw,38px);border-top:1px solid #58208c;background
 .footer-inner{max-width:1440px;margin:auto;display:flex;justify-content:space-between;gap:12px;align-items:center}
 @media(max-width:900px){.hero-figure{left:-55px;opacity:.35}.products{grid-template-columns:1fr}.product{grid-template-columns:1.12fr .88fr;grid-template-areas:"body art"}.feature-layout{grid-template-columns:1fr}.purchase{grid-template-columns:110px 1fr}.trust{grid-column:1/-1;display:flex;justify-content:space-around;flex-wrap:wrap}.navlinks{gap:12px}}
 @media(max-width:620px){.topbar{height:auto;min-height:64px;padding:9px 12px}.brand-mark{font-size:31px}.brand small{font-size:8px;letter-spacing:3px}.navlinks{display:none}.hero{min-height:300px;padding:30px 16px}.hero-figure{left:-85px;opacity:.22}.hero-stats{gap:5px;margin-top:20px}.hero-stat{min-width:0;padding:0 10px}.hero-stat span{font-size:11px}.shell{padding:14px 12px 24px}.product{grid-template-columns:1.08fr .92fr;grid-template-areas:"body art";min-height:300px}.art{min-height:245px}.product-body{padding:16px 8px 10px 13px}.product h3{font-size:clamp(21px,6vw,27px)}.product-features{font-size:13px;gap:8px;margin:12px 0}.price{font-size:24px;margin:10px 0}.buy-btn{left:13px;right:13px;bottom:12px;width:calc(100% - 26px);font-size:14px;padding:13px 6px}.feature-section{padding:14px}.feature-layout{gap:12px}.feature-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.feature-tile{min-height:90px;padding:8px 4px}.feature-tile .glyph{font-size:25px}.feature-tile strong{font-size:11px}.purchase{grid-template-columns:1fr;padding:15px}.gift{font-size:62px}.trust{display:block}.lower{grid-template-columns:1fr}.footer-inner{display:block;text-align:center}.footer-inner>div+div{margin-top:8px}}
-
 .bank-payment{margin:12px 0 14px;padding:14px;border:1px solid #9d5ae0;border-radius:14px;background:linear-gradient(145deg,#1c1035,#0b091a);text-align:center}.bank-payment h3{margin:0 0 8px;color:#f0c6ff;font-size:18px}.bank-payment .bank-owner{font-weight:900;color:#fff;font-size:16px}.bank-payment .bank-number{font-size:22px;font-weight:1000;letter-spacing:1px;color:#ffd45c;margin:4px 0 10px}.bank-payment img{display:block;width:min(100%,330px);height:auto;margin:0 auto 10px;border-radius:12px;background:#fff}.bank-payment .bank-help{font-size:12px;color:#d8c7ef;line-height:1.5;margin:8px 0 0}
-
-
 .ff-section{margin:24px 0;padding:clamp(18px,3vw,30px);border:1px solid #7c3fc0;border-radius:20px;background:radial-gradient(circle at 50% 0%,#35145c 0,#120b25 52%,#090714 100%);box-shadow:0 15px 45px #0007}
 .ff-head{text-align:center;margin-bottom:20px}.ff-tag{display:inline-block;padding:6px 12px;border-radius:30px;background:#54228a;color:#ffe28a;font-size:11px;font-weight:900;letter-spacing:1.5px}.ff-head h2{margin:12px 0 7px;color:#ffe28a;font-size:clamp(22px,4vw,32px)}.ff-head p,.ff-disclaimer{color:#d7c7ed;font-size:13px;line-height:1.6}
 .ff-packages{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.ff-package{position:relative;text-align:center;padding:18px 10px;border:1px solid #7642a8;border-radius:16px;background:linear-gradient(160deg,#25123d,#100b20)}.ff-package.featured{border:2px solid #ffd45c;box-shadow:0 0 22px #ffcc5540}.ff-diamond{font-size:34px}.ff-package h3{margin:8px 0;color:#fff;font-size:24px}.ff-package p{color:#ffd45c;font-weight:800}.ff-package .btn{width:100%;padding:10px 5px}.ff-hot{position:absolute;right:8px;top:8px;background:#ff4f85;color:#fff;border-radius:20px;padding:3px 7px;font-size:10px;font-weight:900}.ff-disclaimer{text-align:center;margin:16px auto 0;max-width:850px}.ff-selected{padding:12px;border-radius:10px;background:#26143d;color:#ffe28a;text-align:center;font-weight:900}
 @media(max-width:700px){.ff-packages{grid-template-columns:repeat(2,minmax(0,1fr))}}
-
 </style>
-
 </head>
 <body>
 
@@ -122,6 +119,7 @@ footer{padding:24px clamp(14px,3vw,38px);border-top:1px solid #58208c;background
   </nav>
   <div id="navActions"><button class="btn" onclick="openAuth()">♟ Đăng Nhập</button></div>
 </header>
+
 <section class="hero" id="home">
   <div class="hero-figure" aria-hidden="true"></div>
   <div class="hero-inner">
@@ -136,21 +134,95 @@ footer{padding:24px clamp(14px,3vw,38px);border-top:1px solid #58208c;background
     </div>
   </div>
 </section>
+
 <main class="shell">
   <div class="layout">
     <section>
       <h2 class="section-title" id="products">✦ SẢN PHẨM NỔI BẬT ✦</h2>
       <div class="products">
+
         <article class="product">
-          <div class="product-body"><span class="pill">ANDROID / IOS / PC</span><h3>AIMBODY</h3><p class="desc">Gói sản phẩm kỹ thuật số.</p><div class="product-features"><span><b>✓</b> Xoá hiệu ứng máu vàng</span><span><b>✓</b> Bắn vào người hiển thị đỏ</span></div><div class="price">250.000đ</div><button class="btn buy-btn" onclick="buy('aimbody')">🛒 Mua ngay ❯</button></div>
-          <div class="art aimboddy" aria-label="Minh hoạ nhân vật AIMBODY phong cách tím neon"><svg class="art-illustration" viewBox="0 0 320 360" role="img" aria-label="Nhân vật game phát sáng tím, ngắm vào phần thân" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="auraBody"><stop stop-color="#c35cff" stop-opacity=".75"/><stop offset="1" stop-color="#401080" stop-opacity="0"/></radialGradient><linearGradient id="suitBody" x2="0" y2="1"><stop stop-color="#32245d"/><stop offset="1" stop-color="#090817"/></linearGradient><filter id="glowBody"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><ellipse cx="170" cy="190" rx="145" ry="175" fill="url(#auraBody)"/><path d="M65 350q5-75 46-104l35-20h48l35 20q41 29 46 104" fill="url(#suitBody)" stroke="#9c4dff" stroke-width="3"/><path d="M111 229q-28-18-37-58l-12-62q-4-24 13-28 18-4 23 22l19 67 25 24m73 35q28-18 37-58l12-62q4-24-13-28-18-4-23 22l-19 67-25 24" fill="#17132e" stroke="#9c4dff" stroke-width="5"/><path d="M111 100q0-58 53-65 53 7 53 65l-13 35h-80z" fill="#0b0a19" stroke="#a85cff" stroke-width="4"/><path d="M133 106h62l18 117-49 35-49-35z" fill="url(#suitBody)" stroke="#a85cff" stroke-width="4"/><path d="M125 153l40 20 40-20" fill="none" stroke="#d47aff" stroke-width="5" filter="url(#glowBody)"/><circle cx="165" cy="182" r="13" fill="#ff4e9c" filter="url(#glowBody)"/><path d="M145 182h40m-20-20v40" stroke="#ff8ac9" stroke-width="3" filter="url(#glowBody)"/><path d="M35 280l18-12m220-190 18-12M45 80l-12-16m230 245 15 13" stroke="#c77aff" stroke-width="3" opacity=".7"/></svg></div>
+          <div class="product-body">
+            <span class="pill">ANDROID / IOS / PC</span>
+            <h3>AIMBODY</h3>
+            <p class="desc">Gói sản phẩm kỹ thuật số.</p>
+            <div class="product-features"><span><b>✓</b> Xoá hiệu ứng máu vàng</span><span><b>✓</b> Bắn vào người hiển thị đỏ</span></div>
+            <div class="price">250.000đ</div>
+            <button class="btn buy-btn" onclick="buy('aimbody')">🛒 Mua ngay ❯</button>
+          </div>
+          <div class="art aimboddy" aria-label="Minh hoạ AIMBODY">
+            <svg class="art-illustration" viewBox="0 0 320 360" role="img" xmlns="http://www.w3.org/2000/svg">
+              <defs><radialGradient id="auraBody"><stop stop-color="#c35cff" stop-opacity=".75"/><stop offset="1" stop-color="#401080" stop-opacity="0"/></radialGradient><linearGradient id="suitBody" x2="0" y2="1"><stop stop-color="#32245d"/><stop offset="1" stop-color="#090817"/></linearGradient></defs>
+              <ellipse cx="170" cy="190" rx="145" ry="175" fill="url(#auraBody)"/>
+              <path d="M65 350q5-75 46-104l35-20h48l35 20q41 29 46 104" fill="url(#suitBody)" stroke="#9c4dff" stroke-width="3"/>
+              <path d="M111 100q0-58 53-65 53 7 53 65l-13 35h-80z" fill="#0b0a19" stroke="#a85cff" stroke-width="4"/>
+              <path d="M133 106h62l18 117-49 35-49-35z" fill="url(#suitBody)" stroke="#a85cff" stroke-width="4"/>
+              <path d="M125 153l40 20 40-20" fill="none" stroke="#d47aff" stroke-width="5"/>
+              <circle cx="165" cy="182" r="13" fill="#ff4e9c"/>
+            </svg>
+          </div>
         </article>
+
         <article class="product">
-          <div class="product-body"><span class="pill">ANDROID / IOS / PC</span><h3>AIMLOCK</h3><p class="desc">Gói sản phẩm kỹ thuật số.</p><div class="product-features"><span><b>✓</b> Ghim cổ, kéo nhẹ là đỏ</span><span><b>✓</b> Không kéo là máu vàng</span></div><div class="price">200.000đ</div><button class="btn buy-btn" onclick="buy('aimlock')">🛒 Mua ngay ❯</button></div>
-          <div class="art aimlock" aria-label="Minh hoạ nhân vật AIMLOCK phong cách tím neon"><svg class="art-illustration" viewBox="0 0 320 360" role="img" aria-label="Nhân vật game mặc áo trùm đầu, điểm sáng ở vùng cổ" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="auraLock"><stop stop-color="#7f43ff" stop-opacity=".8"/><stop offset="1" stop-color="#24105d" stop-opacity="0"/></radialGradient><linearGradient id="hoodLock" x2="0" y2="1"><stop stop-color="#42306e"/><stop offset="1" stop-color="#080716"/></linearGradient><filter id="glowLock"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><ellipse cx="170" cy="185" rx="150" ry="175" fill="url(#auraLock)"/><path d="M52 360q10-82 61-112l30-17h48l30 17q51 30 61 112" fill="#0c0a1d" stroke="#8145ed" stroke-width="4"/><path d="M93 142q-14-91 77-113 91 22 77 113l-25 48-52 25-52-25z" fill="url(#hoodLock)" stroke="#a45aff" stroke-width="5"/><path d="M118 137q4-65 52-68 48 3 52 68l-16 42h-72z" fill="#090817" stroke="#6e42b7" stroke-width="3"/><path d="M134 143h72l22 86-58 30-58-30z" fill="#17112b" stroke="#8145ed" stroke-width="4"/><path d="M140 181h60l-10 26h-40z" fill="#ff4d91" opacity=".7" filter="url(#glowLock)"/><g stroke="#ff58a4" fill="none" filter="url(#glowLock)"><circle cx="170" cy="188" r="24" stroke-width="4"/><path d="M170 151v-17m0 108v-17m-37-37h-17m108 0h-17" stroke-width="4"/><circle cx="170" cy="188" r="5" fill="#ff58a4"/></g><path d="M45 70l18-12m215 250 15 12M40 280l18-12m220-205 15-12" stroke="#b879ff" stroke-width="3" opacity=".7"/></svg></div>
+          <div class="product-body">
+            <span class="pill">ANDROID / IOS / PC</span>
+            <h3>AIMLOCK</h3>
+            <p class="desc">Gói sản phẩm kỹ thuật số.</p>
+            <div class="product-features"><span><b>✓</b> Ghim cổ, kéo nhẹ là đỏ</span><span><b>✓</b> Không kéo là máu vàng</span></div>
+            <div class="price">200.000đ</div>
+            <button class="btn buy-btn" onclick="buy('aimlock')">🛒 Mua ngay ❯</button>
+          </div>
+          <div class="art aimlock" aria-label="Minh hoạ AIMLOCK">
+            <svg class="art-illustration" viewBox="0 0 320 360" role="img" xmlns="http://www.w3.org/2000/svg">
+              <defs><radialGradient id="auraLock"><stop stop-color="#7f43ff" stop-opacity=".8"/><stop offset="1" stop-color="#24105d" stop-opacity="0"/></radialGradient><linearGradient id="hoodLock" x2="0" y2="1"><stop stop-color="#42306e"/><stop offset="1" stop-color="#080716"/></linearGradient></defs>
+              <ellipse cx="170" cy="185" rx="150" ry="175" fill="url(#auraLock)"/>
+              <path d="M52 360q10-82 61-112l30-17h48l30 17q51 30 61 112" fill="#0c0a1d" stroke="#8145ed" stroke-width="4"/>
+              <path d="M93 142q-14-91 77-113 91 22 77 113l-25 48-52 25-52-25z" fill="url(#hoodLock)" stroke="#a45aff" stroke-width="5"/>
+              <path d="M134 143h72l22 86-58 30-58-30z" fill="#17112b" stroke="#8145ed" stroke-width="4"/>
+              <circle cx="170" cy="188" r="24" stroke="#ff58a4" stroke-width="4" fill="none"/>
+            </svg>
+          </div>
         </article>
+
+        <article class="product">
+          <div class="product-body">
+            <span class="pill">GÓI 1 TUẦN</span>
+            <h3>AIMLOCK</h3>
+            <p class="desc">Gói sử dụng trong 1 tuần.</p>
+            <div class="product-features"><span><b>✓</b> Thời hạn 1 tuần</span><span><b>✓</b> Sản phẩm kỹ thuật số</span></div>
+            <div class="price">50.000đ</div>
+            <button class="btn buy-btn" onclick="buy('aimlock_week')">🛒 Mua ngay ❯</button>
+          </div>
+          <div class="art new-package"><span class="art-symbol">AIM<br>LOCK</span></div>
+        </article>
+
+        <article class="product">
+          <div class="product-body">
+            <span class="pill">GÓI 1 THÁNG</span>
+            <h3>AIMLOCK</h3>
+            <p class="desc">Gói sử dụng trong 1 tháng.</p>
+            <div class="product-features"><span><b>✓</b> Thời hạn 1 tháng</span><span><b>✓</b> Sản phẩm kỹ thuật số</span></div>
+            <div class="price">100.000đ</div>
+            <button class="btn buy-btn" onclick="buy('aimlock_month')">🛒 Mua ngay ❯</button>
+          </div>
+          <div class="art new-package"><span class="art-symbol">AIM<br>LOCK</span></div>
+        </article>
+
+        <article class="product">
+          <div class="product-body">
+            <span class="pill">GÓI 1 OB</span>
+            <h3>AIMBODY</h3>
+            <p class="desc">Gói AIMBODY 1 OB.</p>
+            <div class="product-features"><span><b>✓</b> Gói 1 OB</span><span><b>✓</b> Sản phẩm kỹ thuật số</span></div>
+            <div class="price">150.000đ</div>
+            <button class="btn buy-btn" onclick="buy('aimbody_ob')">🛒 Mua ngay ❯</button>
+          </div>
+          <div class="art new-package"><span class="art-symbol">AIM<br>BODY</span></div>
+        </article>
+
       </div>
     </section>
+
     <aside id="account" class="account hidden">
       <div class="account-head">◉ &nbsp;Tài khoản của bạn</div>
       <div class="account-content">
@@ -161,6 +233,7 @@ footer{padding:24px clamp(14px,3vw,38px);border-top:1px solid #58208c;background
       </div>
     </aside>
   </div>
+
   <section class="feature-section" id="vip-features">
     <h2 class="feature-heading">⭐ MENU VIP ĐẦY ĐỦ TÍNH NĂNG ⭐</h2>
     <div class="feature-layout">
@@ -181,6 +254,7 @@ footer{padding:24px clamp(14px,3vw,38px);border-top:1px solid #58208c;background
       </div>
     </div>
   </section>
+
   <section class="ff-section" id="nap-kc-ff">
     <div class="ff-head"><span class="ff-tag">FREE FIRE · ƯU ĐÃI X2</span><h2>💎 NẠP KIM CƯƠNG FREE FIRE</h2><p>Chọn gói kim cương phù hợp và nhập UID nhân vật để tạo yêu cầu nạp.</p></div>
     <div class="ff-packages">
@@ -189,25 +263,36 @@ footer{padding:24px clamp(14px,3vw,38px);border-top:1px solid #58208c;background
       <article class="ff-package"><span class="ff-diamond">💎</span><h3>2.578 KC</h3><p>Gói 200.000đ</p><button class="btn" onclick="openFFTopup(200000,2578)">Chọn gói</button></article>
       <article class="ff-package featured"><span class="ff-hot">HOT</span><span class="ff-diamond">💎</span><h3>7.210 KC</h3><p>Gói 500.000đ</p><button class="btn" onclick="openFFTopup(500000,7210)">Chọn gói</button></article>
     </div>
-    <p class="ff-disclaimer">Lưu ý: Kiểm tra kỹ UID trước khi gửi. Đây là gói do cửa hàng công bố; việc cộng kim cương thực tế cần được xử lý bởi nhà cung cấp/đại lý Garena được ủy quyền.</p>
+    <p class="ff-disclaimer">Lưu ý: Kiểm tra kỹ UID trước khi gửi. Việc cộng kim cương thực tế cần được xử lý bởi nhà cung cấp/đại lý Garena được ủy quyền.</p>
   </section>
+
   <section class="purchase" id="purchase">
     <div class="gift">🎁</div>
     <div>
       <h2>🛒 MUA NGAY ĐỂ TRẢI NGHIỆM</h2>
       <label for="purchaseChoice">Chọn gói mua:</label>
-      <select id="purchaseChoice"><option value="aimlock">AIMLOCK — 200.000đ</option><option value="aimbody">AIMBODY — 250.000đ</option><option value="vip">MENU VIP — 450.000đ</option></select>
+      <select id="purchaseChoice">
+        <option value="aimlock">AIMLOCK — 200.000đ</option>
+        <option value="aimbody">AIMBODY — 250.000đ</option>
+        <option value="vip">MENU VIP — 450.000đ</option>
+        <option value="aimlock_week">AIMLOCK 1 TUẦN — 50.000đ</option>
+        <option value="aimlock_month">AIMLOCK 1 THÁNG — 100.000đ</option>
+        <option value="aimbody_ob">AIMBODY 1 OB — 150.000đ</option>
+      </select>
       <button class="btn" onclick="buy(document.getElementById('purchaseChoice').value)">🛒 Thanh Toán Ngay</button>
     </div>
     <div class="trust"><span><b>✓</b> Thanh toán qua số dư ví</span><span><b>✓</b> Theo dõi lịch sử giao dịch</span><span><b>✓</b> Hỗ trợ khách hàng</span></div>
   </section>
+
   <section class="about-strip" id="topup-info"><h2>Về MAP HAI HUOC STORE</h2><p>Cửa hàng cung cấp các gói sản phẩm kỹ thuật số. Bạn có thể tạo tài khoản, nạp tiền vào ví, chọn gói phù hợp và theo dõi lịch sử giao dịch ngay trên website.</p></section>
   <div class="lower" id="contact">
     <section class="info-card"><div class="info-icon">▤</div><div><h3>Hướng dẫn nạp tiền</h3><p>Đăng nhập, chọn Nạp tiền bằng thẻ hoặc chuyển khoản. Với thẻ cào, nhập nhà mạng, mệnh giá, serial và mã thẻ. Admin kiểm tra thẻ trước khi cộng tiền vào ví.</p></div></section>
     <section class="info-card"><div class="info-icon">☏</div><div><h3>Hỗ trợ khách hàng</h3><p>Liên hệ quản trị viên khi cần hỗ trợ về tài khoản hoặc giao dịch.</p></div></section>
   </div>
 </main>
+
 <footer><div class="footer-inner"><div><b style="font-size:20px">♛ MAP HAI HUOC STORE</b><br>Uy tín · Chất lượng · Đồng hành cùng bạn</div><div>© 2026 Map Hai Huoc Store. All rights reserved.</div></div></footer>
+
 <div class="modal" id="authModal"><div class="modal-box">
   <h2 id="authTitle">ĐĂNG NHẬP</h2>
   <input id="username" placeholder="Tên đăng nhập" autocomplete="username">
@@ -217,6 +302,7 @@ footer{padding:24px clamp(14px,3vw,38px);border-top:1px solid #58208c;background
   <button class="btn alt wide" onclick="switchAuth()">Đăng ký</button>
   <button class="btn alt wide" onclick="closeModal('authModal')">Đóng</button>
 </div></div>
+
 <div class="modal" id="topupModal"><div class="modal-box">
   <h2>NẠP TIỀN VÀO VÍ</h2>
   <div class="topup-tabs"><button class="btn" onclick="showTopupTab('card')">Nạp thẻ cào</button><button class="btn alt" onclick="showTopupTab('bank')">Chuyển khoản</button></div>
@@ -243,6 +329,7 @@ footer{padding:24px clamp(14px,3vw,38px);border-top:1px solid #58208c;background
   </div>
   <button class="btn alt wide" onclick="closeModal('topupModal')">Đóng</button>
 </div></div>
+
 <div class="modal" id="ffModal"><div class="modal-box">
   <h2>💎 ĐẶT NẠP KIM CƯƠNG FF</h2>
   <p class="ff-selected" id="ffSelected">Gói nạp</p>
@@ -252,33 +339,44 @@ footer{padding:24px clamp(14px,3vw,38px);border-top:1px solid #58208c;background
   <button class="btn wide" onclick="submitFFTopup()">TẠO YÊU CẦU NẠP</button>
   <button class="btn alt wide" onclick="closeModal('ffModal')">Đóng</button>
 </div></div>
+
 <script>
 let ffOrder={amount:0,diamonds:0};
+
 function openFFTopup(amount,diamonds){
   ffOrder={amount,diamonds};
   $('ffSelected').textContent=diamonds.toLocaleString('vi-VN')+' KC — '+amount.toLocaleString('vi-VN')+'đ';
-  $('ffUid').value='';$('ffMsg').textContent='';$('ffModal').style.display='flex';
+  $('ffUid').value='';
+  $('ffMsg').textContent='';
+  $('ffModal').style.display='flex';
 }
+
 async function submitFFTopup(){
   const uid=$('ffUid').value.trim();
-  if(!/^\d{5,24}$/.test(uid)){$('ffMsg').textContent='UID không hợp lệ. Vui lòng kiểm tra lại.';return;}
+  if(!/^\d{5,24}$/.test(uid)){
+    $('ffMsg').textContent='UID không hợp lệ. Vui lòng kiểm tra lại.';
+    return;
+  }
   $('ffMsg').textContent='Đang gửi yêu cầu...';
   try{
     const data=await api('/api/ff-topups',{method:'POST',body:JSON.stringify({uid,amount:ffOrder.amount,diamonds:ffOrder.diamonds})});
     $('ffMsg').textContent='Đã tạo yêu cầu #'+data.id+'. Vui lòng làm theo hướng dẫn thanh toán và chờ admin xác nhận.';
-  }catch(e){$('ffMsg').textContent=e.message==='Có lỗi xảy ra'?'Chức năng nhận đơn FF chưa được kết nối ở máy chủ. Cần bổ sung API và trang quản trị trước khi sử dụng.':e.message;}
+  }catch(e){
+    $('ffMsg').textContent=e.message==='Có lỗi xảy ra'?'Chức năng nhận đơn FF chưa được kết nối ở máy chủ. Cần bổ sung API và trang quản trị trước khi sử dụng.':e.message;
+  }
 }
-let authMode = 'login';
-const $ = id => document.getElementById(id);
 
-async function api(url, options={}) {
-  const response = await fetch(url, {
+let authMode='login';
+const $=id=>document.getElementById(id);
+
+async function api(url,options={}){
+  const response=await fetch(url,{
     credentials:'include',
     headers:{'Content-Type':'application/json',...(options.headers||{})},
     ...options
   });
-  const data = await response.json().catch(()=>({}));
-  if(!response.ok) throw new Error(data.error || data.message || 'Có lỗi xảy ra');
+  const data=await response.json().catch(()=>({}));
+  if(!response.ok)throw new Error(data.error||data.message||'Có lỗi xảy ra');
   return data;
 }
 
@@ -286,55 +384,90 @@ function openAuth(){
   $('authMsg').textContent='';
   $('authModal').style.display='flex';
 }
+
 function openTopup(){
-  $('topupMsg').textContent='';$('topupResult').textContent='';$('cardMsg').textContent='';$('cardResult').textContent='';
+  $('topupMsg').textContent='';
+  $('topupResult').textContent='';
+  $('cardMsg').textContent='';
+  $('cardResult').textContent='';
   $('topupModal').style.display='flex';
 }
-function showTopupTab(tab){$('cardPane').classList.toggle('active',tab==='card');$('bankPane').classList.toggle('active',tab==='bank');document.querySelectorAll('.topup-tabs button').forEach((b,i)=>b.classList.toggle('alt',i!==(tab==='card'?0:1)));}
-async function submitCardTopup(){
- const payload={provider:$('cardProvider').value,amount:Number($('cardAmount').value),serial:$('cardSerial').value.trim(),cardCode:$('cardCode').value.trim()};
- if(!payload.serial||!payload.cardCode){$('cardMsg').textContent='Vui lòng nhập đủ serial và mã thẻ.';return;}
- $('cardSubmit').disabled=true;$('cardMsg').textContent='Đang gửi yêu cầu...';
- try{const data=await api('/api/card-topups',{method:'POST',body:JSON.stringify(payload)});$('cardMsg').textContent='';$('cardResult').textContent='Đã gửi thẻ thành công! Mã yêu cầu #'+data.id+'. Vui lòng chờ admin kiểm tra và duyệt.';$('cardSerial').value='';$('cardCode').value='';}
- catch(e){$('cardMsg').textContent=e.message;}finally{$('cardSubmit').disabled=false;}
+
+function showTopupTab(tab){
+  $('cardPane').classList.toggle('active',tab==='card');
+  $('bankPane').classList.toggle('active',tab==='bank');
+  document.querySelectorAll('.topup-tabs button').forEach((b,i)=>b.classList.toggle('alt',i!==(tab==='card'?0:1)));
 }
+
+async function submitCardTopup(){
+  const payload={
+    provider:$('cardProvider').value,
+    amount:Number($('cardAmount').value),
+    serial:$('cardSerial').value.trim(),
+    cardCode:$('cardCode').value.trim()
+  };
+  if(!payload.serial||!payload.cardCode){
+    $('cardMsg').textContent='Vui lòng nhập đủ serial và mã thẻ.';
+    return;
+  }
+  $('cardSubmit').disabled=true;
+  $('cardMsg').textContent='Đang gửi yêu cầu...';
+  try{
+    const data=await api('/api/card-topups',{method:'POST',body:JSON.stringify(payload)});
+    $('cardMsg').textContent='';
+    $('cardResult').textContent='Đã gửi thẻ thành công! Mã yêu cầu #'+data.id+'. Vui lòng chờ admin kiểm tra và duyệt.';
+    $('cardSerial').value='';
+    $('cardCode').value='';
+  }catch(e){
+    $('cardMsg').textContent=e.message;
+  }finally{
+    $('cardSubmit').disabled=false;
+  }
+}
+
 function closeModal(id){$(id).style.display='none'}
 
 function switchAuth(){
-  authMode = authMode === 'login' ? 'register' : 'login';
-  $('authTitle').textContent = authMode === 'login' ? 'ĐĂNG NHẬP' : 'ĐĂNG KÝ TÀI KHOẢN';
-  $('authSubmit').textContent = authMode === 'login' ? 'ĐĂNG NHẬP' : 'ĐĂNG KÝ';
+  authMode=authMode==='login'?'register':'login';
+  $('authTitle').textContent=authMode==='login'?'ĐĂNG NHẬP':'ĐĂNG KÝ TÀI KHOẢN';
+  $('authSubmit').textContent=authMode==='login'?'ĐĂNG NHẬP':'ĐĂNG KÝ';
   $('authMsg').textContent='';
 }
 
 async function submitAuth(){
   const username=$('username').value.trim();
   const password=$('password').value;
-  if(!username || !password){$('authMsg').textContent='Vui lòng nhập đủ thông tin.';return}
+  if(!username||!password){
+    $('authMsg').textContent='Vui lòng nhập đủ thông tin.';
+    return;
+  }
   try{
     await api(authMode==='login'?'/api/login':'/api/register',{
-      method:'POST',body:JSON.stringify({username,password})
+      method:'POST',
+      body:JSON.stringify({username,password})
     });
     closeModal('authModal');
     await loadMe();
-  }catch(e){$('authMsg').textContent=e.message}
+  }catch(e){
+    $('authMsg').textContent=e.message;
+  }
 }
 
 async function loadMe(){
   try{
     const data=await api('/api/me');
-    const user=data.user || data;
-    if(user && user.username){
-      $('navActions').innerHTML='<button onclick="openTopup()">Nạp tiền</button>';
+    const user=data.user||data;
+    if(user&&user.username){
+      $('navActions').innerHTML='<button class="btn" onclick="openTopup()">Nạp tiền</button>';
       $('account').classList.remove('hidden');
       $('hello').textContent=user.username;
       await loadWallet();
     }else{
-      $('navActions').innerHTML='<button onclick="openAuth()">Đăng nhập</button>';
+      $('navActions').innerHTML='<button class="btn" onclick="openAuth()">Đăng nhập</button>';
       $('account').classList.add('hidden');
     }
   }catch(e){
-    $('navActions').innerHTML='<button onclick="openAuth()">Đăng nhập</button>';
+    $('navActions').innerHTML='<button class="btn" onclick="openAuth()">Đăng nhập</button>';
     $('account').classList.add('hidden');
   }
 }
@@ -349,7 +482,9 @@ async function loadWallet(){
     cards.forEach(x=>lines.unshift('Thẻ '+x.provider+' #'+x.id+' — '+Number(x.amount||0).toLocaleString('vi-VN')+'đ ('+(x.status==='PENDING'?'Chờ duyệt':x.status==='APPROVED'?'Đã duyệt':'Từ chối')+')'));
     $('history').textContent=lines.length?lines.join('\n'):'Chưa có giao dịch.';
     $('history').style.whiteSpace='pre-line';
-  }catch(e){$('history').textContent=e.message}
+  }catch(e){
+    $('history').textContent=e.message;
+  }
 }
 
 async function submitTopup(){
@@ -360,12 +495,13 @@ async function submitTopup(){
   }
   try{
     const data=await api('/api/topups',{
-      method:'POST',body:JSON.stringify({amount})
+      method:'POST',
+      body:JSON.stringify({amount})
     });
     const bank=data.bank||data;
     $('topupResult').textContent=[
       'YÊU CẦU NẠP ĐÃ ĐƯỢC TẠO',
-      'Ngân hàng: '+(bank.bankName||bank.bank||''),
+      'Ngân hàng: '+(bank.bankName||bank.bank||bank.name||''),
       'Số tài khoản: '+(bank.accountNumber||bank.account||''),
       'Chủ tài khoản: '+(bank.accountName||bank.owner||''),
       'Số tiền: '+amount.toLocaleString('vi-VN')+'đ',
@@ -373,14 +509,17 @@ async function submitTopup(){
       'Vui lòng chuyển khoản đúng nội dung để quản trị viên xác nhận.'
     ].join('\n');
     $('topupResult').style.whiteSpace='pre-line';
-  }catch(e){$('topupMsg').textContent=e.message}
+  }catch(e){
+    $('topupMsg').textContent=e.message;
+  }
 }
 
 async function buy(productId){
   if(!confirm('Bạn có chắc muốn mua sản phẩm này?'))return;
   try{
     const data=await api('/api/buy',{
-      method:'POST',body:JSON.stringify({productId})
+      method:'POST',
+      body:JSON.stringify({productId})
     });
     alert(data.message||'Mua hàng thành công!');
     await loadWallet();
