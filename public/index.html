@@ -128,6 +128,10 @@ button{cursor:pointer}
 .modal-box .wide{width:100%}
 .msg{color:#ffd477;line-height:1.6;overflow-wrap:anywhere}
 .hidden{display:none!important}
+.bank-qr{display:none;text-align:center;margin-top:18px;padding:15px;border:1px solid #a044d3;border-radius:16px;background:#0b0719}
+.bank-qr h3{color:#f0c6ff;margin:0 0 12px}
+.bank-qr img{display:block;width:100%;max-width:280px;min-height:180px;object-fit:contain;margin:0 auto;background:white;padding:10px;border-radius:12px}
+.bank-qr p{overflow-wrap:anywhere}
 footer{padding:30px 4%;border-top:1px solid #58208c;background:#080614;color:#c6b6dc}
 .footer-inner{max-width:1550px;margin:auto;display:flex;justify-content:space-between;gap:12px;align-items:center}
 @media(max-width:1100px){
@@ -172,7 +176,6 @@ footer{padding:30px 4%;border-top:1px solid #58208c;background:#080614;color:#c6
 </head>
 
 <body>
-
 <header class="topbar">
 <div class="brand"><span class="brand-mark">♛</span><span>MAP HAI HUOC<small>STORE</small></span></div>
 <nav class="navlinks" aria-label="Điều hướng">
@@ -416,7 +419,15 @@ footer{padding:30px 4%;border-top:1px solid #58208c;background:#080614;color:#c6
 <p class="msg" id="topupMsg"></p>
 <button class="btn wide" onclick="submitTopup()">TẠO YÊU CẦU CHUYỂN KHOẢN</button>
 <div id="topupResult" class="msg"></div>
+
+<div id="bankQr" class="bank-qr">
+<h3>QUÉT MÃ QR ĐỂ CHUYỂN KHOẢN</h3>
+<img id="bankQrImage" alt="Mã QR chuyển khoản MB Bank">
+<p id="bankQrInfo" class="small-note"></p>
+<p class="small-note">Kiểm tra đúng tên người nhận, số tiền và nội dung trước khi xác nhận chuyển khoản.</p>
 </div>
+</div>
+
 <button class="btn alt wide" onclick="closeModal('topupModal')">Đóng</button>
 </div>
 </div>
@@ -440,18 +451,22 @@ function openAuth(){
   $('authMsg').textContent='';
   $('authModal').style.display='flex';
 }
+
 function openTopup(){
   $('topupMsg').textContent='';
   $('topupResult').textContent='';
+  $('bankQr').style.display='none';
   $('cardMsg').textContent='';
   $('cardResult').textContent='';
   $('topupModal').style.display='flex';
 }
+
 function showTopupTab(tab){
   $('cardPane').classList.toggle('active',tab==='card');
   $('bankPane').classList.toggle('active',tab==='bank');
   document.querySelectorAll('.topup-tabs button').forEach((b,i)=>b.classList.toggle('alt',i!==(tab==='card'?0:1)));
 }
+
 async function submitCardTopup(){
  const payload={
    provider:$('cardProvider').value,
@@ -480,6 +495,7 @@ async function submitCardTopup(){
    $('cardSubmit').disabled=false;
  }
 }
+
 function closeModal(id){$(id).style.display='none'}
 
 function switchAuth(){
@@ -544,26 +560,65 @@ async function loadWallet(){
 
 async function submitTopup(){
   const amount=Number($('topupAmount').value);
-  if(!Number.isFinite(amount)||amount<10000){
-    $('topupMsg').textContent='Số tiền nạp tối thiểu là 10.000đ.';
+
+  if(!Number.isSafeInteger(amount)||amount<10000||amount>5000000||amount%1000!==0){
+    $('topupMsg').textContent='Số tiền nạp từ 10.000đ đến 5.000.000đ, bội số 1.000đ.';
     return;
   }
+
+  $('topupMsg').textContent='Đang tạo yêu cầu...';
+  $('topupResult').textContent='';
+  $('bankQr').style.display='none';
+
   try{
     const data=await api('/api/topups',{
       method:'POST',
       body:JSON.stringify({amount})
     });
-    const bank=data.bank||data;
+
+    const bank=data.bank||{};
+    const account=bank.account;
+    const owner=bank.owner;
+    const memo=data.memo;
+
+    if(!account||!memo){
+      throw new Error('Server chưa trả về đủ thông tin tài khoản hoặc nội dung chuyển khoản.');
+    }
+
+    const params=new URLSearchParams({
+      amount:String(amount),
+      addInfo:memo,
+      accountName:owner||''
+    });
+
+    const qrUrl='https://img.vietqr.io/image/MB-'+
+      encodeURIComponent(account)+
+      '-compact2.png?'+params.toString();
+
+    $('bankQrImage').onerror=function(){
+      $('bankQrInfo').textContent='Không tải được ảnh QR. Bạn có thể dùng thông tin tài khoản và nội dung chuyển khoản ở phía trên.';
+    };
+
+    $('bankQrImage').src=qrUrl;
+    $('bankQrInfo').textContent=
+      'MB Bank: '+account+
+      ' | Chủ tài khoản: '+(owner||'')+
+      ' | Nội dung: '+memo;
+
     $('topupResult').textContent=[
-      'YÊU CẦU NẠP ĐÃ ĐƯỢC TẠO',
-      'Ngân hàng: '+(bank.bankName||bank.bank||''),
-      'Số tài khoản: '+(bank.accountNumber||bank.account||''),
-      'Chủ tài khoản: '+(bank.accountName||bank.owner||''),
+      'ĐÃ TẠO YÊU CẦU NẠP TIỀN',
+      'Ngân hàng: '+(bank.name||'MB Bank'),
+      'Số tài khoản: '+account,
+      'Chủ tài khoản: '+(owner||''),
       'Số tiền: '+amount.toLocaleString('vi-VN')+'đ',
-      'Nội dung chuyển khoản: '+(data.memo||data.transferContent||''),
-      'Vui lòng chuyển khoản đúng nội dung để quản trị viên xác nhận.'
+      'Nội dung chuyển khoản: '+memo,
+      'Vui lòng chuyển khoản đúng số tiền và nội dung. Tiền chỉ được cộng sau khi admin xác nhận.'
     ].join('\n');
+
     $('topupResult').style.whiteSpace='pre-line';
+    $('bankQr').style.display='block';
+    $('topupMsg').textContent='';
+
   }catch(e){
     $('topupMsg').textContent=e.message;
   }
